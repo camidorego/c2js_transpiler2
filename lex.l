@@ -1,6 +1,10 @@
 
 %{
 /* Sección de declaraciones de C */
+#include "tokens.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 %}
 
 /* Definiciones de patrones y opciones */
@@ -24,7 +28,7 @@
 "if"    { return KEYWORD_IF; }
 "else"  { return KEYWORD_ELSE; }
 
-"function"  { return KEYWORD_FUNCTION; }
+"function"  { return KEYWORD_FUNCTION }
 "return"    { return KEYWORD_RETURN; }
 
 "="     { return ASSIGNMENT_OP; }
@@ -41,6 +45,7 @@
 "-"     { return MINUS_OP; }
 "*"     { return MULTIPLY_OP; }
 "/"     { return DIVIDE_OP; }
+"%"     { return MOD_OP }
 
 "=="    { return EQ_OP; }
 "!="    { return NEQ_OP; }

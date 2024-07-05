@@ -1,4 +1,5 @@
 %{
+#include "tokens.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,9 +30,13 @@ typedef struct {
 %token LAND LOR LNOT
 %token MAIN VOID PRINTF
 
-%type <str> program statement variable_declaration constant_declaration assignment
+%type <str> program statements statement variable_declaration constant_declaration assignment
 %type <str> loop_statement conditional_statement function_definition
-%type <str> expression term factor
+%type <str> expression
+
+%left PLUS_OP MINUS_OP
+%left MULTIPLY_OP DIVIDE_OP
+%left EQ_OP NEQ_OP GT_OP LT_OP GE_OP LE_OP
 
 %%
 
@@ -69,16 +74,16 @@ assignment:
 
 loop_statement:
     KEYWORD_FOR LPAREN assignment SEMICOLON expression SEMICOLON assignment RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(200); sprintf($$, "for (%s; %s; %s) {\n%s\n}", $3, $5, $7, $9); }
+    { $$ = (char *) malloc(200); sprintf($$, "for (%s; %s; %s) {\n%s\n}", $3, $5, $7, $10); }
     | KEYWORD_WHILE LPAREN expression RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(150); sprintf($$, "while (%s) {\n%s\n}", $3, $5); }
+    { $$ = (char *) malloc(150); sprintf($$, "while (%s) {\n%s\n}", $3, $6); }
     ;
 
 conditional_statement:
     KEYWORD_IF LPAREN expression RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(150); sprintf($$, "if (%s) {\n%s\n}", $3, $5); }
+    { $$ = (char *) malloc(150); sprintf($$, "if (%s) {\n%s\n}", $3, $6); }
     | KEYWORD_IF LPAREN expression RPAREN LBRACE statements RBRACE KEYWORD_ELSE LBRACE statements RBRACE
-    { $$ = (char *) malloc(200); sprintf($$, "if (%s) {\n%s\n} else {\n%s\n}", $3, $5, $9); }
+    { $$ = (char *) malloc(200); sprintf($$, "if (%s) {\n%s\n} else {\n%s\n}", $3, $6, $10); }
     ;
 
 function_definition:
@@ -87,29 +92,19 @@ function_definition:
     ;
 
 expression:
-    term
-    | expression PLUS_OP term { $$ = (char *) malloc(50); sprintf($$, "%s + %s", $1, $3); }
-    | expression MINUS_OP term { $$ = (char *) malloc(50); sprintf($$, "%s - %s", $1, $3); }
-    | expression MULTIPLY_OP term { $$ = (char *) malloc(50); sprintf($$, "%s * %s", $1, $3); }
-    | expression DIVIDE_OP term { $$ = (char *) malloc(50); sprintf($$, "%s / %s", $1, $3); }
-    | expression EQ_OP term { $$ = (char *) malloc(50); sprintf($$, "%s == %s", $1, $3); }
-    | expression NEQ_OP term { $$ = (char *) malloc(50); sprintf($$, "%s != %s", $1, $3); }
-    | expression GT_OP term { $$ = (char *) malloc(50); sprintf($$, "%s > %s", $1, $3); }
-    | expression LT_OP term { $$ = (char *) malloc(50); sprintf($$, "%s < %s", $1, $3); }
-    | expression GE_OP term { $$ = (char *) malloc(50); sprintf($$, "%s >= %s", $1, $3); }
-    | expression LE_OP term { $$ = (char *) malloc(50); sprintf($$, "%s <= %s", $1, $3); }
-    ;
-
-term:
-    factor
-    | IDENTIFIER { $$ = strdup($1); }
+    IDENTIFIER { $$ = strdup($1); }
     | NUMBER_LITERAL { $$ = (char *) malloc(20); sprintf($$, "%d", $1); }
-    ;
-
-factor:
-    LPAREN expression RPAREN { $$ = (char *) malloc(50); sprintf($$, "(%s)", $2); }
-    | IDENTIFIER { $$ = strdup($1); }
-    | NUMBER_LITERAL { $$ = (char *) malloc(20); sprintf($$, "%d", $1); }
+    | expression PLUS_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s + %s", $1, $3); }
+    | expression MINUS_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s - %s", $1, $3); }
+    | expression MULTIPLY_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s * %s", $1, $3); }
+    | expression DIVIDE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s / %s", $1, $3); }
+    | expression EQ_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s == %s", $1, $3); }
+    | expression NEQ_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s != %s", $1, $3); }
+    | expression GT_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s > %s", $1, $3); }
+    | expression LT_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s < %s", $1, $3); }
+    | expression GE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s >= %s", $1, $3); }
+    | expression LE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s <= %s", $1, $3); }
+    | LPAREN expression RPAREN { $$ = (char *) malloc(50); sprintf($$, "(%s)", $2); }
     ;
 
 %%
