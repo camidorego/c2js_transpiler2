@@ -1,7 +1,12 @@
+/* Pasos ejecutar */
+/* flex lex.l */
+/* bison -d yacc.y */
+/* gcc -o traductor lex.yy.c yacc.tab.c -lfl */
+/* ./traductor < tu_programa_c.c */
 
 %{
 /* Sección de declaraciones de C */
-#include "tokens.h"
+// #include "tokens.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -32,7 +32,7 @@ typedef struct {
 
 %type <str> program statements statement variable_declaration constant_declaration assignment
 %type <str> loop_statement conditional_statement function_definition
-%type <str> expression
+%type <str> expressi on
 
 %left PLUS_OP MINUS_OP
 %left MULTIPLY_OP DIVIDE_OP
@@ -41,6 +41,7 @@ typedef struct {
 %%
 
 program:
+    {printf("Comenzando a traducir a JavaScript\n"); create_output_file()}
     statements
     ;
 
