@@ -39,7 +39,7 @@
 # define YY_YY_PARSER_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -62,30 +62,7 @@ extern int yydebug;
     KEYWORD_FLOAT = 263,           /* KEYWORD_FLOAT  */
     KEYWORD_DOUBLE = 264,          /* KEYWORD_DOUBLE  */
     ASSIGNMENT_OP = 265,           /* ASSIGNMENT_OP  */
-    SEMICOLON = 266,               /* SEMICOLON  */
-    COMMA = 267,                   /* COMMA  */
-    LPAREN = 268,                  /* LPAREN  */
-    RPAREN = 269,                  /* RPAREN  */
-    LBRACE = 270,                  /* LBRACE  */
-    RBRACE = 271,                  /* RBRACE  */
-    LSQBRAQ = 272,                 /* LSQBRAQ  */
-    RSQBRAQ = 273,                 /* RSQBRAQ  */
-    PLUS_OP = 274,                 /* PLUS_OP  */
-    MINUS_OP = 275,                /* MINUS_OP  */
-    MULTIPLY_OP = 276,             /* MULTIPLY_OP  */
-    DIVIDE_OP = 277,               /* DIVIDE_OP  */
-    EQ_OP = 278,                   /* EQ_OP  */
-    NEQ_OP = 279,                  /* NEQ_OP  */
-    GT_OP = 280,                   /* GT_OP  */
-    LT_OP = 281,                   /* LT_OP  */
-    GE_OP = 282,                   /* GE_OP  */
-    LE_OP = 283,                   /* LE_OP  */
-    LAND = 284,                    /* LAND  */
-    LOR = 285,                     /* LOR  */
-    LNOT = 286,                    /* LNOT  */
-    MAIN = 287,                    /* MAIN  */
-    VOID = 288,                    /* VOID  */
-    PRINTF = 289                   /* PRINTF  */
+    SEMICOLON = 266                /* SEMICOLON  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -99,8 +76,9 @@ union YYSTYPE
     char *str;
     int num;
     int data_type;
+    char var_name[30];
 
-#line 104 "parser.tab.h"
+#line 82 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
