@@ -14,16 +14,21 @@ extern int yylineno;
 %union {
     char *str;
     int num;
+    float num_dec;
     int data_type;
     char var_name[30];
 }
 
 %token <str> IDENTIFIER
 %token <num> NUMBER_LITERAL
-%token <data_type> KEYWORD_INT KEYWORD_CONST KEYWORD_CHAR KEYWORD_FLOAT KEYWORD_DOUBLE 
+%token <num_dec> NUMBER_LITERAL_DEC
+%token <str> KEYWORD_INT KEYWORD_CONST KEYWORD_CHAR KEYWORD_FLOAT KEYWORD_DOUBLE 
 %token ASSIGNMENT_OP SEMICOLON
+%token <str> QUOTED_CHAR QUOTED_STRING
 
 %type <str> program statements statement variable_declaration
+%type <str> type
+%type <str> terminal
 
 %%
 
@@ -39,7 +44,7 @@ statements:
     ;
 
 statement:
-    variable_declaration SEMICOLON
+    type variable_declaration SEMICOLON
     ;
 
 variable_declaration:
@@ -48,16 +53,49 @@ variable_declaration:
         append_in_jsFile("let ");
         append_in_jsFile(yylval.str);
     }
-    | KEYWORD_INT IDENTIFIER ASSIGNMENT_OP NUMBER_LITERAL
+    | IDENTIFIER ASSIGNMENT_OP terminal
     {
         append_in_jsFile("let ");
-        append_in_jsFile($2);
+        append_in_jsFile($1);
         append_in_jsFile(" = ");
-        char num_str[20];
-        snprintf(num_str, sizeof(num_str), "%d", $4);
-        append_in_jsFile(num_str);
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
     }
     ;
+
+type:
+    KEYWORD_INT { printf("Se reconoció un int\n"); $$ = strdup("int"); }
+    | KEYWORD_CHAR { printf("Se reconoció un char\n"); $$ = strdup("char"); }
+    | KEYWORD_FLOAT { printf("Se reconoció un float\n"); $$ = strdup("float"); }
+    | KEYWORD_DOUBLE { printf("Se reconoció un double\n"); $$ = strdup("double"); }
+    ;
+
+terminal:
+    NUMBER_LITERAL
+    {
+        char num_str[20];
+        snprintf(num_str, sizeof(num_str), "%d", $1);
+        $$ = strdup(num_str);
+    }
+    | NUMBER_LITERAL_DEC
+    {
+        char num_str[20];
+        snprintf(num_str, sizeof(num_str), "%f", $1);
+        $$ = strdup(num_str);
+    }
+    | QUOTED_CHAR
+    {
+        char char_str[4];
+        snprintf(char_str, sizeof(char_str), "'%c'", $1[1]);
+        $$ = strdup(char_str);
+    }
+    | QUOTED_STRING
+    {
+        $$ = strdup($1); // Se asegura de duplicar la cadena
+    }
+    ;
+    ;
+    
 
 %%
 

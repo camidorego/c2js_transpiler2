@@ -56,13 +56,16 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     IDENTIFIER = 258,              /* IDENTIFIER  */
     NUMBER_LITERAL = 259,          /* NUMBER_LITERAL  */
-    KEYWORD_INT = 260,             /* KEYWORD_INT  */
-    KEYWORD_CONST = 261,           /* KEYWORD_CONST  */
-    KEYWORD_CHAR = 262,            /* KEYWORD_CHAR  */
-    KEYWORD_FLOAT = 263,           /* KEYWORD_FLOAT  */
-    KEYWORD_DOUBLE = 264,          /* KEYWORD_DOUBLE  */
-    ASSIGNMENT_OP = 265,           /* ASSIGNMENT_OP  */
-    SEMICOLON = 266                /* SEMICOLON  */
+    NUMBER_LITERAL_DEC = 260,      /* NUMBER_LITERAL_DEC  */
+    KEYWORD_INT = 261,             /* KEYWORD_INT  */
+    KEYWORD_CONST = 262,           /* KEYWORD_CONST  */
+    KEYWORD_CHAR = 263,            /* KEYWORD_CHAR  */
+    KEYWORD_FLOAT = 264,           /* KEYWORD_FLOAT  */
+    KEYWORD_DOUBLE = 265,          /* KEYWORD_DOUBLE  */
+    ASSIGNMENT_OP = 266,           /* ASSIGNMENT_OP  */
+    SEMICOLON = 267,               /* SEMICOLON  */
+    QUOTED_CHAR = 268,             /* QUOTED_CHAR  */
+    QUOTED_STRING = 269            /* QUOTED_STRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -71,14 +74,15 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 23 "parser.y"
+#line 14 "parser.y"
 
     char *str;
     int num;
+    float num_dec;
     int data_type;
     char var_name[30];
 
-#line 82 "parser.tab.h"
+#line 86 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
