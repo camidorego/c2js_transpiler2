@@ -1,5 +1,5 @@
-int variable=2;
-char variable2='a';
-char variable3="hola";
-float variable4=9.7;
-double variable5=7.9090900;
+int a = 5 + 3;
+int b = 10 - 2;
+int c = 4 * 5;
+int d = 20 / 4;
+int e = 10 % 3;

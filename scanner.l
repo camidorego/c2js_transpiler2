@@ -19,9 +19,14 @@
 
 "="     { return ASSIGNMENT_OP; }
 ";"     { return SEMICOLON; }
+"+"     { return ADD_OP; }
+"-"     { return SUB_OP; }
+"*"     { return MUL_OP; }
+"/"     { return DIV_OP; }
+"%"     { return MOD_OP; }
 
-\"[^"]*\"            {yylval.str = strdup(yytext); return QUOTED_STRING;}
-'[^']*'              {yylval.str = strdup(yytext); return QUOTED_CHAR;}
+\"[^"]*\"            { yylval.str = strdup(yytext); return QUOTED_STRING; }
+'[^']*'              { yylval.str = strdup(yytext); return QUOTED_CHAR; }
 
 [a-zA-Z_][a-zA-Z0-9_]* { yylval.str = strdup(yytext); return IDENTIFIER; }
 [0-9]+"."[0-9]+ { yylval.num_dec = strtod(yytext, NULL); return NUMBER_LITERAL_DEC; }

@@ -8,6 +8,7 @@ int yylex(void);
 int yyerror(char *message);
 extern int yylineno;
 
+char* concat(const char *s1, const char *s2, const char *s3);
 %}
 
 %start program
@@ -25,10 +26,15 @@ extern int yylineno;
 %token <str> KEYWORD_INT KEYWORD_CONST KEYWORD_CHAR KEYWORD_FLOAT KEYWORD_DOUBLE 
 %token ASSIGNMENT_OP SEMICOLON
 %token <str> QUOTED_CHAR QUOTED_STRING
+%token ADD_OP SUB_OP MUL_OP DIV_OP MOD_OP
 
 %type <str> program statements statement variable_declaration
 %type <str> type
-%type <str> terminal
+%type <str> terminal expression
+
+%left ADD_OP SUB_OP
+%left MUL_OP DIV_OP MOD_OP
+%nonassoc UMINUS
 
 %%
 
@@ -51,9 +57,10 @@ variable_declaration:
     IDENTIFIER
     {
         append_in_jsFile("let ");
-        append_in_jsFile(yylval.str);
+        append_in_jsFile($1);
+        append_in_jsFile(";\n");
     }
-    | IDENTIFIER ASSIGNMENT_OP terminal
+    | IDENTIFIER ASSIGNMENT_OP expression
     {
         append_in_jsFile("let ");
         append_in_jsFile($1);
@@ -91,11 +98,45 @@ terminal:
     }
     | QUOTED_STRING
     {
-        $$ = strdup($1); // Se asegura de duplicar la cadena
+        $$ = strdup($1);
     }
     ;
+
+expression:
+    terminal
+    | expression ADD_OP expression
+    {
+        $$ = concat($1, "+", $3);
+    }
+    | expression SUB_OP expression
+    {
+        $$ = concat($1, "-", $3);
+    }
+    | expression MUL_OP expression
+    {
+        $$ = concat($1, "*", $3);
+    }
+    | expression DIV_OP expression
+    {
+        $$ = concat($1, "/", $3);
+    }
+    | expression MOD_OP expression
+    {
+        $$ = concat($1, "%", $3);
+    }
+    | '(' expression ')'
+    {
+        $$ = concat("(", $2, ")");
+    }
+    | ADD_OP expression %prec UMINUS
+    {
+        $$ = concat("+", $2, "");
+    }
+    | SUB_OP expression %prec UMINUS
+    {
+        $$ = concat("-", $2, "");
+    }
     ;
-    
 
 %%
 
@@ -106,4 +147,12 @@ int main(int argc, char *argv[]) {
 int yyerror(char *message) {
     printf("Error: %s en la línea %d\n", message, yylineno);
     return -1;
+}
+
+char* concat(const char *s1, const char *s2, const char *s3) {
+    char *result = malloc(strlen(s1) + strlen(s2) + strlen(s3) + 1);
+    strcpy(result, s1);
+    strcat(result, s2);
+    strcat(result, s3);
+    return result;
 }
