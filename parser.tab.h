@@ -62,10 +62,29 @@ extern int yydebug;
     KEYWORD_CHAR = 263,            /* KEYWORD_CHAR  */
     KEYWORD_FLOAT = 264,           /* KEYWORD_FLOAT  */
     KEYWORD_DOUBLE = 265,          /* KEYWORD_DOUBLE  */
-    ASSIGNMENT_OP = 266,           /* ASSIGNMENT_OP  */
-    SEMICOLON = 267,               /* SEMICOLON  */
-    QUOTED_CHAR = 268,             /* QUOTED_CHAR  */
-    QUOTED_STRING = 269            /* QUOTED_STRING  */
+    KEYWORD_WHILE = 266,           /* KEYWORD_WHILE  */
+    ASSIGNMENT_OP = 267,           /* ASSIGNMENT_OP  */
+    SEMICOLON = 268,               /* SEMICOLON  */
+    RBRACE = 269,                  /* RBRACE  */
+    LBRACE = 270,                  /* LBRACE  */
+    RPAREN = 271,                  /* RPAREN  */
+    LPAREN = 272,                  /* LPAREN  */
+    PLUS_OP = 273,                 /* PLUS_OP  */
+    MINUS_OP = 274,                /* MINUS_OP  */
+    MULTIPLY_OP = 275,             /* MULTIPLY_OP  */
+    DIVIDE_OP = 276,               /* DIVIDE_OP  */
+    MOD_OP = 277,                  /* MOD_OP  */
+    GT_OP = 278,                   /* GT_OP  */
+    LT_OP = 279,                   /* LT_OP  */
+    GE_OP = 280,                   /* GE_OP  */
+    LE_OP = 281,                   /* LE_OP  */
+    EQ_OP = 282,                   /* EQ_OP  */
+    NEQ_OP = 283,                  /* NEQ_OP  */
+    LAND = 284,                    /* LAND  */
+    LOR = 285,                     /* LOR  */
+    LNOT = 286,                    /* LNOT  */
+    QUOTED_CHAR = 287,             /* QUOTED_CHAR  */
+    QUOTED_STRING = 288            /* QUOTED_STRING  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -74,7 +93,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 14 "parser.y"
+#line 13 "parser.y"
 
     char *str;
     int num;
@@ -82,7 +101,7 @@ union YYSTYPE
     int data_type;
     char var_name[30];
 
-#line 86 "parser.tab.h"
+#line 105 "parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

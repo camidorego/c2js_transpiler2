@@ -17,8 +17,32 @@
 "float" { yylval.data_type = 2; return KEYWORD_FLOAT; }
 "double" { yylval.data_type = 3; return KEYWORD_DOUBLE; }
 
+"const" {return KEYWORD_CONST;}
+"while" {return KEYWORD_WHILE;}
+
 "="     { return ASSIGNMENT_OP; }
 ";"     { return SEMICOLON; }
+"("         {return LPAREN;}
+")"         {return RPAREN;}
+"{"         {return LBRACE;}
+"}"         {return RBRACE;}
+
+"+"         {return PLUS_OP;}
+"-"         {return MINUS_OP;}
+"*"         {return MULTIPLY_OP;}
+"/"         {return DIVIDE_OP;}
+"%"         {return MOD_OP;}
+
+"=="        {return EQ_OP;}
+"!="        {return NEQ_OP;}
+">"         {return GT_OP;}
+"<"         {return LT_OP;}
+">="        {return GE_OP;}
+"<="        {return LE_OP;}
+
+"&&"        {return LAND;}
+"||"        {return LOR;}
+"!"         {return LNOT;}
 
 \"[^"]*\"            {yylval.str = strdup(yytext); return QUOTED_STRING;}
 '[^']*'              {yylval.str = strdup(yytext); return QUOTED_CHAR;}

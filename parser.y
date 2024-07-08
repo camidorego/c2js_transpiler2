@@ -7,7 +7,6 @@
 int yylex(void);
 int yyerror(char *message);
 extern int yylineno;
-
 %}
 
 %start program
@@ -21,14 +20,18 @@ extern int yylineno;
 
 %token <str> IDENTIFIER
 %token <num> NUMBER_LITERAL
-%token <num_dec> NUMBER_LITERAL_DEC
-%token <str> KEYWORD_INT KEYWORD_CONST KEYWORD_CHAR KEYWORD_FLOAT KEYWORD_DOUBLE 
-%token ASSIGNMENT_OP SEMICOLON
+%token <num_dec> NUMBER_LITERAL_DEC 
+%token <str> KEYWORD_INT KEYWORD_CONST KEYWORD_CHAR KEYWORD_FLOAT KEYWORD_DOUBLE KEYWORD_WHILE
+%token <str> ASSIGNMENT_OP SEMICOLON RBRACE LBRACE RPAREN LPAREN
+%token <str> PLUS_OP MINUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP
+%token <str> GT_OP LT_OP GE_OP LE_OP EQ_OP NEQ_OP
+%token <str> LAND LOR LNOT
 %token <str> QUOTED_CHAR QUOTED_STRING
 
-%type <str> program statements statement variable_declaration
+%type <str> program statements statement variable_declaration constant_declaration expression while_loop
+%type <str> relational_expression logical_expression aritmethic_expression
 %type <str> type
-%type <str> terminal
+%type <str> terminal operator
 
 %%
 
@@ -44,21 +47,129 @@ statements:
     ;
 
 statement:
-    type variable_declaration SEMICOLON
+    variable_declaration SEMICOLON
+    | constant_declaration SEMICOLON
+    | expression SEMICOLON
     ;
 
 variable_declaration:
-    IDENTIFIER
+    type IDENTIFIER
     {
         append_in_jsFile("let ");
         append_in_jsFile(yylval.str);
     }
-    | IDENTIFIER ASSIGNMENT_OP terminal
+    | type IDENTIFIER ASSIGNMENT_OP terminal
     {
         append_in_jsFile("let ");
         append_in_jsFile($1);
         append_in_jsFile(" = ");
         append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | type IDENTIFIER ASSIGNMENT_OP expression
+    ;
+
+constant_declaration:
+    KEYWORD_CONST type IDENTIFIER ASSIGNMENT_OP terminal
+    {
+        append_in_jsFile("const ");
+        append_in_jsFile($3);
+        append_in_jsFile(" = ");
+        append_in_jsFile($5);
+        append_in_jsFile(";\n");
+    }
+    ;
+
+expression:
+    aritmethic_expression
+    | relational_expression
+    | logical_expression
+    | LPAREN expression RPAREN
+    {
+        append_in_jsFile("(");
+        append_in_jsFile($2);
+        append_in_jsFile(")");
+    }
+    | while_loop
+    ;
+
+aritmethic_expression:
+    terminal operator terminal
+    ;
+
+relational_expression:
+    terminal EQ_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" === ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal NEQ_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" !== ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal GT_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" > ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal GE_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" < ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal LT_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" >= ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal LE_OP terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" <= ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    ;
+
+logical_expression:
+    terminal LAND terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" && ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | terminal LOR terminal
+    {
+        append_in_jsFile($1);
+        append_in_jsFile(" || ");
+        append_in_jsFile($3);
+        append_in_jsFile(";\n");
+    }
+    | LNOT terminal
+    {
+        append_in_jsFile("!");
+        append_in_jsFile($2);
+        append_in_jsFile(";\n");
+    }
+    ;
+
+while_loop:
+    KEYWORD_WHILE
+    {
+        append_in_jsFile("while");
+        
         append_in_jsFile(";\n");
     }
     ;
@@ -70,8 +181,35 @@ type:
     | KEYWORD_DOUBLE { printf("Se reconoció un double\n"); $$ = strdup("double"); }
     ;
 
+operator:
+    PLUS_OP
+    {
+        append_in_jsFile(" + ");
+    }
+    | MINUS_OP
+    {
+        append_in_jsFile(" - ");
+    }
+    | MULTIPLY_OP
+    {
+        append_in_jsFile(" * ");
+    }
+    | DIVIDE_OP
+    {
+        append_in_jsFile(" / ");
+    }
+    | MOD_OP
+    {
+        append_in_jsFile(" % ");
+    }
+    ;
+
 terminal:
-    NUMBER_LITERAL
+    IDENTIFIER
+    {
+        $$ = strdup($1);
+    }
+    | NUMBER_LITERAL
     {
         char num_str[20];
         snprintf(num_str, sizeof(num_str), "%d", $1);
@@ -94,8 +232,6 @@ terminal:
         $$ = strdup($1); // Se asegura de duplicar la cadena
     }
     ;
-    ;
-    
 
 %%
 
