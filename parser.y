@@ -50,6 +50,7 @@ statement:
     variable_declaration SEMICOLON
     | constant_declaration SEMICOLON
     | expression SEMICOLON
+    | type IDENTIFIER ASSIGNMENT_OP expression SEMICOLON
     ;
 
 variable_declaration:
@@ -57,6 +58,13 @@ variable_declaration:
     {
         append_in_jsFile("let ");
         append_in_jsFile(yylval.str);
+        append_in_jsFile(";\n");
+    }
+    | type IDENTIFIER ASSIGNMENT_OP
+    {
+        append_in_jsFile("let ");
+        append_in_jsFile($1);
+        append_in_jsFile(" = ");
     }
     | type IDENTIFIER ASSIGNMENT_OP terminal
     {
@@ -66,7 +74,7 @@ variable_declaration:
         append_in_jsFile($3);
         append_in_jsFile(";\n");
     }
-    | type IDENTIFIER ASSIGNMENT_OP expression
+
     ;
 
 constant_declaration:
@@ -84,13 +92,12 @@ expression:
     aritmethic_expression
     | relational_expression
     | logical_expression
+    | while_loop
     | LPAREN expression RPAREN
     {
         append_in_jsFile("(");
-        append_in_jsFile($2);
         append_in_jsFile(")");
     }
-    | while_loop
     ;
 
 aritmethic_expression:
@@ -119,14 +126,14 @@ relational_expression:
         append_in_jsFile($3);
         append_in_jsFile(";\n");
     }
-    | terminal GE_OP terminal
+    | terminal LT_OP terminal
     {
         append_in_jsFile($1);
         append_in_jsFile(" < ");
         append_in_jsFile($3);
         append_in_jsFile(";\n");
     }
-    | terminal LT_OP terminal
+    | terminal GE_OP terminal
     {
         append_in_jsFile($1);
         append_in_jsFile(" >= ");

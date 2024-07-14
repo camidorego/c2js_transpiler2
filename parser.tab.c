@@ -482,16 +482,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   88
+#define YYLAST   57
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  34
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  15
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  42
+#define YYNRULES  41
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  66
+#define YYNSTATES  64
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   288
@@ -543,11 +543,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    39,    39,    39,    45,    46,    50,    51,    52,    56,
-      61,    69,    73,    84,    85,    86,    87,    93,    97,   101,
-     108,   115,   122,   129,   136,   146,   153,   160,   169,   178,
-     179,   180,   181,   185,   189,   193,   197,   201,   208,   212,
-     218,   224,   230
+       0,    39,    39,    39,    45,    46,    50,    51,    55,    61,
+      67,    79,    90,    91,    92,    93,    94,   102,   106,   113,
+     120,   127,   134,   141,   151,   158,   165,   174,   183,   184,
+     185,   186,   190,   194,   198,   202,   206,   213,   217,   223,
+     229,   235
 };
 #endif
 
@@ -583,7 +583,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-15)
+#define YYPACT_NINF (-22)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -597,13 +597,13 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -15,     3,    46,   -15,   -15,   -15,   -15,   -15,    -4,   -15,
-     -15,   -15,   -15,    55,     4,   -15,   -15,    46,   -15,    10,
-      11,    12,   -15,   -15,   -15,   -15,    23,    -8,    36,    25,
-     -15,   -15,   -15,   -15,   -15,    30,   -15,   -15,   -15,   -15,
-     -15,     4,     4,     4,     4,     4,     4,     4,     4,     4,
-      31,   -15,    55,   -15,   -15,   -15,   -15,   -15,   -15,   -15,
-     -15,   -15,     4,   -15,    -8,   -15
+     -22,     1,     6,   -22,   -22,    44,   -22,   -22,   -22,     6,
+     -22,     0,   -11,     7,    15,   -22,   -22,   -22,   -22,   -22,
+       0,     3,   -22,   -22,    -4,   -22,   -22,   -22,   -22,    19,
+     -22,    22,    39,    40,   -22,   -22,   -22,   -22,   -22,   -22,
+     -22,     3,     3,     3,     3,     3,     3,     3,     3,     3,
+       3,     3,   -22,   -22,   -22,   -22,   -22,   -22,   -22,   -22,
+     -22,   -22,   -22,   -22
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -611,27 +611,27 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     0,     1,    38,    39,    40,    29,     0,    30,
-      31,    32,    28,     0,     0,    41,    42,     3,     4,     0,
-       0,     0,    13,    14,    15,    17,     0,     0,     0,     0,
-      27,     5,     6,     7,     8,     9,    33,    34,    35,    36,
-      37,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,    16,     0,    21,    23,    22,    24,    19,    20,    25,
-      26,    18,     0,    11,    10,    12
+       2,     0,     0,     1,    28,     0,    29,    30,    31,     3,
+       4,     0,     0,     0,     0,     5,    37,    38,    39,    27,
+       0,     0,    40,    41,     0,    12,    13,    14,    15,     0,
+       7,     8,     0,     0,    26,     6,    32,    33,    34,    35,
+      36,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       9,     0,    16,    20,    21,    22,    23,    18,    19,    24,
+      25,    17,    10,    11
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -15,   -15,   -15,   -15,    27,   -15,   -15,   -12,   -15,   -15,
-     -15,   -15,    37,   -15,   -14
+     -22,   -22,   -22,   -22,    10,   -22,   -22,    35,   -22,   -22,
+     -22,   -22,    52,   -22,   -21
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     1,     2,    17,    18,    19,    20,    21,    22,    23,
-      24,    25,    26,    49,    27
+       0,     1,     2,     9,    10,    11,    12,    24,    25,    26,
+      27,    28,    13,    49,    29
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -639,61 +639,55 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      30,    29,     7,     3,     9,    10,    11,     4,     5,     6,
-      36,    37,    38,    39,    40,    41,    42,    43,    44,    45,
-      46,    47,    48,    32,    33,    34,    35,    53,    54,    55,
-      56,    57,    58,    59,    60,    61,    15,    16,    64,    50,
-      63,    51,    52,    62,    31,    28,     0,     0,    65,     4,
-       5,     6,     7,     8,     9,    10,    11,    12,     4,     5,
-       6,     0,     0,    13,     0,     0,    12,     0,     0,     0,
-       0,     0,    13,     0,     0,     0,     0,    14,    15,    16,
-       0,     0,     0,     0,     0,     0,    14,    15,    16
+      34,     3,    30,    16,    17,    18,    16,    17,    18,    35,
+      31,    19,     4,     5,     6,     7,     8,    20,    32,    15,
+      53,    54,    55,    56,    57,    58,    59,    60,    61,    62,
+      63,    21,    22,    23,    50,    22,    23,    36,    37,    38,
+      39,    40,    41,    42,    43,    44,    45,    46,    47,    48,
+       4,    51,     6,     7,     8,    33,    52,    14
 };
 
 static const yytype_int8 yycheck[] =
 {
-      14,    13,     6,     0,     8,     9,    10,     3,     4,     5,
-      18,    19,    20,    21,    22,    23,    24,    25,    26,    27,
-      28,    29,    30,    13,    13,    13,     3,    41,    42,    43,
-      44,    45,    46,    47,    48,    49,    32,    33,    52,     3,
-      52,    16,    12,    12,    17,     8,    -1,    -1,    62,     3,
-       4,     5,     6,     7,     8,     9,    10,    11,     3,     4,
-       5,    -1,    -1,    17,    -1,    -1,    11,    -1,    -1,    -1,
-      -1,    -1,    17,    -1,    -1,    -1,    -1,    31,    32,    33,
-      -1,    -1,    -1,    -1,    -1,    -1,    31,    32,    33
+      21,     0,    13,     3,     4,     5,     3,     4,     5,    13,
+       3,    11,     6,     7,     8,     9,    10,    17,     3,     9,
+      41,    42,    43,    44,    45,    46,    47,    48,    49,    50,
+      51,    31,    32,    33,    12,    32,    33,    18,    19,    20,
+      21,    22,    23,    24,    25,    26,    27,    28,    29,    30,
+       6,    12,     8,     9,    10,    20,    16,     5
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    35,    36,     0,     3,     4,     5,     6,     7,     8,
-       9,    10,    11,    17,    31,    32,    33,    37,    38,    39,
-      40,    41,    42,    43,    44,    45,    46,    48,    46,    41,
-      48,    38,    13,    13,    13,     3,    18,    19,    20,    21,
+       0,    35,    36,     0,     6,     7,     8,     9,    10,    37,
+      38,    39,    40,    46,    46,    38,     3,     4,     5,    11,
+      17,    31,    32,    33,    41,    42,    43,    44,    45,    48,
+      13,     3,     3,    41,    48,    13,    18,    19,    20,    21,
       22,    23,    24,    25,    26,    27,    28,    29,    30,    47,
-       3,    16,    12,    48,    48,    48,    48,    48,    48,    48,
-      48,    48,    12,    41,    48,    48
+      12,    12,    16,    48,    48,    48,    48,    48,    48,    48,
+      48,    48,    48,    48
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    34,    36,    35,    37,    37,    38,    38,    38,    39,
-      39,    39,    40,    41,    41,    41,    41,    41,    42,    43,
-      43,    43,    43,    43,    43,    44,    44,    44,    45,    46,
-      46,    46,    46,    47,    47,    47,    47,    47,    48,    48,
-      48,    48,    48
+       0,    34,    36,    35,    37,    37,    38,    38,    39,    39,
+      39,    40,    41,    41,    41,    41,    41,    42,    43,    43,
+      43,    43,    43,    43,    44,    44,    44,    45,    46,    46,
+      46,    46,    47,    47,    47,    47,    47,    48,    48,    48,
+      48,    48
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     2,     1,     2,     2,     2,     2,     2,
-       4,     4,     5,     1,     1,     1,     3,     1,     3,     3,
-       3,     3,     3,     3,     3,     3,     3,     2,     1,     1,
+       0,     2,     0,     2,     1,     2,     3,     2,     2,     3,
+       4,     5,     1,     1,     1,     1,     3,     3,     3,     3,
+       3,     3,     3,     3,     3,     3,     2,     1,     1,     1,
        1,     1,     1,     1,     1,     1,     1,     1,     1,     1,
-       1,     1,     1
+       1,     1
 };
 
 
@@ -1159,26 +1153,37 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 39 "parser.y"
     { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
-#line 1163 "parser.tab.c"
+#line 1157 "parser.tab.c"
     break;
 
   case 3: /* program: $@1 statements  */
 #line 41 "parser.y"
     { close_output_file(); }
-#line 1169 "parser.tab.c"
+#line 1163 "parser.tab.c"
     break;
 
-  case 9: /* variable_declaration: type IDENTIFIER  */
-#line 57 "parser.y"
+  case 8: /* variable_declaration: type IDENTIFIER  */
+#line 56 "parser.y"
     {
         append_in_jsFile("let ");
         append_in_jsFile(yylval.str);
+        append_in_jsFile(";\n");
     }
-#line 1178 "parser.tab.c"
+#line 1173 "parser.tab.c"
+    break;
+
+  case 9: /* variable_declaration: type IDENTIFIER ASSIGNMENT_OP  */
+#line 62 "parser.y"
+    {
+        append_in_jsFile("let ");
+        append_in_jsFile((yyvsp[-2].str));
+        append_in_jsFile(" = ");
+    }
+#line 1183 "parser.tab.c"
     break;
 
   case 10: /* variable_declaration: type IDENTIFIER ASSIGNMENT_OP terminal  */
-#line 62 "parser.y"
+#line 68 "parser.y"
     {
         append_in_jsFile("let ");
         append_in_jsFile((yyvsp[-3].str));
@@ -1186,11 +1191,11 @@ yyreduce:
         append_in_jsFile((yyvsp[-1].str));
         append_in_jsFile(";\n");
     }
-#line 1190 "parser.tab.c"
+#line 1195 "parser.tab.c"
     break;
 
-  case 12: /* constant_declaration: KEYWORD_CONST type IDENTIFIER ASSIGNMENT_OP terminal  */
-#line 74 "parser.y"
+  case 11: /* constant_declaration: KEYWORD_CONST type IDENTIFIER ASSIGNMENT_OP terminal  */
+#line 80 "parser.y"
     {
         append_in_jsFile("const ");
         append_in_jsFile((yyvsp[-2].str));
@@ -1198,239 +1203,238 @@ yyreduce:
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1202 "parser.tab.c"
+#line 1207 "parser.tab.c"
     break;
 
   case 16: /* expression: LPAREN expression RPAREN  */
-#line 88 "parser.y"
+#line 95 "parser.y"
     {
         append_in_jsFile("(");
-        append_in_jsFile((yyvsp[-1].str));
         append_in_jsFile(")");
     }
-#line 1212 "parser.tab.c"
+#line 1216 "parser.tab.c"
     break;
 
-  case 19: /* relational_expression: terminal EQ_OP terminal  */
-#line 102 "parser.y"
+  case 18: /* relational_expression: terminal EQ_OP terminal  */
+#line 107 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" === ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1223 "parser.tab.c"
+#line 1227 "parser.tab.c"
     break;
 
-  case 20: /* relational_expression: terminal NEQ_OP terminal  */
-#line 109 "parser.y"
+  case 19: /* relational_expression: terminal NEQ_OP terminal  */
+#line 114 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" !== ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1234 "parser.tab.c"
+#line 1238 "parser.tab.c"
     break;
 
-  case 21: /* relational_expression: terminal GT_OP terminal  */
-#line 116 "parser.y"
+  case 20: /* relational_expression: terminal GT_OP terminal  */
+#line 121 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" > ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1245 "parser.tab.c"
+#line 1249 "parser.tab.c"
     break;
 
-  case 22: /* relational_expression: terminal GE_OP terminal  */
-#line 123 "parser.y"
+  case 21: /* relational_expression: terminal LT_OP terminal  */
+#line 128 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" < ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1256 "parser.tab.c"
+#line 1260 "parser.tab.c"
     break;
 
-  case 23: /* relational_expression: terminal LT_OP terminal  */
-#line 130 "parser.y"
+  case 22: /* relational_expression: terminal GE_OP terminal  */
+#line 135 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" >= ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1267 "parser.tab.c"
+#line 1271 "parser.tab.c"
     break;
 
-  case 24: /* relational_expression: terminal LE_OP terminal  */
-#line 137 "parser.y"
+  case 23: /* relational_expression: terminal LE_OP terminal  */
+#line 142 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" <= ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1278 "parser.tab.c"
+#line 1282 "parser.tab.c"
     break;
 
-  case 25: /* logical_expression: terminal LAND terminal  */
-#line 147 "parser.y"
+  case 24: /* logical_expression: terminal LAND terminal  */
+#line 152 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" && ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1289 "parser.tab.c"
+#line 1293 "parser.tab.c"
     break;
 
-  case 26: /* logical_expression: terminal LOR terminal  */
-#line 154 "parser.y"
+  case 25: /* logical_expression: terminal LOR terminal  */
+#line 159 "parser.y"
     {
         append_in_jsFile((yyvsp[-2].str));
         append_in_jsFile(" || ");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1300 "parser.tab.c"
+#line 1304 "parser.tab.c"
     break;
 
-  case 27: /* logical_expression: LNOT terminal  */
-#line 161 "parser.y"
+  case 26: /* logical_expression: LNOT terminal  */
+#line 166 "parser.y"
     {
         append_in_jsFile("!");
         append_in_jsFile((yyvsp[0].str));
         append_in_jsFile(";\n");
     }
-#line 1310 "parser.tab.c"
+#line 1314 "parser.tab.c"
     break;
 
-  case 28: /* while_loop: KEYWORD_WHILE  */
-#line 170 "parser.y"
+  case 27: /* while_loop: KEYWORD_WHILE  */
+#line 175 "parser.y"
     {
         append_in_jsFile("while");
         
         append_in_jsFile(";\n");
     }
-#line 1320 "parser.tab.c"
+#line 1324 "parser.tab.c"
     break;
 
-  case 29: /* type: KEYWORD_INT  */
-#line 178 "parser.y"
+  case 28: /* type: KEYWORD_INT  */
+#line 183 "parser.y"
                 { printf("Se reconoció un int\n"); (yyval.str) = strdup("int"); }
-#line 1326 "parser.tab.c"
+#line 1330 "parser.tab.c"
     break;
 
-  case 30: /* type: KEYWORD_CHAR  */
-#line 179 "parser.y"
+  case 29: /* type: KEYWORD_CHAR  */
+#line 184 "parser.y"
                    { printf("Se reconoció un char\n"); (yyval.str) = strdup("char"); }
-#line 1332 "parser.tab.c"
+#line 1336 "parser.tab.c"
     break;
 
-  case 31: /* type: KEYWORD_FLOAT  */
-#line 180 "parser.y"
+  case 30: /* type: KEYWORD_FLOAT  */
+#line 185 "parser.y"
                     { printf("Se reconoció un float\n"); (yyval.str) = strdup("float"); }
-#line 1338 "parser.tab.c"
+#line 1342 "parser.tab.c"
     break;
 
-  case 32: /* type: KEYWORD_DOUBLE  */
-#line 181 "parser.y"
-                     { printf("Se reconoció un double\n"); (yyval.str) = strdup("double"); }
-#line 1344 "parser.tab.c"
-    break;
-
-  case 33: /* operator: PLUS_OP  */
+  case 31: /* type: KEYWORD_DOUBLE  */
 #line 186 "parser.y"
+                     { printf("Se reconoció un double\n"); (yyval.str) = strdup("double"); }
+#line 1348 "parser.tab.c"
+    break;
+
+  case 32: /* operator: PLUS_OP  */
+#line 191 "parser.y"
     {
         append_in_jsFile(" + ");
     }
-#line 1352 "parser.tab.c"
+#line 1356 "parser.tab.c"
     break;
 
-  case 34: /* operator: MINUS_OP  */
-#line 190 "parser.y"
+  case 33: /* operator: MINUS_OP  */
+#line 195 "parser.y"
     {
         append_in_jsFile(" - ");
     }
-#line 1360 "parser.tab.c"
+#line 1364 "parser.tab.c"
     break;
 
-  case 35: /* operator: MULTIPLY_OP  */
-#line 194 "parser.y"
+  case 34: /* operator: MULTIPLY_OP  */
+#line 199 "parser.y"
     {
         append_in_jsFile(" * ");
     }
-#line 1368 "parser.tab.c"
+#line 1372 "parser.tab.c"
     break;
 
-  case 36: /* operator: DIVIDE_OP  */
-#line 198 "parser.y"
+  case 35: /* operator: DIVIDE_OP  */
+#line 203 "parser.y"
     {
         append_in_jsFile(" / ");
     }
-#line 1376 "parser.tab.c"
+#line 1380 "parser.tab.c"
     break;
 
-  case 37: /* operator: MOD_OP  */
-#line 202 "parser.y"
+  case 36: /* operator: MOD_OP  */
+#line 207 "parser.y"
     {
         append_in_jsFile(" % ");
     }
-#line 1384 "parser.tab.c"
+#line 1388 "parser.tab.c"
     break;
 
-  case 38: /* terminal: IDENTIFIER  */
-#line 209 "parser.y"
+  case 37: /* terminal: IDENTIFIER  */
+#line 214 "parser.y"
     {
         (yyval.str) = strdup((yyvsp[0].str));
     }
-#line 1392 "parser.tab.c"
+#line 1396 "parser.tab.c"
     break;
 
-  case 39: /* terminal: NUMBER_LITERAL  */
-#line 213 "parser.y"
+  case 38: /* terminal: NUMBER_LITERAL  */
+#line 218 "parser.y"
     {
         char num_str[20];
         snprintf(num_str, sizeof(num_str), "%d", (yyvsp[0].num));
         (yyval.str) = strdup(num_str);
     }
-#line 1402 "parser.tab.c"
+#line 1406 "parser.tab.c"
     break;
 
-  case 40: /* terminal: NUMBER_LITERAL_DEC  */
-#line 219 "parser.y"
+  case 39: /* terminal: NUMBER_LITERAL_DEC  */
+#line 224 "parser.y"
     {
         char num_str[20];
         snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec));
         (yyval.str) = strdup(num_str);
     }
-#line 1412 "parser.tab.c"
+#line 1416 "parser.tab.c"
     break;
 
-  case 41: /* terminal: QUOTED_CHAR  */
-#line 225 "parser.y"
+  case 40: /* terminal: QUOTED_CHAR  */
+#line 230 "parser.y"
     {
         char char_str[4];
         snprintf(char_str, sizeof(char_str), "'%c'", (yyvsp[0].str)[1]);
         (yyval.str) = strdup(char_str);
     }
-#line 1422 "parser.tab.c"
+#line 1426 "parser.tab.c"
     break;
 
-  case 42: /* terminal: QUOTED_STRING  */
-#line 231 "parser.y"
+  case 41: /* terminal: QUOTED_STRING  */
+#line 236 "parser.y"
     {
         (yyval.str) = strdup((yyvsp[0].str)); // Se asegura de duplicar la cadena
     }
-#line 1430 "parser.tab.c"
+#line 1434 "parser.tab.c"
     break;
 
 
-#line 1434 "parser.tab.c"
+#line 1438 "parser.tab.c"
 
       default: break;
     }
@@ -1623,7 +1627,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 236 "parser.y"
+#line 241 "parser.y"
 
 
 int main(int argc, char *argv[]) {

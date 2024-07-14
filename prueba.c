@@ -11,6 +11,4 @@ l>=p;
 !m; 
 d && 9;
 5 || variable2;
-(got>5);
-while
-int a=3+5;
+int a=a<b;
