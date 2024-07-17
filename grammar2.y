@@ -11,7 +11,7 @@ void yyerror(const char *s);
 %}
 
 %token IDENTIFIER CONSTANT STRING_LITERAL
-%token CHAR SHORT INT LONG SIGNED UNSIGNED FLOAT DOUBLE CONST VOLATILE VOID
+%token CHAR SHORT INT DOUBLE CONST VOID
 %token IF ELSE WHILE RETURN
 
 %start program
@@ -36,12 +36,8 @@ argument_expression_list
     | argument_expression_list ',' assignment_expression
     ;
 
-unary_expression
-    : postfix_expression
-    ;
-
 cast_expression
-    : unary_expression
+    : postfix_expression
     | '(' type_name ')' cast_expression
     ;
 
@@ -89,7 +85,7 @@ conditional_expression
 
 assignment_expression
     : conditional_expression
-    | unary_expression assignment_operator assignment_expression
+    | postfix_expression assignment_operator assignment_expression
     ;
 
 assignment_operator
@@ -145,25 +141,16 @@ type_specifier
 
 type_qualifier
     : CONST
-    | VOLATILE
     ;
 
 declarator
-    : direct_declarator
-    ;
-
-direct_declarator
     : IDENTIFIER
     | '(' declarator ')'
-    | direct_declarator '[' constant_expression ']'
-    | direct_declarator '[' ']'
-    | direct_declarator '(' parameter_type_list ')'
-    | direct_declarator '(' identifier_list ')'
-    | direct_declarator '(' ')'
-    ;
-
-parameter_type_list
-    : parameter_list
+    | declarator '[' constant_expression ']'
+    | declarator '[' ']'
+    | declarator '(' parameter_list ')'
+    | declarator '(' identifier_list ')'
+    | declarator '(' ')'
     ;
 
 parameter_list
@@ -194,19 +181,15 @@ specifier_qualifier_list
     ;
 
 abstract_declarator
-    : direct_abstract_declarator
-    ;
-
-direct_abstract_declarator
     : '(' abstract_declarator ')'
     | '[' ']'
     | '[' constant_expression ']'
-    | direct_abstract_declarator '[' ']'
-    | direct_abstract_declarator '[' constant_expression ']'
+    | abstract_declarator '[' ']'
+    | abstract_declarator '[' constant_expression ']'
     | '(' ')'
-    | '(' parameter_type_list ')'
-    | direct_abstract_declarator '(' ')'
-    | direct_abstract_declarator '(' parameter_type_list ')'
+    | '(' parameter_list ')'
+    | abstract_declarator '(' ')'
+    | abstract_declarator '(' parameter_list ')'
     ;
 
 initializer
