@@ -238,6 +238,7 @@ terminal:
     {
         $$ = strdup($1); // Se asegura de duplicar la cadena
     }
+	| '(' expression ')'
     ;
 
 %%
