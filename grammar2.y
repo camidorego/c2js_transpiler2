@@ -3,11 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tokens.h"
 
 int yylex(void);
 int yyerror(char *message);
 extern int yylineno;
+
 %}
 
 %start program
@@ -19,24 +19,14 @@ extern int yylineno;
     char var_name[30];
 }
 
-%token <str> IDENTIFIER NUMBER_LITERAL STRING_LITERAL
-%token LE_OP GE_OP EQ_OP NE_OP
-%token AND_OP OR_OP
-%token TYPE_NAME
-
+%token IDENTIFIER NUMBER_LITERAL STRING_LITERAL QUOTED_CHAR NUMBER_LITERAL_DEC
+%token LE_OP GE_OP EQ_OP NE_OP GT_OP LT_OP
+%token AND_OP OR_OP LNOT
 %token CHAR SHORT INT FLOAT DOUBLE CONST VOID
-
+%token WHILE IF ELSE RETURN
+%token ASSIGNMENT_OP SEMICOLON COMMA LPAREN RPAREN LBRACE RBRACE LSQBRAQ RSQBRAQ 
+%token PLUS_OP MINUS_OP MULTIPLY_OP DIVIDE_OP MOD_OP
 %token IF ELSE WHILE RETURN
-
-%type <str> program function_definition terminal
-%type <str> extended_expression argument_expression_list cast_expression multiplicative_expression additive_expression
-%type <str> relational_expression equality_expression logical_and_expression logical_or_expression conditional_expression
-%type <str> assignment_expression constant_declaration constant_expression expression declaration declaration_specifiers
-%type <str> init_declarator init_declarator_list type_name type_qualifier_list type_qualifier abstract_declarator
-%type <str> initializer initializer_list expression
-%type <str> statement compound_statement loop_statement expression_statement selection_statement jump_statement
-%type <str> translation_unit external_declaration
-%type <str> specifier_qualifier_list parameter_list parameter_declaration identifier_list declarator
 
 %%
 terminal

@@ -57,24 +57,42 @@ extern int yydebug;
     IDENTIFIER = 258,              /* IDENTIFIER  */
     NUMBER_LITERAL = 259,          /* NUMBER_LITERAL  */
     STRING_LITERAL = 260,          /* STRING_LITERAL  */
-    LE_OP = 261,                   /* LE_OP  */
-    GE_OP = 262,                   /* GE_OP  */
-    EQ_OP = 263,                   /* EQ_OP  */
-    NE_OP = 264,                   /* NE_OP  */
-    AND_OP = 265,                  /* AND_OP  */
-    OR_OP = 266,                   /* OR_OP  */
-    TYPE_NAME = 267,               /* TYPE_NAME  */
-    CHAR = 268,                    /* CHAR  */
-    SHORT = 269,                   /* SHORT  */
-    INT = 270,                     /* INT  */
-    FLOAT = 271,                   /* FLOAT  */
-    DOUBLE = 272,                  /* DOUBLE  */
-    CONST = 273,                   /* CONST  */
-    VOID = 274,                    /* VOID  */
-    IF = 275,                      /* IF  */
-    ELSE = 276,                    /* ELSE  */
-    WHILE = 277,                   /* WHILE  */
-    RETURN = 278                   /* RETURN  */
+    QUOTED_CHAR = 261,             /* QUOTED_CHAR  */
+    NUMBER_LITERAL_DEC = 262,      /* NUMBER_LITERAL_DEC  */
+    LE_OP = 263,                   /* LE_OP  */
+    GE_OP = 264,                   /* GE_OP  */
+    EQ_OP = 265,                   /* EQ_OP  */
+    NE_OP = 266,                   /* NE_OP  */
+    GT_OP = 267,                   /* GT_OP  */
+    LT_OP = 268,                   /* LT_OP  */
+    AND_OP = 269,                  /* AND_OP  */
+    OR_OP = 270,                   /* OR_OP  */
+    LNOT = 271,                    /* LNOT  */
+    CHAR = 272,                    /* CHAR  */
+    SHORT = 273,                   /* SHORT  */
+    INT = 274,                     /* INT  */
+    FLOAT = 275,                   /* FLOAT  */
+    DOUBLE = 276,                  /* DOUBLE  */
+    CONST = 277,                   /* CONST  */
+    VOID = 278,                    /* VOID  */
+    WHILE = 279,                   /* WHILE  */
+    IF = 280,                      /* IF  */
+    ELSE = 281,                    /* ELSE  */
+    RETURN = 282,                  /* RETURN  */
+    ASSIGNMENT_OP = 283,           /* ASSIGNMENT_OP  */
+    SEMICOLON = 284,               /* SEMICOLON  */
+    COMMA = 285,                   /* COMMA  */
+    LPAREN = 286,                  /* LPAREN  */
+    RPAREN = 287,                  /* RPAREN  */
+    LBRACE = 288,                  /* LBRACE  */
+    RBRACE = 289,                  /* RBRACE  */
+    LSQBRAQ = 290,                 /* LSQBRAQ  */
+    RSQBRAQ = 291,                 /* RSQBRAQ  */
+    PLUS_OP = 292,                 /* PLUS_OP  */
+    MINUS_OP = 293,                /* MINUS_OP  */
+    MULTIPLY_OP = 294,             /* MULTIPLY_OP  */
+    DIVIDE_OP = 295,               /* DIVIDE_OP  */
+    MOD_OP = 296                   /* MOD_OP  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -83,7 +101,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 13 "grammar2.y"
+#line 14 "grammar2.y"
 
     char *str;
     int num;
@@ -91,7 +109,7 @@ union YYSTYPE
     int data_type;
     char var_name[30];
 
-#line 95 "grammar2.tab.h"
+#line 113 "grammar2.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -2,9 +2,10 @@
 #define TOKENS_H
 
 // Definiciones de tokens
-#define MAIN 1
+#define TYPE_IDENTIFIER 1000
+#define MAIN 3
 #define VOID 2
-#define PRINTF 3
+
 #define CONST 4
 #define INT 5
 #define CHAR 6
@@ -37,16 +38,7 @@
 #define LAND 33
 #define LOR 34
 #define LNOT 35
-#define IDENTIFIER 36
+#define PRINTF 36
 #define NUMBER_LITERAL 37
-
-// Definición de yylval
-typedef union {
-    int num;
-    char* str;
-    int data_type;
-} yylval_t;
-
-extern yylval_t yylval;
 
 #endif

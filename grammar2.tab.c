@@ -78,7 +78,8 @@ int yylex(void);
 int yyerror(char *message);
 extern int yylineno;
 
-#line 82 "grammar2.tab.c"
+
+#line 83 "grammar2.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -112,143 +113,161 @@ enum yysymbol_kind_t
   YYSYMBOL_IDENTIFIER = 3,                 /* IDENTIFIER  */
   YYSYMBOL_NUMBER_LITERAL = 4,             /* NUMBER_LITERAL  */
   YYSYMBOL_STRING_LITERAL = 5,             /* STRING_LITERAL  */
-  YYSYMBOL_LE_OP = 6,                      /* LE_OP  */
-  YYSYMBOL_GE_OP = 7,                      /* GE_OP  */
-  YYSYMBOL_EQ_OP = 8,                      /* EQ_OP  */
-  YYSYMBOL_NE_OP = 9,                      /* NE_OP  */
-  YYSYMBOL_AND_OP = 10,                    /* AND_OP  */
-  YYSYMBOL_OR_OP = 11,                     /* OR_OP  */
-  YYSYMBOL_TYPE_NAME = 12,                 /* TYPE_NAME  */
-  YYSYMBOL_CHAR = 13,                      /* CHAR  */
-  YYSYMBOL_SHORT = 14,                     /* SHORT  */
-  YYSYMBOL_INT = 15,                       /* INT  */
-  YYSYMBOL_FLOAT = 16,                     /* FLOAT  */
-  YYSYMBOL_DOUBLE = 17,                    /* DOUBLE  */
-  YYSYMBOL_CONST = 18,                     /* CONST  */
-  YYSYMBOL_VOID = 19,                      /* VOID  */
-  YYSYMBOL_IF = 20,                        /* IF  */
-  YYSYMBOL_ELSE = 21,                      /* ELSE  */
-  YYSYMBOL_WHILE = 22,                     /* WHILE  */
-  YYSYMBOL_RETURN = 23,                    /* RETURN  */
-  YYSYMBOL_24_ = 24,                       /* '('  */
-  YYSYMBOL_25_ = 25,                       /* ')'  */
-  YYSYMBOL_26_ = 26,                       /* '['  */
-  YYSYMBOL_27_ = 27,                       /* ']'  */
-  YYSYMBOL_28_ = 28,                       /* ','  */
-  YYSYMBOL_29_ = 29,                       /* '*'  */
-  YYSYMBOL_30_ = 30,                       /* '/'  */
-  YYSYMBOL_31_ = 31,                       /* '%'  */
-  YYSYMBOL_32_ = 32,                       /* '+'  */
-  YYSYMBOL_33_ = 33,                       /* '-'  */
-  YYSYMBOL_34_ = 34,                       /* '<'  */
-  YYSYMBOL_35_ = 35,                       /* '>'  */
-  YYSYMBOL_36_ = 36,                       /* '?'  */
-  YYSYMBOL_37_ = 37,                       /* ':'  */
-  YYSYMBOL_38_ = 38,                       /* '='  */
-  YYSYMBOL_39_ = 39,                       /* ';'  */
-  YYSYMBOL_40_ = 40,                       /* '{'  */
-  YYSYMBOL_41_ = 41,                       /* '}'  */
-  YYSYMBOL_YYACCEPT = 42,                  /* $accept  */
-  YYSYMBOL_terminal = 43,                  /* terminal  */
-  YYSYMBOL_44_1 = 44,                      /* $@1  */
-  YYSYMBOL_extended_expression = 45,       /* extended_expression  */
-  YYSYMBOL_46_2 = 46,                      /* $@2  */
-  YYSYMBOL_47_3 = 47,                      /* $@3  */
-  YYSYMBOL_argument_expression_list = 48,  /* argument_expression_list  */
-  YYSYMBOL_49_4 = 49,                      /* $@4  */
-  YYSYMBOL_cast_expression = 50,           /* cast_expression  */
-  YYSYMBOL_51_5 = 51,                      /* $@5  */
-  YYSYMBOL_52_6 = 52,                      /* $@6  */
-  YYSYMBOL_multiplicative_expression = 53, /* multiplicative_expression  */
-  YYSYMBOL_54_7 = 54,                      /* $@7  */
-  YYSYMBOL_55_8 = 55,                      /* $@8  */
-  YYSYMBOL_56_9 = 56,                      /* $@9  */
-  YYSYMBOL_additive_expression = 57,       /* additive_expression  */
-  YYSYMBOL_58_10 = 58,                     /* $@10  */
-  YYSYMBOL_59_11 = 59,                     /* $@11  */
-  YYSYMBOL_relational_expression = 60,     /* relational_expression  */
-  YYSYMBOL_61_12 = 61,                     /* $@12  */
-  YYSYMBOL_62_13 = 62,                     /* $@13  */
-  YYSYMBOL_63_14 = 63,                     /* $@14  */
-  YYSYMBOL_64_15 = 64,                     /* $@15  */
-  YYSYMBOL_equality_expression = 65,       /* equality_expression  */
-  YYSYMBOL_66_16 = 66,                     /* $@16  */
-  YYSYMBOL_67_17 = 67,                     /* $@17  */
-  YYSYMBOL_logical_and_expression = 68,    /* logical_and_expression  */
-  YYSYMBOL_69_18 = 69,                     /* $@18  */
-  YYSYMBOL_logical_or_expression = 70,     /* logical_or_expression  */
-  YYSYMBOL_71_19 = 71,                     /* $@19  */
-  YYSYMBOL_conditional_expression = 72,    /* conditional_expression  */
-  YYSYMBOL_73_20 = 73,                     /* $@20  */
-  YYSYMBOL_74_21 = 74,                     /* $@21  */
-  YYSYMBOL_assignment_expression = 75,     /* assignment_expression  */
-  YYSYMBOL_76_22 = 76,                     /* $@22  */
-  YYSYMBOL_constant_expression = 77,       /* constant_expression  */
-  YYSYMBOL_expression = 78,                /* expression  */
-  YYSYMBOL_79_23 = 79,                     /* $@23  */
-  YYSYMBOL_declaration = 80,               /* declaration  */
-  YYSYMBOL_declaration_specifiers = 81,    /* declaration_specifiers  */
-  YYSYMBOL_init_declarator_list = 82,      /* init_declarator_list  */
-  YYSYMBOL_83_24 = 83,                     /* $@24  */
-  YYSYMBOL_init_declarator = 84,           /* init_declarator  */
-  YYSYMBOL_85_25 = 85,                     /* $@25  */
-  YYSYMBOL_type_specifier = 86,            /* type_specifier  */
-  YYSYMBOL_declarator = 87,                /* declarator  */
-  YYSYMBOL_88_26 = 88,                     /* $@26  */
-  YYSYMBOL_89_27 = 89,                     /* $@27  */
-  YYSYMBOL_90_28 = 90,                     /* $@28  */
-  YYSYMBOL_91_29 = 91,                     /* $@29  */
-  YYSYMBOL_92_30 = 92,                     /* $@30  */
-  YYSYMBOL_93_31 = 93,                     /* $@31  */
-  YYSYMBOL_94_32 = 94,                     /* $@32  */
-  YYSYMBOL_95_33 = 95,                     /* $@33  */
-  YYSYMBOL_96_34 = 96,                     /* $@34  */
-  YYSYMBOL_97_35 = 97,                     /* $@35  */
-  YYSYMBOL_98_36 = 98,                     /* $@36  */
-  YYSYMBOL_99_37 = 99,                     /* $@37  */
-  YYSYMBOL_100_38 = 100,                   /* $@38  */
-  YYSYMBOL_parameter_list = 101,           /* parameter_list  */
-  YYSYMBOL_102_39 = 102,                   /* $@39  */
-  YYSYMBOL_parameter_declaration = 103,    /* parameter_declaration  */
-  YYSYMBOL_identifier_list = 104,          /* identifier_list  */
-  YYSYMBOL_105_40 = 105,                   /* $@40  */
-  YYSYMBOL_type_name = 106,                /* type_name  */
-  YYSYMBOL_specifier_qualifier_list = 107, /* specifier_qualifier_list  */
-  YYSYMBOL_abstract_declarator = 108,      /* abstract_declarator  */
-  YYSYMBOL_109_41 = 109,                   /* $@41  */
-  YYSYMBOL_110_42 = 110,                   /* $@42  */
-  YYSYMBOL_111_43 = 111,                   /* $@43  */
-  YYSYMBOL_112_44 = 112,                   /* $@44  */
-  YYSYMBOL_113_45 = 113,                   /* $@45  */
-  YYSYMBOL_initializer = 114,              /* initializer  */
-  YYSYMBOL_115_46 = 115,                   /* $@46  */
-  YYSYMBOL_116_47 = 116,                   /* $@47  */
-  YYSYMBOL_initializer_list = 117,         /* initializer_list  */
-  YYSYMBOL_118_48 = 118,                   /* $@48  */
-  YYSYMBOL_statement = 119,                /* statement  */
-  YYSYMBOL_compound_statement = 120,       /* compound_statement  */
-  YYSYMBOL_121_49 = 121,                   /* $@49  */
-  YYSYMBOL_122_50 = 122,                   /* $@50  */
-  YYSYMBOL_123_51 = 123,                   /* $@51  */
-  YYSYMBOL_declaration_list = 124,         /* declaration_list  */
-  YYSYMBOL_statement_list = 125,           /* statement_list  */
-  YYSYMBOL_expression_statement = 126,     /* expression_statement  */
-  YYSYMBOL_selection_statement = 127,      /* selection_statement  */
-  YYSYMBOL_128_52 = 128,                   /* $@52  */
-  YYSYMBOL_129_53 = 129,                   /* $@53  */
-  YYSYMBOL_130_54 = 130,                   /* $@54  */
-  YYSYMBOL_131_55 = 131,                   /* $@55  */
-  YYSYMBOL_132_56 = 132,                   /* $@56  */
-  YYSYMBOL_loop_statement = 133,           /* loop_statement  */
-  YYSYMBOL_134_57 = 134,                   /* $@57  */
-  YYSYMBOL_135_58 = 135,                   /* $@58  */
-  YYSYMBOL_jump_statement = 136,           /* jump_statement  */
-  YYSYMBOL_137_59 = 137,                   /* $@59  */
-  YYSYMBOL_translation_unit = 138,         /* translation_unit  */
-  YYSYMBOL_external_declaration = 139,     /* external_declaration  */
-  YYSYMBOL_function_definition = 140,      /* function_definition  */
-  YYSYMBOL_program = 141,                  /* program  */
-  YYSYMBOL_142_60 = 142                    /* $@60  */
+  YYSYMBOL_QUOTED_CHAR = 6,                /* QUOTED_CHAR  */
+  YYSYMBOL_NUMBER_LITERAL_DEC = 7,         /* NUMBER_LITERAL_DEC  */
+  YYSYMBOL_LE_OP = 8,                      /* LE_OP  */
+  YYSYMBOL_GE_OP = 9,                      /* GE_OP  */
+  YYSYMBOL_EQ_OP = 10,                     /* EQ_OP  */
+  YYSYMBOL_NE_OP = 11,                     /* NE_OP  */
+  YYSYMBOL_GT_OP = 12,                     /* GT_OP  */
+  YYSYMBOL_LT_OP = 13,                     /* LT_OP  */
+  YYSYMBOL_AND_OP = 14,                    /* AND_OP  */
+  YYSYMBOL_OR_OP = 15,                     /* OR_OP  */
+  YYSYMBOL_LNOT = 16,                      /* LNOT  */
+  YYSYMBOL_CHAR = 17,                      /* CHAR  */
+  YYSYMBOL_SHORT = 18,                     /* SHORT  */
+  YYSYMBOL_INT = 19,                       /* INT  */
+  YYSYMBOL_FLOAT = 20,                     /* FLOAT  */
+  YYSYMBOL_DOUBLE = 21,                    /* DOUBLE  */
+  YYSYMBOL_CONST = 22,                     /* CONST  */
+  YYSYMBOL_VOID = 23,                      /* VOID  */
+  YYSYMBOL_WHILE = 24,                     /* WHILE  */
+  YYSYMBOL_IF = 25,                        /* IF  */
+  YYSYMBOL_ELSE = 26,                      /* ELSE  */
+  YYSYMBOL_RETURN = 27,                    /* RETURN  */
+  YYSYMBOL_ASSIGNMENT_OP = 28,             /* ASSIGNMENT_OP  */
+  YYSYMBOL_SEMICOLON = 29,                 /* SEMICOLON  */
+  YYSYMBOL_COMMA = 30,                     /* COMMA  */
+  YYSYMBOL_LPAREN = 31,                    /* LPAREN  */
+  YYSYMBOL_RPAREN = 32,                    /* RPAREN  */
+  YYSYMBOL_LBRACE = 33,                    /* LBRACE  */
+  YYSYMBOL_RBRACE = 34,                    /* RBRACE  */
+  YYSYMBOL_LSQBRAQ = 35,                   /* LSQBRAQ  */
+  YYSYMBOL_RSQBRAQ = 36,                   /* RSQBRAQ  */
+  YYSYMBOL_PLUS_OP = 37,                   /* PLUS_OP  */
+  YYSYMBOL_MINUS_OP = 38,                  /* MINUS_OP  */
+  YYSYMBOL_MULTIPLY_OP = 39,               /* MULTIPLY_OP  */
+  YYSYMBOL_DIVIDE_OP = 40,                 /* DIVIDE_OP  */
+  YYSYMBOL_MOD_OP = 41,                    /* MOD_OP  */
+  YYSYMBOL_42_ = 42,                       /* '('  */
+  YYSYMBOL_43_ = 43,                       /* ')'  */
+  YYSYMBOL_44_ = 44,                       /* '['  */
+  YYSYMBOL_45_ = 45,                       /* ']'  */
+  YYSYMBOL_46_ = 46,                       /* ','  */
+  YYSYMBOL_47_ = 47,                       /* '*'  */
+  YYSYMBOL_48_ = 48,                       /* '/'  */
+  YYSYMBOL_49_ = 49,                       /* '%'  */
+  YYSYMBOL_50_ = 50,                       /* '+'  */
+  YYSYMBOL_51_ = 51,                       /* '-'  */
+  YYSYMBOL_52_ = 52,                       /* '<'  */
+  YYSYMBOL_53_ = 53,                       /* '>'  */
+  YYSYMBOL_54_ = 54,                       /* '?'  */
+  YYSYMBOL_55_ = 55,                       /* ':'  */
+  YYSYMBOL_56_ = 56,                       /* '='  */
+  YYSYMBOL_57_ = 57,                       /* ';'  */
+  YYSYMBOL_58_ = 58,                       /* '{'  */
+  YYSYMBOL_59_ = 59,                       /* '}'  */
+  YYSYMBOL_YYACCEPT = 60,                  /* $accept  */
+  YYSYMBOL_terminal = 61,                  /* terminal  */
+  YYSYMBOL_62_1 = 62,                      /* $@1  */
+  YYSYMBOL_extended_expression = 63,       /* extended_expression  */
+  YYSYMBOL_64_2 = 64,                      /* $@2  */
+  YYSYMBOL_65_3 = 65,                      /* $@3  */
+  YYSYMBOL_argument_expression_list = 66,  /* argument_expression_list  */
+  YYSYMBOL_67_4 = 67,                      /* $@4  */
+  YYSYMBOL_cast_expression = 68,           /* cast_expression  */
+  YYSYMBOL_69_5 = 69,                      /* $@5  */
+  YYSYMBOL_70_6 = 70,                      /* $@6  */
+  YYSYMBOL_multiplicative_expression = 71, /* multiplicative_expression  */
+  YYSYMBOL_72_7 = 72,                      /* $@7  */
+  YYSYMBOL_73_8 = 73,                      /* $@8  */
+  YYSYMBOL_74_9 = 74,                      /* $@9  */
+  YYSYMBOL_additive_expression = 75,       /* additive_expression  */
+  YYSYMBOL_76_10 = 76,                     /* $@10  */
+  YYSYMBOL_77_11 = 77,                     /* $@11  */
+  YYSYMBOL_relational_expression = 78,     /* relational_expression  */
+  YYSYMBOL_79_12 = 79,                     /* $@12  */
+  YYSYMBOL_80_13 = 80,                     /* $@13  */
+  YYSYMBOL_81_14 = 81,                     /* $@14  */
+  YYSYMBOL_82_15 = 82,                     /* $@15  */
+  YYSYMBOL_equality_expression = 83,       /* equality_expression  */
+  YYSYMBOL_84_16 = 84,                     /* $@16  */
+  YYSYMBOL_85_17 = 85,                     /* $@17  */
+  YYSYMBOL_logical_and_expression = 86,    /* logical_and_expression  */
+  YYSYMBOL_87_18 = 87,                     /* $@18  */
+  YYSYMBOL_logical_or_expression = 88,     /* logical_or_expression  */
+  YYSYMBOL_89_19 = 89,                     /* $@19  */
+  YYSYMBOL_conditional_expression = 90,    /* conditional_expression  */
+  YYSYMBOL_91_20 = 91,                     /* $@20  */
+  YYSYMBOL_92_21 = 92,                     /* $@21  */
+  YYSYMBOL_assignment_expression = 93,     /* assignment_expression  */
+  YYSYMBOL_94_22 = 94,                     /* $@22  */
+  YYSYMBOL_constant_expression = 95,       /* constant_expression  */
+  YYSYMBOL_expression = 96,                /* expression  */
+  YYSYMBOL_97_23 = 97,                     /* $@23  */
+  YYSYMBOL_declaration = 98,               /* declaration  */
+  YYSYMBOL_declaration_specifiers = 99,    /* declaration_specifiers  */
+  YYSYMBOL_init_declarator_list = 100,     /* init_declarator_list  */
+  YYSYMBOL_101_24 = 101,                   /* $@24  */
+  YYSYMBOL_init_declarator = 102,          /* init_declarator  */
+  YYSYMBOL_103_25 = 103,                   /* $@25  */
+  YYSYMBOL_type_specifier = 104,           /* type_specifier  */
+  YYSYMBOL_declarator = 105,               /* declarator  */
+  YYSYMBOL_106_26 = 106,                   /* $@26  */
+  YYSYMBOL_107_27 = 107,                   /* $@27  */
+  YYSYMBOL_108_28 = 108,                   /* $@28  */
+  YYSYMBOL_109_29 = 109,                   /* $@29  */
+  YYSYMBOL_110_30 = 110,                   /* $@30  */
+  YYSYMBOL_111_31 = 111,                   /* $@31  */
+  YYSYMBOL_112_32 = 112,                   /* $@32  */
+  YYSYMBOL_113_33 = 113,                   /* $@33  */
+  YYSYMBOL_114_34 = 114,                   /* $@34  */
+  YYSYMBOL_115_35 = 115,                   /* $@35  */
+  YYSYMBOL_116_36 = 116,                   /* $@36  */
+  YYSYMBOL_117_37 = 117,                   /* $@37  */
+  YYSYMBOL_118_38 = 118,                   /* $@38  */
+  YYSYMBOL_parameter_list = 119,           /* parameter_list  */
+  YYSYMBOL_120_39 = 120,                   /* $@39  */
+  YYSYMBOL_parameter_declaration = 121,    /* parameter_declaration  */
+  YYSYMBOL_identifier_list = 122,          /* identifier_list  */
+  YYSYMBOL_123_40 = 123,                   /* $@40  */
+  YYSYMBOL_type_name = 124,                /* type_name  */
+  YYSYMBOL_specifier_qualifier_list = 125, /* specifier_qualifier_list  */
+  YYSYMBOL_abstract_declarator = 126,      /* abstract_declarator  */
+  YYSYMBOL_127_41 = 127,                   /* $@41  */
+  YYSYMBOL_128_42 = 128,                   /* $@42  */
+  YYSYMBOL_129_43 = 129,                   /* $@43  */
+  YYSYMBOL_130_44 = 130,                   /* $@44  */
+  YYSYMBOL_131_45 = 131,                   /* $@45  */
+  YYSYMBOL_initializer = 132,              /* initializer  */
+  YYSYMBOL_133_46 = 133,                   /* $@46  */
+  YYSYMBOL_134_47 = 134,                   /* $@47  */
+  YYSYMBOL_initializer_list = 135,         /* initializer_list  */
+  YYSYMBOL_136_48 = 136,                   /* $@48  */
+  YYSYMBOL_statement = 137,                /* statement  */
+  YYSYMBOL_compound_statement = 138,       /* compound_statement  */
+  YYSYMBOL_139_49 = 139,                   /* $@49  */
+  YYSYMBOL_140_50 = 140,                   /* $@50  */
+  YYSYMBOL_141_51 = 141,                   /* $@51  */
+  YYSYMBOL_declaration_list = 142,         /* declaration_list  */
+  YYSYMBOL_statement_list = 143,           /* statement_list  */
+  YYSYMBOL_expression_statement = 144,     /* expression_statement  */
+  YYSYMBOL_selection_statement = 145,      /* selection_statement  */
+  YYSYMBOL_146_52 = 146,                   /* $@52  */
+  YYSYMBOL_147_53 = 147,                   /* $@53  */
+  YYSYMBOL_148_54 = 148,                   /* $@54  */
+  YYSYMBOL_149_55 = 149,                   /* $@55  */
+  YYSYMBOL_150_56 = 150,                   /* $@56  */
+  YYSYMBOL_loop_statement = 151,           /* loop_statement  */
+  YYSYMBOL_152_57 = 152,                   /* $@57  */
+  YYSYMBOL_153_58 = 153,                   /* $@58  */
+  YYSYMBOL_jump_statement = 154,           /* jump_statement  */
+  YYSYMBOL_155_59 = 155,                   /* $@59  */
+  YYSYMBOL_translation_unit = 156,         /* translation_unit  */
+  YYSYMBOL_external_declaration = 157,     /* external_declaration  */
+  YYSYMBOL_function_definition = 158,      /* function_definition  */
+  YYSYMBOL_program = 159,                  /* program  */
+  YYSYMBOL_160_60 = 160                    /* $@60  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -576,10 +595,10 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   312
+#define YYLAST   316
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  42
+#define YYNTOKENS  60
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  101
 /* YYNRULES -- Number of rules.  */
@@ -588,7 +607,7 @@ union yyalloc
 #define YYNSTATES  268
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   278
+#define YYMAXUTOK   296
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -605,16 +624,16 @@ static const yytype_int8 yytranslate[] =
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,    31,     2,     2,
-      24,    25,    29,    32,    28,    33,     2,    30,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,    37,    39,
-      34,    38,    35,    36,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,    49,     2,     2,
+      42,    43,    47,    50,    46,    51,     2,    48,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,    55,    57,
+      52,    56,    53,    54,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,    26,     2,    27,     2,     2,     2,     2,     2,     2,
+       2,    44,     2,    45,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,    40,     2,    41,     2,     2,     2,     2,
+       2,     2,     2,    58,     2,    59,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -629,31 +648,33 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19,    20,    21,    22,    23
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
+      25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
+      35,    36,    37,    38,    39,    40,    41
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    35,    35,    36,    37,    38,    38,    42,    43,    43,
-      44,    45,    45,    49,    50,    50,    54,    55,    55,    55,
-      59,    60,    60,    61,    61,    62,    62,    66,    67,    67,
-      68,    68,    72,    73,    73,    74,    74,    75,    75,    76,
-      76,    80,    81,    81,    82,    82,    86,    87,    87,    91,
-      92,    92,    96,    97,    97,    97,   101,   102,   102,   106,
-     110,   111,   111,   115,   119,   120,   121,   122,   126,   127,
-     127,   131,   132,   132,   136,   137,   138,   139,   143,   144,
-     144,   145,   145,   146,   147,   147,   147,   147,   148,   148,
-     148,   148,   149,   149,   149,   149,   150,   150,   151,   151,
-     152,   156,   157,   157,   161,   162,   166,   167,   167,   171,
-     172,   176,   177,   178,   179,   183,   183,   184,   185,   185,
-     186,   187,   187,   188,   189,   189,   190,   191,   191,   195,
-     196,   196,   197,   197,   201,   202,   202,   206,   207,   208,
-     209,   210,   214,   215,   215,   216,   216,   217,   217,   221,
-     222,   226,   227,   231,   232,   236,   236,   236,   237,   237,
-     237,   237,   241,   241,   241,   245,   246,   246,   250,   251,
-     255,   256,   260,   261,   262,   263,   267,   267
+       0,    33,    33,    34,    35,    36,    36,    40,    41,    41,
+      42,    43,    43,    47,    48,    48,    52,    53,    53,    53,
+      57,    58,    58,    59,    59,    60,    60,    64,    65,    65,
+      66,    66,    70,    71,    71,    72,    72,    73,    73,    74,
+      74,    78,    79,    79,    80,    80,    84,    85,    85,    89,
+      90,    90,    94,    95,    95,    95,    99,   100,   100,   104,
+     108,   109,   109,   113,   117,   118,   119,   120,   124,   125,
+     125,   129,   130,   130,   134,   135,   136,   137,   141,   142,
+     142,   143,   143,   144,   145,   145,   145,   145,   146,   146,
+     146,   146,   147,   147,   147,   147,   148,   148,   149,   149,
+     150,   154,   155,   155,   159,   160,   164,   165,   165,   169,
+     170,   174,   175,   176,   177,   181,   181,   182,   183,   183,
+     184,   185,   185,   186,   187,   187,   188,   189,   189,   193,
+     194,   194,   195,   195,   199,   200,   200,   204,   205,   206,
+     207,   208,   212,   213,   213,   214,   214,   215,   215,   219,
+     220,   224,   225,   229,   230,   234,   234,   234,   235,   235,
+     235,   235,   239,   239,   239,   243,   244,   244,   248,   249,
+     253,   254,   258,   259,   260,   261,   265,   265
 };
 #endif
 
@@ -670,11 +691,14 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "IDENTIFIER",
-  "NUMBER_LITERAL", "STRING_LITERAL", "LE_OP", "GE_OP", "EQ_OP", "NE_OP",
-  "AND_OP", "OR_OP", "TYPE_NAME", "CHAR", "SHORT", "INT", "FLOAT",
-  "DOUBLE", "CONST", "VOID", "IF", "ELSE", "WHILE", "RETURN", "'('", "')'",
-  "'['", "']'", "','", "'*'", "'/'", "'%'", "'+'", "'-'", "'<'", "'>'",
-  "'?'", "':'", "'='", "';'", "'{'", "'}'", "$accept", "terminal", "$@1",
+  "NUMBER_LITERAL", "STRING_LITERAL", "QUOTED_CHAR", "NUMBER_LITERAL_DEC",
+  "LE_OP", "GE_OP", "EQ_OP", "NE_OP", "GT_OP", "LT_OP", "AND_OP", "OR_OP",
+  "LNOT", "CHAR", "SHORT", "INT", "FLOAT", "DOUBLE", "CONST", "VOID",
+  "WHILE", "IF", "ELSE", "RETURN", "ASSIGNMENT_OP", "SEMICOLON", "COMMA",
+  "LPAREN", "RPAREN", "LBRACE", "RBRACE", "LSQBRAQ", "RSQBRAQ", "PLUS_OP",
+  "MINUS_OP", "MULTIPLY_OP", "DIVIDE_OP", "MOD_OP", "'('", "')'", "'['",
+  "']'", "','", "'*'", "'/'", "'%'", "'+'", "'-'", "'<'", "'>'", "'?'",
+  "':'", "'='", "';'", "'{'", "'}'", "$accept", "terminal", "$@1",
   "extended_expression", "$@2", "$@3", "argument_expression_list", "$@4",
   "cast_expression", "$@5", "$@6", "multiplicative_expression", "$@7",
   "$@8", "$@9", "additive_expression", "$@10", "$@11",
@@ -704,7 +728,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-212)
+#define YYPACT_NINF (-143)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -718,33 +742,33 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-    -212,    39,    71,  -212,  -212,  -212,  -212,  -212,   241,  -212,
-    -212,  -212,    17,   241,   217,    71,  -212,  -212,  -212,    17,
-      48,  -212,   207,  -212,    25,    56,   141,  -212,    17,  -212,
-     231,  -212,    73,  -212,  -212,  -212,  -212,   231,  -212,   241,
-      49,  -212,    99,    99,   108,   130,  -212,   188,   241,   241,
-      70,  -212,  -212,  -212,    17,    18,  -212,    17,    23,  -212,
-    -212,    50,  -212,  -212,  -212,   126,  -212,    83,  -212,   246,
-      -1,    20,   279,    58,    24,  -212,   134,   139,  -212,  -212,
-     155,  -212,   159,  -212,   147,  -212,  -212,   109,  -212,  -212,
-      41,  -212,  -212,  -212,  -212,   182,   123,  -212,  -212,  -212,
-    -212,   148,  -212,  -212,  -212,  -212,    99,   248,   184,  -212,
-    -212,  -212,  -212,  -212,  -212,  -212,  -212,  -212,  -212,  -212,
-    -212,  -212,  -212,  -212,  -212,  -212,   203,   216,  -212,   195,
-    -212,    99,  -212,  -212,  -212,  -212,  -212,  -212,   129,    18,
-      18,   241,   235,   156,   248,   248,   226,   238,  -212,    99,
-      99,    99,    99,    99,    99,    99,    99,    99,    99,    99,
-      99,    99,    99,    99,    99,   242,  -212,  -212,    99,    99,
-      99,   116,    99,    99,  -212,  -212,     8,   225,  -212,  -212,
-    -212,  -212,  -212,  -212,   254,   247,   260,   178,  -212,   262,
-    -212,  -212,  -212,   246,   246,    -1,    -1,    -1,    -1,    20,
-      20,   279,    58,     1,  -212,    99,   258,   193,   212,   227,
-    -212,  -212,  -212,  -212,  -212,   256,    99,  -212,   238,   241,
-    -212,    99,   273,   272,  -212,  -212,  -212,  -212,    99,   274,
-    -212,  -212,  -212,  -212,    18,  -212,  -212,   257,   244,   275,
-    -212,   241,  -212,    99,    99,    99,   276,  -212,   188,   188,
-     188,  -212,  -212,  -212,  -212,   245,   277,  -212,  -212,  -212,
-    -212,   284,  -212,  -212,  -212,  -212,   188,  -212
+    -143,    19,   232,  -143,  -143,  -143,  -143,  -143,   242,  -143,
+    -143,  -143,    21,   242,   199,   232,  -143,  -143,  -143,    21,
+      51,  -143,   192,  -143,    14,   -16,    39,  -143,    21,  -143,
+     210,  -143,    60,  -143,  -143,  -143,  -143,   210,  -143,   242,
+      32,  -143,    84,    84,    25,    33,  -143,   168,   242,   242,
+      85,  -143,  -143,  -143,    21,    23,  -143,    21,   -10,  -143,
+    -143,    92,  -143,  -143,  -143,    91,  -143,   164,  -143,   198,
+     173,    30,   279,    29,    53,  -143,    35,    83,  -143,  -143,
+    -143,   101,    90,  -143,   114,  -143,  -143,    88,  -143,  -143,
+      17,  -143,  -143,  -143,  -143,   138,   127,  -143,  -143,  -143,
+    -143,   186,  -143,  -143,  -143,  -143,    84,   254,   119,  -143,
+    -143,  -143,  -143,  -143,  -143,  -143,  -143,  -143,  -143,  -143,
+    -143,  -143,  -143,  -143,  -143,  -143,   124,   130,   149,  -143,
+    -143,    84,  -143,  -143,  -143,  -143,  -143,  -143,    27,    23,
+      23,   242,   209,    94,   254,   254,   176,   214,  -143,    84,
+      84,    84,    84,    84,    84,    84,    84,    84,    84,    84,
+      84,    84,    84,    84,    84,   218,  -143,  -143,    84,    84,
+      84,    96,    84,    84,  -143,  -143,    77,   196,  -143,  -143,
+    -143,  -143,  -143,  -143,   241,   193,   228,   120,  -143,   246,
+    -143,  -143,  -143,   198,   198,   173,   173,   173,   173,    30,
+      30,   279,    29,    54,  -143,    84,   255,   136,   194,   223,
+    -143,  -143,  -143,  -143,  -143,   221,    84,  -143,   214,   242,
+    -143,    84,   256,   257,  -143,  -143,  -143,  -143,    84,   258,
+    -143,  -143,  -143,  -143,    23,  -143,  -143,   244,   235,   259,
+    -143,   242,  -143,    84,    84,    84,   260,  -143,   168,   168,
+     168,  -143,  -143,  -143,  -143,   236,   261,  -143,  -143,  -143,
+    -143,  -143,   275,  -143,  -143,  -143,   168,  -143
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -760,11 +784,11 @@ static const yytype_uint8 yydefact[] =
       71,   150,   174,    80,     0,     0,   172,   105,     0,   101,
      106,     0,     2,     3,     4,    17,     7,    16,    20,    27,
       32,    41,    46,    49,    52,    59,     0,     0,    89,    93,
-       0,   162,   166,   153,    16,    56,    60,     0,   151,   137,
+     162,     0,   166,   153,    16,    56,    60,     0,   151,   137,
        0,   138,   139,   140,   141,     0,     0,    70,   130,   129,
       73,   104,    97,   102,    99,   107,     0,     0,    11,     8,
       21,    23,    25,    28,    30,    37,    39,    33,    35,    42,
-      44,    47,    50,    53,    82,    85,     0,     0,   155,     0,
+      44,    47,    50,    53,    82,    85,     0,     0,     0,   155,
      165,     0,    57,    61,   154,   144,   152,   146,     0,     0,
        0,     0,     0,     0,   114,   112,     0,   109,    10,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
@@ -775,26 +799,26 @@ static const yytype_uint8 yydefact[] =
       45,    48,    51,     0,    86,     0,     0,     0,     0,     0,
      167,    58,    62,   135,   131,   135,     0,   123,     0,     0,
      117,     0,   127,   121,    12,    14,     9,    54,     0,     0,
-      95,   156,   159,   163,     0,   133,    19,     0,     0,     0,
+      95,   163,   156,   159,     0,   133,    19,     0,     0,     0,
      126,     0,   120,     0,     0,     0,     0,    91,     0,     0,
        0,   136,   116,   125,   119,     0,     0,    15,    55,    87,
-     157,     0,   164,   128,   122,   160,     0,   161
+     164,   157,     0,   128,   122,   160,     0,   161
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -212,  -212,  -212,   -41,  -212,  -212,  -212,  -212,  -137,  -212,
-    -212,   137,  -212,  -212,  -212,    57,  -212,  -212,   133,  -212,
-    -212,  -212,  -212,   138,  -212,  -212,   143,  -212,  -212,  -212,
-     -38,  -212,  -212,   -48,  -212,   -40,   -97,  -212,    10,    -2,
-    -212,  -212,   253,  -212,   -88,     5,  -212,  -212,  -212,  -212,
-    -212,  -212,  -212,  -212,  -212,  -212,  -212,  -212,  -212,  -211,
-    -212,   167,  -212,  -212,  -212,   151,    91,  -212,  -212,  -212,
-    -212,  -212,   -45,  -212,  -212,   170,  -212,   -72,    63,  -212,
-    -212,  -212,    21,   215,  -212,  -212,  -212,  -212,  -212,  -212,
-    -212,  -212,  -212,  -212,  -212,  -212,  -212,   297,  -212,  -212,
-    -212
+    -143,  -143,  -143,   -41,  -143,  -143,  -143,  -143,  -137,  -143,
+    -143,   139,  -143,  -143,  -143,    42,  -143,  -143,   135,  -143,
+    -143,  -143,  -143,   145,  -143,  -143,   146,  -143,  -143,  -143,
+     -38,  -143,  -143,   -48,  -143,   -40,   -97,  -143,    10,    -2,
+    -143,  -143,   262,  -143,   -99,    36,  -143,  -143,  -143,  -143,
+    -143,  -143,  -143,  -143,  -143,  -143,  -143,  -143,  -143,  -142,
+    -143,   167,  -143,  -143,  -143,   153,    93,  -143,  -143,  -143,
+    -143,  -143,   -45,  -143,  -143,   170,  -143,   -72,   230,  -143,
+    -143,  -143,     1,   216,  -143,  -143,  -143,  -143,  -143,  -143,
+    -143,  -143,  -143,  -143,  -143,  -143,  -143,   298,  -143,  -143,
+    -143
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -808,8 +832,8 @@ static const yytype_int16 yydefgoto[] =
      228,    44,   126,   205,    45,   127,   206,    39,    40,    58,
      141,    59,    61,   142,   146,   147,   186,   218,   221,   243,
      219,   241,   175,   139,   140,   176,   234,    88,    89,    47,
-      48,    49,    30,    90,    91,    92,   168,   248,   169,   249,
-     266,    93,   129,   250,    94,   131,    15,    16,    17,     1,
+      48,    49,    30,    90,    91,    92,   169,   249,   170,   250,
+     266,    93,   128,   248,    94,   131,    15,    16,    17,     1,
        2
 };
 
@@ -818,130 +842,130 @@ static const yytype_int16 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
-      12,    67,    67,    77,    75,    75,    18,    99,   238,   143,
-     100,    23,    11,    12,   190,   191,   192,    22,   136,   145,
-       4,    62,    63,    64,    32,    11,   115,   116,   -98,   133,
-     255,   113,   114,    50,   171,   122,   213,    57,   227,     3,
-      51,    10,    65,    37,    62,    63,    64,    51,   102,   214,
-      38,   103,    60,   189,   117,   118,   145,   145,    98,    50,
-     123,    80,   101,    81,    82,    65,   136,   203,   121,    95,
-      96,   207,   208,   209,     4,   104,    33,    29,   105,   236,
-      83,    26,   135,    41,     5,    36,     6,    34,     7,     8,
-       9,    99,    99,    52,    24,    10,    25,    24,    53,    25,
-      56,   188,    62,    63,    64,    51,    51,   108,    35,   109,
+      12,    67,    67,    77,    75,    75,    18,    99,   145,   143,
+     100,    23,    11,    12,   190,   191,   192,   -98,   136,     3,
+      62,    63,    64,    37,     4,    11,    62,    63,    64,    41,
+      62,    63,    64,   102,   171,    60,   103,    57,   115,   116,
+      51,    80,    81,   121,    82,   145,   145,    51,    22,    95,
+      96,    80,    81,   189,    82,    32,  -145,    38,  -145,    65,
+    -145,  -145,  -145,    10,    50,    65,   136,   203,   122,    65,
+      78,   207,   208,   209,    83,    26,   135,   238,    79,   236,
+     124,    98,   117,   118,    83,    26,   174,    62,    63,    64,
+      50,    99,    99,   101,    -5,    -5,    -5,    33,    46,   255,
+     133,   188,    24,    53,    25,    51,    51,   123,    34,   227,
       67,    67,    67,    67,    67,    67,    67,    67,    67,    67,
-      67,    67,    67,    65,   211,   212,    62,    63,    64,    -5,
-      -5,    -5,    62,    63,    64,    78,     5,   133,     6,    57,
-       7,     8,     9,    80,   133,    81,    82,    65,   134,    80,
-      -5,    81,    82,    65,  -145,   210,  -145,    79,  -145,  -145,
-    -145,   124,    83,    26,    67,   229,   125,    75,    83,    26,
-     174,   108,    24,   109,    25,    67,   260,   261,   262,   128,
-      67,   180,    46,   239,   133,   132,    99,    67,   246,   251,
-      75,    62,    63,    64,   267,     5,   257,     6,   130,     7,
-       8,     9,    67,   224,    67,   256,   225,   258,    80,   148,
-      81,    82,    65,   195,   196,   197,   198,    57,   231,   170,
-       5,   133,     6,   137,     7,     8,     9,    83,    26,   166,
-       5,    24,     6,    25,     7,     8,     9,   232,   179,    57,
-     133,    24,   167,    25,     5,    35,     6,    26,     7,     8,
-       9,   183,   233,   215,     5,   133,     6,    26,     7,     8,
-       9,     5,   184,     6,   185,     7,   144,     9,   204,   253,
-     263,    26,   103,   103,   220,   110,   111,   112,  -115,   217,
-    -115,   222,   252,   223,   222,   230,   223,   119,   120,   226,
-     133,   193,   194,   199,   200,   181,   182,   235,   240,   242,
-     201,   247,   254,   259,   264,   265,   202,    97,   178,   237,
-     177,   138,    31
+      67,    67,    67,   213,   211,   212,    65,    24,   125,    25,
+      62,    63,    64,    -5,   133,   104,   214,   180,   105,    57,
+     133,    35,   133,   129,     5,   134,     6,   130,     7,     8,
+       9,    80,    81,   210,    82,     5,   108,     6,   109,     7,
+       8,     9,   148,   224,    67,   229,   225,    75,   166,    65,
+     132,    62,    63,    64,   167,    67,   260,   261,   262,   231,
+      67,   239,   133,    75,    83,    26,    99,    67,   246,   251,
+      75,   168,    80,    81,   267,    82,   257,   137,   195,   196,
+     197,   198,    67,   256,    67,    75,   108,   258,   109,     5,
+      65,     6,   179,     7,     8,     9,     5,    57,     6,   183,
+       7,     8,     9,   113,   114,    83,    26,     5,    24,     6,
+      25,     7,     8,     9,    24,     4,    25,   232,   220,    57,
+     133,    24,   215,    25,    29,   110,   111,   112,    35,     5,
+      26,     6,    36,     7,     8,     9,   184,    26,   185,     5,
+      52,     6,   204,     7,     8,     9,   233,    56,    26,   133,
+     222,     5,   223,     6,    10,     7,   144,     9,   253,   263,
+     235,   103,   103,  -115,   217,  -115,   222,   252,   223,   119,
+     120,   226,   133,   193,   194,   199,   200,   181,   182,   240,
+     230,   265,   242,   247,   254,   259,   264,   201,   178,   202,
+     177,   237,   138,    31,     0,     0,    97
 };
 
 static const yytype_int16 yycheck[] =
 {
-       2,    42,    43,    43,    42,    43,     8,    55,   219,   106,
-      55,    13,     2,    15,   151,   152,   153,    12,    90,   107,
-       3,     3,     4,     5,    19,    15,     6,     7,     3,    28,
-     241,    32,    33,    28,   131,    11,    28,    39,    37,     0,
-      30,    24,    24,    22,     3,     4,     5,    37,    25,    41,
-      25,    28,     3,   150,    34,    35,   144,   145,    40,    54,
-      36,    20,    57,    22,    23,    24,   138,   164,    10,    48,
-      49,   168,   169,   170,     3,    25,    28,    14,    28,   216,
-      39,    40,    41,    27,    13,    22,    15,    39,    17,    18,
-      19,   139,   140,    30,    24,    24,    26,    24,    25,    26,
-      37,   149,     3,     4,     5,    95,    96,    24,    38,    26,
+       2,    42,    43,    43,    42,    43,     8,    55,   107,   106,
+      55,    13,     2,    15,   151,   152,   153,     3,    90,     0,
+       3,     4,     5,    22,     3,    15,     3,     4,     5,    45,
+       3,     4,     5,    43,   131,     3,    46,    39,     8,     9,
+      30,    24,    25,    14,    27,   144,   145,    37,    12,    48,
+      49,    24,    25,   150,    27,    19,    17,    43,    19,    42,
+      21,    22,    23,    42,    28,    42,   138,   164,    15,    42,
+      45,   168,   169,   170,    57,    58,    59,   219,    45,   216,
+      45,    58,    52,    53,    57,    58,    59,     3,     4,     5,
+      54,   139,   140,    57,     3,     4,     5,    46,    59,   241,
+      46,   149,    42,    43,    44,    95,    96,    54,    57,    55,
      151,   152,   153,   154,   155,   156,   157,   158,   159,   160,
-     161,   162,   163,    24,   172,   173,     3,     4,     5,     3,
-       4,     5,     3,     4,     5,    27,    13,    28,    15,   141,
-      17,    18,    19,    20,    28,    22,    23,    24,    39,    20,
-      24,    22,    23,    24,    13,    39,    15,    27,    17,    18,
-      19,    27,    39,    40,   205,   205,    27,   205,    39,    40,
-      41,    24,    24,    26,    26,   216,   248,   249,   250,    24,
-     221,    25,    41,   221,    28,    38,   234,   228,   228,   234,
-     228,     3,     4,     5,   266,    13,   244,    15,    39,    17,
-      18,    19,   243,    25,   245,   243,    28,   245,    20,    25,
-      22,    23,    24,   156,   157,   158,   159,   219,    25,    24,
-      13,    28,    15,    41,    17,    18,    19,    39,    40,    26,
-      13,    24,    15,    26,    17,    18,    19,    25,     3,   241,
-      28,    24,    26,    26,    13,    38,    15,    40,    17,    18,
-      19,    25,    25,    28,    13,    28,    15,    40,    17,    18,
-      19,    13,    24,    15,    26,    17,    18,    19,    26,    25,
-      25,    40,    28,    28,    27,    29,    30,    31,    24,    25,
-      26,    24,    25,    26,    24,    27,    26,     8,     9,    27,
-      28,   154,   155,   160,   161,   144,   145,    41,    25,    27,
-     162,    27,    27,    27,    27,    21,   163,    54,   141,   218,
-     140,    96,    15
+     161,   162,   163,    46,   172,   173,    42,    42,    45,    44,
+       3,     4,     5,    42,    46,    43,    59,    43,    46,   141,
+      46,    56,    46,    42,    17,    57,    19,    57,    21,    22,
+      23,    24,    25,    57,    27,    17,    42,    19,    44,    21,
+      22,    23,    43,    43,   205,   205,    46,   205,    44,    42,
+      56,     3,     4,     5,    44,   216,   248,   249,   250,    43,
+     221,   221,    46,   221,    57,    58,   234,   228,   228,   234,
+     228,    42,    24,    25,   266,    27,   244,    59,   156,   157,
+     158,   159,   243,   243,   245,   243,    42,   245,    44,    17,
+      42,    19,     3,    21,    22,    23,    17,   219,    19,    43,
+      21,    22,    23,    50,    51,    57,    58,    17,    42,    19,
+      44,    21,    22,    23,    42,     3,    44,    43,    45,   241,
+      46,    42,    46,    44,    14,    47,    48,    49,    56,    17,
+      58,    19,    22,    21,    22,    23,    42,    58,    44,    17,
+      30,    19,    44,    21,    22,    23,    43,    37,    58,    46,
+      42,    17,    44,    19,    42,    21,    22,    23,    43,    43,
+      59,    46,    46,    42,    43,    44,    42,    43,    44,    10,
+      11,    45,    46,   154,   155,   160,   161,   144,   145,    43,
+      45,    26,    45,    45,    45,    45,    45,   162,   141,   163,
+     140,   218,    96,    15,    -1,    -1,    54
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,   141,   142,     0,     3,    13,    15,    17,    18,    19,
-      24,    80,    81,    86,    87,   138,   139,   140,    81,    88,
-      82,    84,    87,    81,    24,    26,    40,    80,    81,   120,
-     124,   139,    87,    28,    39,    38,   120,   124,    25,    99,
-     100,    27,    89,    90,    93,    96,    41,   121,   122,   123,
-      87,    80,   120,    25,    83,    85,   120,    81,   101,   103,
-       3,   104,     3,     4,     5,    24,    43,    45,    50,    53,
-      57,    60,    65,    68,    70,    72,    77,    77,    27,    27,
-      20,    22,    23,    39,    45,    72,    75,    78,   119,   120,
-     125,   126,   127,   133,   136,   124,   124,    84,    40,    75,
-     114,    87,    25,    28,    25,    28,    44,    51,    24,    26,
-      29,    30,    31,    32,    33,     6,     7,    34,    35,     8,
-       9,    10,    11,    36,    27,    27,    94,    97,    24,   134,
-      39,   137,    38,    28,    39,    41,   119,    41,   125,   115,
-     116,   102,   105,    78,    18,    86,   106,   107,    25,    47,
-      46,    54,    55,    56,    58,    59,    63,    64,    61,    62,
-      66,    67,    69,    71,    73,    91,    26,    26,   128,   130,
-      24,    78,    76,    79,    41,   114,   117,   117,   103,     3,
-      25,   107,   107,    25,    24,    26,   108,    48,    75,    78,
-      50,    50,    50,    53,    53,    57,    57,    57,    57,    60,
-      60,    65,    68,    78,    26,    95,    98,    78,    78,    78,
-      39,    75,    75,    28,    41,    28,    52,    25,   109,   112,
-      27,   110,    24,    26,    25,    28,    27,    37,    92,    77,
-      27,    25,    25,    25,   118,    41,    50,   108,   101,    72,
-      25,   113,    27,   111,    49,    74,    77,    27,   129,   131,
-     135,   114,    25,    25,    27,   101,    72,    75,    72,    27,
-     119,   119,   119,    25,    27,    21,   132,   119
+       0,   159,   160,     0,     3,    17,    19,    21,    22,    23,
+      42,    98,    99,   104,   105,   156,   157,   158,    99,   106,
+     100,   102,   105,    99,    42,    44,    58,    98,    99,   138,
+     142,   157,   105,    46,    57,    56,   138,   142,    43,   117,
+     118,    45,   107,   108,   111,   114,    59,   139,   140,   141,
+     105,    98,   138,    43,   101,   103,   138,    99,   119,   121,
+       3,   122,     3,     4,     5,    42,    61,    63,    68,    71,
+      75,    78,    83,    86,    88,    90,    95,    95,    45,    45,
+      24,    25,    27,    57,    63,    90,    93,    96,   137,   138,
+     143,   144,   145,   151,   154,   142,   142,   102,    58,    93,
+     132,   105,    43,    46,    43,    46,    62,    69,    42,    44,
+      47,    48,    49,    50,    51,     8,     9,    52,    53,    10,
+      11,    14,    15,    54,    45,    45,   112,   115,   152,    42,
+      57,   155,    56,    46,    57,    59,   137,    59,   143,   133,
+     134,   120,   123,    96,    22,   104,   124,   125,    43,    65,
+      64,    72,    73,    74,    76,    77,    81,    82,    79,    80,
+      84,    85,    87,    89,    91,   109,    44,    44,    42,   146,
+     148,    96,    94,    97,    59,   132,   135,   135,   121,     3,
+      43,   125,   125,    43,    42,    44,   126,    66,    93,    96,
+      68,    68,    68,    71,    71,    75,    75,    75,    75,    78,
+      78,    83,    86,    96,    44,   113,   116,    96,    96,    96,
+      57,    93,    93,    46,    59,    46,    70,    43,   127,   130,
+      45,   128,    42,    44,    43,    46,    45,    55,   110,    95,
+      45,    43,    43,    43,   136,    59,    68,   126,   119,    95,
+      43,   131,    45,   129,    67,    92,    95,    45,   153,   147,
+     149,   132,    43,    43,    45,   119,    95,    93,    90,    45,
+     137,   137,   137,    43,    45,    26,   150,   137
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,    42,    43,    43,    43,    44,    43,    45,    46,    45,
-      45,    47,    45,    48,    49,    48,    50,    51,    52,    50,
-      53,    54,    53,    55,    53,    56,    53,    57,    58,    57,
-      59,    57,    60,    61,    60,    62,    60,    63,    60,    64,
-      60,    65,    66,    65,    67,    65,    68,    69,    68,    70,
-      71,    70,    72,    73,    74,    72,    75,    76,    75,    77,
-      78,    79,    78,    80,    81,    81,    81,    81,    82,    83,
-      82,    84,    85,    84,    86,    86,    86,    86,    87,    88,
-      87,    89,    87,    87,    90,    91,    92,    87,    93,    94,
-      95,    87,    96,    97,    98,    87,    99,    87,   100,    87,
-      87,   101,   102,   101,   103,   103,   104,   105,   104,   106,
-     106,   107,   107,   107,   107,   109,   108,   108,   110,   108,
-     108,   111,   108,   108,   112,   108,   108,   113,   108,   114,
-     115,   114,   116,   114,   117,   118,   117,   119,   119,   119,
-     119,   119,   120,   121,   120,   122,   120,   123,   120,   124,
-     124,   125,   125,   126,   126,   128,   129,   127,   130,   131,
-     132,   127,   134,   135,   133,   136,   137,   136,   138,   138,
-     139,   139,   140,   140,   140,   140,   142,   141
+       0,    60,    61,    61,    61,    62,    61,    63,    64,    63,
+      63,    65,    63,    66,    67,    66,    68,    69,    70,    68,
+      71,    72,    71,    73,    71,    74,    71,    75,    76,    75,
+      77,    75,    78,    79,    78,    80,    78,    81,    78,    82,
+      78,    83,    84,    83,    85,    83,    86,    87,    86,    88,
+      89,    88,    90,    91,    92,    90,    93,    94,    93,    95,
+      96,    97,    96,    98,    99,    99,    99,    99,   100,   101,
+     100,   102,   103,   102,   104,   104,   104,   104,   105,   106,
+     105,   107,   105,   105,   108,   109,   110,   105,   111,   112,
+     113,   105,   114,   115,   116,   105,   117,   105,   118,   105,
+     105,   119,   120,   119,   121,   121,   122,   123,   122,   124,
+     124,   125,   125,   125,   125,   127,   126,   126,   128,   126,
+     126,   129,   126,   126,   130,   126,   126,   131,   126,   132,
+     133,   132,   134,   132,   135,   136,   135,   137,   137,   137,
+     137,   137,   138,   139,   138,   140,   138,   141,   138,   142,
+     142,   143,   143,   144,   144,   146,   147,   145,   148,   149,
+     150,   145,   152,   153,   151,   154,   155,   154,   156,   156,
+     157,   157,   158,   158,   158,   158,   160,   159
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1428,565 +1452,565 @@ yyreduce:
   switch (yyn)
     {
   case 5: /* $@1: %empty  */
-#line 38 "grammar2.y"
+#line 36 "grammar2.y"
           {append_in_jsFile("( ");}
-#line 1434 "grammar2.tab.c"
-    break;
-
-  case 6: /* terminal: '(' $@1 expression ')'  */
-#line 38 "grammar2.y"
-                                                   {append_in_jsFile(" )");}
-#line 1440 "grammar2.tab.c"
-    break;
-
-  case 8: /* $@2: %empty  */
-#line 43 "grammar2.y"
-                              {append_in_jsFile("[ ");}
-#line 1446 "grammar2.tab.c"
-    break;
-
-  case 9: /* extended_expression: extended_expression '[' $@2 expression ']'  */
-#line 43 "grammar2.y"
-                                                                       {append_in_jsFile(" ]");}
-#line 1452 "grammar2.tab.c"
-    break;
-
-  case 10: /* extended_expression: extended_expression '(' ')'  */
-#line 44 "grammar2.y"
-                                  {append_in_jsFile("()");}
 #line 1458 "grammar2.tab.c"
     break;
 
-  case 11: /* $@3: %empty  */
-#line 45 "grammar2.y"
-                              {append_in_jsFile("( ");}
+  case 6: /* terminal: '(' $@1 expression ')'  */
+#line 36 "grammar2.y"
+                                                   {append_in_jsFile(" )");}
 #line 1464 "grammar2.tab.c"
     break;
 
-  case 12: /* extended_expression: extended_expression '(' $@3 argument_expression_list ')'  */
-#line 45 "grammar2.y"
-                                                                                     {append_in_jsFile(" )");}
+  case 8: /* $@2: %empty  */
+#line 41 "grammar2.y"
+                              {append_in_jsFile("[ ");}
 #line 1470 "grammar2.tab.c"
     break;
 
-  case 14: /* $@4: %empty  */
-#line 50 "grammar2.y"
-                                   {append_in_jsFile(", ");}
+  case 9: /* extended_expression: extended_expression '[' $@2 expression ']'  */
+#line 41 "grammar2.y"
+                                                                       {append_in_jsFile(" ]");}
 #line 1476 "grammar2.tab.c"
     break;
 
-  case 17: /* $@5: %empty  */
-#line 55 "grammar2.y"
-          {append_in_jsFile("( ");}
+  case 10: /* extended_expression: extended_expression '(' ')'  */
+#line 42 "grammar2.y"
+                                  {append_in_jsFile("()");}
 #line 1482 "grammar2.tab.c"
     break;
 
-  case 18: /* $@6: %empty  */
-#line 55 "grammar2.y"
-                                                  {append_in_jsFile(" )");}
+  case 11: /* $@3: %empty  */
+#line 43 "grammar2.y"
+                              {append_in_jsFile("( ");}
 #line 1488 "grammar2.tab.c"
     break;
 
-  case 21: /* $@7: %empty  */
-#line 60 "grammar2.y"
-                                    {append_in_jsFile(" * ");}
+  case 12: /* extended_expression: extended_expression '(' $@3 argument_expression_list ')'  */
+#line 43 "grammar2.y"
+                                                                                     {append_in_jsFile(" )");}
 #line 1494 "grammar2.tab.c"
     break;
 
-  case 23: /* $@8: %empty  */
-#line 61 "grammar2.y"
-                                    {append_in_jsFile(" / ");}
+  case 14: /* $@4: %empty  */
+#line 48 "grammar2.y"
+                                   {append_in_jsFile(", ");}
 #line 1500 "grammar2.tab.c"
     break;
 
-  case 25: /* $@9: %empty  */
-#line 62 "grammar2.y"
-                                    {append_in_jsFile(" % ");}
+  case 17: /* $@5: %empty  */
+#line 53 "grammar2.y"
+          {append_in_jsFile("( ");}
 #line 1506 "grammar2.tab.c"
     break;
 
-  case 28: /* $@10: %empty  */
-#line 67 "grammar2.y"
-                              {append_in_jsFile(" + ");}
+  case 18: /* $@6: %empty  */
+#line 53 "grammar2.y"
+                                                  {append_in_jsFile(" )");}
 #line 1512 "grammar2.tab.c"
     break;
 
-  case 30: /* $@11: %empty  */
-#line 68 "grammar2.y"
-                              {append_in_jsFile(" - ");}
+  case 21: /* $@7: %empty  */
+#line 58 "grammar2.y"
+                                    {append_in_jsFile(" * ");}
 #line 1518 "grammar2.tab.c"
     break;
 
-  case 33: /* $@12: %empty  */
-#line 73 "grammar2.y"
-                                {append_in_jsFile(" < ");}
+  case 23: /* $@8: %empty  */
+#line 59 "grammar2.y"
+                                    {append_in_jsFile(" / ");}
 #line 1524 "grammar2.tab.c"
     break;
 
-  case 35: /* $@13: %empty  */
-#line 74 "grammar2.y"
-                                {append_in_jsFile(" > ");}
+  case 25: /* $@9: %empty  */
+#line 60 "grammar2.y"
+                                    {append_in_jsFile(" % ");}
 #line 1530 "grammar2.tab.c"
     break;
 
-  case 37: /* $@14: %empty  */
-#line 75 "grammar2.y"
-                                  {append_in_jsFile(" <= ");}
+  case 28: /* $@10: %empty  */
+#line 65 "grammar2.y"
+                              {append_in_jsFile(" + ");}
 #line 1536 "grammar2.tab.c"
     break;
 
-  case 39: /* $@15: %empty  */
-#line 76 "grammar2.y"
-                                  {append_in_jsFile(" >= ");}
+  case 30: /* $@11: %empty  */
+#line 66 "grammar2.y"
+                              {append_in_jsFile(" - ");}
 #line 1542 "grammar2.tab.c"
     break;
 
-  case 42: /* $@16: %empty  */
-#line 81 "grammar2.y"
-                                {append_in_jsFile(" == ");}
+  case 33: /* $@12: %empty  */
+#line 71 "grammar2.y"
+                                {append_in_jsFile(" < ");}
 #line 1548 "grammar2.tab.c"
     break;
 
-  case 44: /* $@17: %empty  */
-#line 82 "grammar2.y"
-                                {append_in_jsFile(" != ");}
+  case 35: /* $@13: %empty  */
+#line 72 "grammar2.y"
+                                {append_in_jsFile(" > ");}
 #line 1554 "grammar2.tab.c"
     break;
 
-  case 47: /* $@18: %empty  */
-#line 87 "grammar2.y"
-                                    {append_in_jsFile(" && ");}
+  case 37: /* $@14: %empty  */
+#line 73 "grammar2.y"
+                                  {append_in_jsFile(" <= ");}
 #line 1560 "grammar2.tab.c"
     break;
 
-  case 50: /* $@19: %empty  */
-#line 92 "grammar2.y"
-                                  {append_in_jsFile(" || ");}
+  case 39: /* $@15: %empty  */
+#line 74 "grammar2.y"
+                                  {append_in_jsFile(" >= ");}
 #line 1566 "grammar2.tab.c"
     break;
 
-  case 53: /* $@20: %empty  */
-#line 97 "grammar2.y"
-                                {append_in_jsFile(" ? ");}
+  case 42: /* $@16: %empty  */
+#line 79 "grammar2.y"
+                                {append_in_jsFile(" == ");}
 #line 1572 "grammar2.tab.c"
     break;
 
-  case 54: /* $@21: %empty  */
-#line 97 "grammar2.y"
-                                                                          {append_in_jsFile(":");}
+  case 44: /* $@17: %empty  */
+#line 80 "grammar2.y"
+                                {append_in_jsFile(" != ");}
 #line 1578 "grammar2.tab.c"
     break;
 
-  case 57: /* $@22: %empty  */
-#line 102 "grammar2.y"
-                              {append_in_jsFile(" = ");}
+  case 47: /* $@18: %empty  */
+#line 85 "grammar2.y"
+                                    {append_in_jsFile(" && ");}
 #line 1584 "grammar2.tab.c"
     break;
 
-  case 61: /* $@23: %empty  */
-#line 111 "grammar2.y"
-                     {append_in_jsFile(", ");}
+  case 50: /* $@19: %empty  */
+#line 90 "grammar2.y"
+                                  {append_in_jsFile(" || ");}
 #line 1590 "grammar2.tab.c"
     break;
 
-  case 63: /* declaration: declaration_specifiers init_declarator_list ';'  */
-#line 115 "grammar2.y"
-                                                     {append_in_jsFile("\n");}
+  case 53: /* $@20: %empty  */
+#line 95 "grammar2.y"
+                                {append_in_jsFile(" ? ");}
 #line 1596 "grammar2.tab.c"
     break;
 
-  case 69: /* $@24: %empty  */
-#line 127 "grammar2.y"
-                               {append_in_jsFile(", ");}
+  case 54: /* $@21: %empty  */
+#line 95 "grammar2.y"
+                                                                          {append_in_jsFile(":");}
 #line 1602 "grammar2.tab.c"
     break;
 
-  case 72: /* $@25: %empty  */
-#line 132 "grammar2.y"
-                     {append_in_jsFile(" = ");}
+  case 57: /* $@22: %empty  */
+#line 100 "grammar2.y"
+                              {append_in_jsFile(" = ");}
 #line 1608 "grammar2.tab.c"
     break;
 
-  case 79: /* $@26: %empty  */
-#line 144 "grammar2.y"
-          {append_in_jsFile("(");}
+  case 61: /* $@23: %empty  */
+#line 109 "grammar2.y"
+                     {append_in_jsFile(", ");}
 #line 1614 "grammar2.tab.c"
     break;
 
-  case 80: /* declarator: '(' $@26 declarator ')'  */
-#line 144 "grammar2.y"
-                                                  {append_in_jsFile(")");}
+  case 63: /* declaration: declaration_specifiers init_declarator_list ';'  */
+#line 113 "grammar2.y"
+                                                      {append_in_jsFile("\n");}
 #line 1620 "grammar2.tab.c"
     break;
 
-  case 81: /* $@27: %empty  */
-#line 145 "grammar2.y"
-                     {append_in_jsFile("[");}
+  case 69: /* $@24: %empty  */
+#line 125 "grammar2.y"
+                               {append_in_jsFile(", ");}
 #line 1626 "grammar2.tab.c"
     break;
 
-  case 82: /* declarator: declarator '[' $@27 constant_expression ']'  */
-#line 145 "grammar2.y"
-                                                                      {append_in_jsFile("]");}
+  case 72: /* $@25: %empty  */
+#line 130 "grammar2.y"
+                     {append_in_jsFile(" = ");}
 #line 1632 "grammar2.tab.c"
     break;
 
-  case 83: /* declarator: declarator '[' ']'  */
-#line 146 "grammar2.y"
-                         {append_in_jsFile("[]");}
+  case 79: /* $@26: %empty  */
+#line 142 "grammar2.y"
+          {append_in_jsFile("(");}
 #line 1638 "grammar2.tab.c"
     break;
 
-  case 84: /* $@28: %empty  */
-#line 147 "grammar2.y"
-                     {append_in_jsFile("[");}
+  case 80: /* declarator: '(' $@26 declarator ')'  */
+#line 142 "grammar2.y"
+                                                  {append_in_jsFile(")");}
 #line 1644 "grammar2.tab.c"
     break;
 
-  case 85: /* $@29: %empty  */
-#line 147 "grammar2.y"
-                                                                     {append_in_jsFile("]");}
+  case 81: /* $@27: %empty  */
+#line 143 "grammar2.y"
+                     {append_in_jsFile("[");}
 #line 1650 "grammar2.tab.c"
     break;
 
-  case 86: /* $@30: %empty  */
-#line 147 "grammar2.y"
-                                                                                                  {append_in_jsFile("[");}
+  case 82: /* declarator: declarator '[' $@27 constant_expression ']'  */
+#line 143 "grammar2.y"
+                                                                      {append_in_jsFile("]");}
 #line 1656 "grammar2.tab.c"
     break;
 
-  case 87: /* declarator: declarator '[' $@28 constant_expression ']' $@29 '[' $@30 constant_expression ']'  */
-#line 147 "grammar2.y"
-                                                                                                                                                   {append_in_jsFile("]");}
+  case 83: /* declarator: declarator '[' ']'  */
+#line 144 "grammar2.y"
+                         {append_in_jsFile("[]");}
 #line 1662 "grammar2.tab.c"
     break;
 
-  case 88: /* $@31: %empty  */
-#line 148 "grammar2.y"
+  case 84: /* $@28: %empty  */
+#line 145 "grammar2.y"
                      {append_in_jsFile("[");}
 #line 1668 "grammar2.tab.c"
     break;
 
-  case 89: /* $@32: %empty  */
-#line 148 "grammar2.y"
-                                                 {append_in_jsFile("]");}
+  case 85: /* $@29: %empty  */
+#line 145 "grammar2.y"
+                                                                      {append_in_jsFile("]");}
 #line 1674 "grammar2.tab.c"
     break;
 
-  case 90: /* $@33: %empty  */
-#line 148 "grammar2.y"
-                                                                             {append_in_jsFile("[");}
+  case 86: /* $@30: %empty  */
+#line 145 "grammar2.y"
+                                                                                                   {append_in_jsFile("[");}
 #line 1680 "grammar2.tab.c"
     break;
 
-  case 91: /* declarator: declarator '[' $@31 ']' $@32 '[' $@33 constant_expression ']'  */
-#line 148 "grammar2.y"
-                                                                                                                              {append_in_jsFile("]");}
+  case 87: /* declarator: declarator '[' $@28 constant_expression ']' $@29 '[' $@30 constant_expression ']'  */
+#line 145 "grammar2.y"
+                                                                                                                                                    {append_in_jsFile("]");}
 #line 1686 "grammar2.tab.c"
     break;
 
-  case 92: /* $@34: %empty  */
-#line 149 "grammar2.y"
+  case 88: /* $@31: %empty  */
+#line 146 "grammar2.y"
                      {append_in_jsFile("[");}
 #line 1692 "grammar2.tab.c"
     break;
 
-  case 93: /* $@35: %empty  */
-#line 149 "grammar2.y"
+  case 89: /* $@32: %empty  */
+#line 146 "grammar2.y"
                                                   {append_in_jsFile("]");}
 #line 1698 "grammar2.tab.c"
     break;
 
-  case 94: /* $@36: %empty  */
-#line 149 "grammar2.y"
+  case 90: /* $@33: %empty  */
+#line 146 "grammar2.y"
                                                                                {append_in_jsFile("[");}
 #line 1704 "grammar2.tab.c"
     break;
 
-  case 95: /* declarator: declarator '[' $@34 ']' $@35 '[' $@36 ']'  */
-#line 149 "grammar2.y"
-                                                                                                            {append_in_jsFile("]");}
+  case 91: /* declarator: declarator '[' $@31 ']' $@32 '[' $@33 constant_expression ']'  */
+#line 146 "grammar2.y"
+                                                                                                                                {append_in_jsFile("]");}
 #line 1710 "grammar2.tab.c"
     break;
 
-  case 96: /* $@37: %empty  */
-#line 150 "grammar2.y"
-                     {append_in_jsFile("(");}
+  case 92: /* $@34: %empty  */
+#line 147 "grammar2.y"
+                     {append_in_jsFile("[");}
 #line 1716 "grammar2.tab.c"
     break;
 
-  case 97: /* declarator: declarator '(' $@37 parameter_list ')'  */
-#line 150 "grammar2.y"
-                                                                 {append_in_jsFile(")");}
+  case 93: /* $@35: %empty  */
+#line 147 "grammar2.y"
+                                                  {append_in_jsFile("]");}
 #line 1722 "grammar2.tab.c"
     break;
 
-  case 98: /* $@38: %empty  */
-#line 151 "grammar2.y"
-                     {append_in_jsFile("(");}
+  case 94: /* $@36: %empty  */
+#line 147 "grammar2.y"
+                                                                               {append_in_jsFile("[");}
 #line 1728 "grammar2.tab.c"
     break;
 
-  case 99: /* declarator: declarator '(' $@38 identifier_list ')'  */
-#line 151 "grammar2.y"
-                                                                  {append_in_jsFile(")");}
+  case 95: /* declarator: declarator '[' $@34 ']' $@35 '[' $@36 ']'  */
+#line 147 "grammar2.y"
+                                                                                                            {append_in_jsFile("]");}
 #line 1734 "grammar2.tab.c"
     break;
 
-  case 100: /* declarator: declarator '(' ')'  */
-#line 152 "grammar2.y"
-                         {append_in_jsFile("()");}
+  case 96: /* $@37: %empty  */
+#line 148 "grammar2.y"
+                     {append_in_jsFile("(");}
 #line 1740 "grammar2.tab.c"
     break;
 
-  case 102: /* $@39: %empty  */
-#line 157 "grammar2.y"
-                         {append_in_jsFile(", ");}
+  case 97: /* declarator: declarator '(' $@37 parameter_list ')'  */
+#line 148 "grammar2.y"
+                                                                 {append_in_jsFile(")");}
 #line 1746 "grammar2.tab.c"
     break;
 
-  case 107: /* $@40: %empty  */
-#line 167 "grammar2.y"
-                          {append_in_jsFile(", ");}
+  case 98: /* $@38: %empty  */
+#line 149 "grammar2.y"
+                     {append_in_jsFile("(");}
 #line 1752 "grammar2.tab.c"
     break;
 
-  case 115: /* $@41: %empty  */
-#line 183 "grammar2.y"
-          {append_in_jsFile("(");}
+  case 99: /* declarator: declarator '(' $@38 identifier_list ')'  */
+#line 149 "grammar2.y"
+                                                                  {append_in_jsFile(")");}
 #line 1758 "grammar2.tab.c"
     break;
 
-  case 116: /* abstract_declarator: '(' $@41 abstract_declarator ')'  */
-#line 183 "grammar2.y"
-                                                           {append_in_jsFile(")");}
+  case 100: /* declarator: declarator '(' ')'  */
+#line 150 "grammar2.y"
+                         {append_in_jsFile("()");}
 #line 1764 "grammar2.tab.c"
     break;
 
-  case 117: /* abstract_declarator: '[' ']'  */
-#line 184 "grammar2.y"
-              {append_in_jsFile("[]");}
+  case 102: /* $@39: %empty  */
+#line 155 "grammar2.y"
+                         {append_in_jsFile(", ");}
 #line 1770 "grammar2.tab.c"
     break;
 
-  case 118: /* $@42: %empty  */
-#line 185 "grammar2.y"
-          {append_in_jsFile("[");}
+  case 107: /* $@40: %empty  */
+#line 165 "grammar2.y"
+                          {append_in_jsFile(", ");}
 #line 1776 "grammar2.tab.c"
     break;
 
-  case 119: /* abstract_declarator: '[' $@42 conditional_expression ']'  */
-#line 185 "grammar2.y"
-                                                              {append_in_jsFile("]");}
+  case 115: /* $@41: %empty  */
+#line 181 "grammar2.y"
+          {append_in_jsFile("(");}
 #line 1782 "grammar2.tab.c"
     break;
 
-  case 120: /* abstract_declarator: abstract_declarator '[' ']'  */
-#line 186 "grammar2.y"
-                                  {append_in_jsFile("[]");}
+  case 116: /* abstract_declarator: '(' $@41 abstract_declarator ')'  */
+#line 181 "grammar2.y"
+                                                           {append_in_jsFile(")");}
 #line 1788 "grammar2.tab.c"
     break;
 
-  case 121: /* $@43: %empty  */
-#line 187 "grammar2.y"
-                              {append_in_jsFile("[");}
+  case 117: /* abstract_declarator: '[' ']'  */
+#line 182 "grammar2.y"
+              {append_in_jsFile("[]");}
 #line 1794 "grammar2.tab.c"
     break;
 
-  case 122: /* abstract_declarator: abstract_declarator '[' $@43 conditional_expression ']'  */
-#line 187 "grammar2.y"
-                                                                                  {append_in_jsFile("]");}
+  case 118: /* $@42: %empty  */
+#line 183 "grammar2.y"
+          {append_in_jsFile("[");}
 #line 1800 "grammar2.tab.c"
     break;
 
-  case 123: /* abstract_declarator: '(' ')'  */
-#line 188 "grammar2.y"
-              {append_in_jsFile("()");}
+  case 119: /* abstract_declarator: '[' $@42 constant_expression ']'  */
+#line 183 "grammar2.y"
+                                                           {append_in_jsFile("]");}
 #line 1806 "grammar2.tab.c"
     break;
 
-  case 124: /* $@44: %empty  */
-#line 189 "grammar2.y"
-          {append_in_jsFile("(");}
+  case 120: /* abstract_declarator: abstract_declarator '[' ']'  */
+#line 184 "grammar2.y"
+                                  {append_in_jsFile("[]");}
 #line 1812 "grammar2.tab.c"
     break;
 
-  case 125: /* abstract_declarator: '(' $@44 parameter_list ')'  */
-#line 189 "grammar2.y"
-                                                      {append_in_jsFile(")");}
+  case 121: /* $@43: %empty  */
+#line 185 "grammar2.y"
+                              {append_in_jsFile("[");}
 #line 1818 "grammar2.tab.c"
     break;
 
-  case 126: /* abstract_declarator: abstract_declarator '(' ')'  */
-#line 190 "grammar2.y"
-                                  {append_in_jsFile("()");}
+  case 122: /* abstract_declarator: abstract_declarator '[' $@43 constant_expression ']'  */
+#line 185 "grammar2.y"
+                                                                               {append_in_jsFile("]");}
 #line 1824 "grammar2.tab.c"
     break;
 
-  case 127: /* $@45: %empty  */
-#line 191 "grammar2.y"
-                              {append_in_jsFile("(");}
+  case 123: /* abstract_declarator: '(' ')'  */
+#line 186 "grammar2.y"
+              {append_in_jsFile("()");}
 #line 1830 "grammar2.tab.c"
     break;
 
-  case 128: /* abstract_declarator: abstract_declarator '(' $@45 parameter_list ')'  */
-#line 191 "grammar2.y"
-                                                                          {append_in_jsFile(")");}
+  case 124: /* $@44: %empty  */
+#line 187 "grammar2.y"
+          {append_in_jsFile("(");}
 #line 1836 "grammar2.tab.c"
     break;
 
-  case 130: /* $@46: %empty  */
-#line 196 "grammar2.y"
-          {append_in_jsFile("{");}
+  case 125: /* abstract_declarator: '(' $@44 parameter_list ')'  */
+#line 187 "grammar2.y"
+                                                      {append_in_jsFile(")");}
 #line 1842 "grammar2.tab.c"
     break;
 
-  case 131: /* initializer: '{' $@46 initializer_list '}'  */
-#line 196 "grammar2.y"
-                                                        {append_in_jsFile("}");}
+  case 126: /* abstract_declarator: abstract_declarator '(' ')'  */
+#line 188 "grammar2.y"
+                                  {append_in_jsFile("()");}
 #line 1848 "grammar2.tab.c"
     break;
 
-  case 132: /* $@47: %empty  */
-#line 197 "grammar2.y"
-          {append_in_jsFile("{");}
+  case 127: /* $@45: %empty  */
+#line 189 "grammar2.y"
+                              {append_in_jsFile("(");}
 #line 1854 "grammar2.tab.c"
     break;
 
-  case 133: /* initializer: '{' $@47 initializer_list ',' '}'  */
-#line 197 "grammar2.y"
-                                                            {append_in_jsFile(", }");}
+  case 128: /* abstract_declarator: abstract_declarator '(' $@45 parameter_list ')'  */
+#line 189 "grammar2.y"
+                                                                          {append_in_jsFile(")");}
 #line 1860 "grammar2.tab.c"
     break;
 
-  case 135: /* $@48: %empty  */
-#line 202 "grammar2.y"
-                           {append_in_jsFile(", ");}
+  case 130: /* $@46: %empty  */
+#line 194 "grammar2.y"
+          {append_in_jsFile("{");}
 #line 1866 "grammar2.tab.c"
     break;
 
-  case 142: /* compound_statement: '{' '}'  */
-#line 214 "grammar2.y"
-              {append_in_jsFile("{}");}
+  case 131: /* initializer: '{' $@46 initializer_list '}'  */
+#line 194 "grammar2.y"
+                                                        {append_in_jsFile("}");}
 #line 1872 "grammar2.tab.c"
     break;
 
-  case 143: /* $@49: %empty  */
-#line 215 "grammar2.y"
-          {append_in_jsFile("{ ");}
+  case 132: /* $@47: %empty  */
+#line 195 "grammar2.y"
+          {append_in_jsFile("{");}
 #line 1878 "grammar2.tab.c"
     break;
 
-  case 144: /* compound_statement: '{' $@49 statement_list '}'  */
-#line 215 "grammar2.y"
-                                                       {append_in_jsFile(" }");}
+  case 133: /* initializer: '{' $@47 initializer_list ',' '}'  */
+#line 195 "grammar2.y"
+                                                            {append_in_jsFile(", }");}
 #line 1884 "grammar2.tab.c"
     break;
 
-  case 145: /* $@50: %empty  */
-#line 216 "grammar2.y"
-          {append_in_jsFile("{ ");}
+  case 135: /* $@48: %empty  */
+#line 200 "grammar2.y"
+                           {append_in_jsFile(", ");}
 #line 1890 "grammar2.tab.c"
     break;
 
-  case 146: /* compound_statement: '{' $@50 declaration_list '}'  */
-#line 216 "grammar2.y"
-                                                         {append_in_jsFile(" }");}
+  case 142: /* compound_statement: '{' '}'  */
+#line 212 "grammar2.y"
+              {append_in_jsFile("{}");}
 #line 1896 "grammar2.tab.c"
     break;
 
-  case 147: /* $@51: %empty  */
-#line 217 "grammar2.y"
+  case 143: /* $@49: %empty  */
+#line 213 "grammar2.y"
           {append_in_jsFile("{ ");}
 #line 1902 "grammar2.tab.c"
     break;
 
-  case 148: /* compound_statement: '{' $@51 declaration_list statement_list '}'  */
-#line 217 "grammar2.y"
-                                                                        {append_in_jsFile(" }");}
+  case 144: /* compound_statement: '{' $@49 statement_list '}'  */
+#line 213 "grammar2.y"
+                                                       {append_in_jsFile(" }");}
 #line 1908 "grammar2.tab.c"
     break;
 
-  case 153: /* expression_statement: ';'  */
-#line 231 "grammar2.y"
-          {append_in_jsFile("\n");}
+  case 145: /* $@50: %empty  */
+#line 214 "grammar2.y"
+          {append_in_jsFile("{ ");}
 #line 1914 "grammar2.tab.c"
     break;
 
-  case 154: /* expression_statement: expression ';'  */
-#line 232 "grammar2.y"
-                     {append_in_jsFile("\n");}
+  case 146: /* compound_statement: '{' $@50 declaration_list '}'  */
+#line 214 "grammar2.y"
+                                                         {append_in_jsFile(" }");}
 #line 1920 "grammar2.tab.c"
     break;
 
-  case 155: /* $@52: %empty  */
-#line 236 "grammar2.y"
-             {append_in_jsFile("if(");}
+  case 147: /* $@51: %empty  */
+#line 215 "grammar2.y"
+          {append_in_jsFile("{ ");}
 #line 1926 "grammar2.tab.c"
     break;
 
-  case 156: /* $@53: %empty  */
-#line 236 "grammar2.y"
-                                                      {append_in_jsFile(")");}
+  case 148: /* compound_statement: '{' $@51 declaration_list statement_list '}'  */
+#line 215 "grammar2.y"
+                                                                        {append_in_jsFile(" }");}
 #line 1932 "grammar2.tab.c"
     break;
 
-  case 158: /* $@54: %empty  */
-#line 237 "grammar2.y"
-             {append_in_jsFile("if(");}
+  case 153: /* expression_statement: ';'  */
+#line 229 "grammar2.y"
+          {append_in_jsFile("\n");}
 #line 1938 "grammar2.tab.c"
     break;
 
-  case 159: /* $@55: %empty  */
-#line 237 "grammar2.y"
-                                                      {append_in_jsFile(")");}
+  case 154: /* expression_statement: expression ';'  */
+#line 230 "grammar2.y"
+                     {append_in_jsFile("\n");}
 #line 1944 "grammar2.tab.c"
     break;
 
-  case 160: /* $@56: %empty  */
-#line 237 "grammar2.y"
-                                                                                              {append_in_jsFile("else");}
+  case 155: /* $@52: %empty  */
+#line 234 "grammar2.y"
+             {append_in_jsFile("if(");}
 #line 1950 "grammar2.tab.c"
     break;
 
-  case 162: /* $@57: %empty  */
-#line 241 "grammar2.y"
-            {append_in_jsFile("while( ");}
+  case 156: /* $@53: %empty  */
+#line 234 "grammar2.y"
+                                                       {append_in_jsFile(")");}
 #line 1956 "grammar2.tab.c"
     break;
 
-  case 163: /* $@58: %empty  */
-#line 241 "grammar2.y"
-                                                              {append_in_jsFile(") ");}
+  case 158: /* $@54: %empty  */
+#line 235 "grammar2.y"
+             {append_in_jsFile("if(");}
 #line 1962 "grammar2.tab.c"
     break;
 
-  case 165: /* jump_statement: RETURN ';'  */
-#line 245 "grammar2.y"
-                 {append_in_jsFile("return");}
+  case 159: /* $@55: %empty  */
+#line 235 "grammar2.y"
+                                                       {append_in_jsFile(")");}
 #line 1968 "grammar2.tab.c"
     break;
 
-  case 166: /* $@59: %empty  */
-#line 246 "grammar2.y"
-             {append_in_jsFile("return ");}
+  case 160: /* $@56: %empty  */
+#line 235 "grammar2.y"
+                                                                                               {append_in_jsFile("else");}
 #line 1974 "grammar2.tab.c"
     break;
 
-  case 176: /* $@60: %empty  */
-#line 267 "grammar2.y"
-          { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
+  case 162: /* $@57: %empty  */
+#line 239 "grammar2.y"
+            {append_in_jsFile("while( ");}
 #line 1980 "grammar2.tab.c"
     break;
 
-  case 177: /* program: $@60 translation_unit  */
-#line 267 "grammar2.y"
-                                                                                                     { close_output_file(); }
+  case 163: /* $@58: %empty  */
+#line 239 "grammar2.y"
+                                                              {append_in_jsFile(") ");}
 #line 1986 "grammar2.tab.c"
     break;
 
+  case 165: /* jump_statement: RETURN ';'  */
+#line 243 "grammar2.y"
+                 {append_in_jsFile("return");}
+#line 1992 "grammar2.tab.c"
+    break;
 
-#line 1990 "grammar2.tab.c"
+  case 166: /* $@59: %empty  */
+#line 244 "grammar2.y"
+             {append_in_jsFile("return ");}
+#line 1998 "grammar2.tab.c"
+    break;
+
+  case 176: /* $@60: %empty  */
+#line 265 "grammar2.y"
+      { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
+#line 2004 "grammar2.tab.c"
+    break;
+
+  case 177: /* program: $@60 translation_unit  */
+#line 265 "grammar2.y"
+                                                                                                 { close_output_file(); }
+#line 2010 "grammar2.tab.c"
+    break;
+
+
+#line 2014 "grammar2.tab.c"
 
       default: break;
     }
@@ -2179,10 +2203,14 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 269 "grammar2.y"
+#line 267 "grammar2.y"
 
 
-void yyerror(const char *s) {
-    fflush(stdout);
-    printf("\nError: %s\n", s);
+int main(int argc, char *argv[]) {
+    return yyparse();
+}
+
+int yyerror(char *message) {
+    printf("Error: %s en la línea %d\n", message, yylineno);
+    return -1;
 }

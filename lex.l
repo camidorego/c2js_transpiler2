@@ -1,11 +1,14 @@
 %{
+
+#include "grammar2.tab.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "tokens.h"
+// #include "tokens.h"
 %}
 
 %option noyywrap
+%option yylineno
 
 /* Sección de reglas */
 %%
@@ -53,9 +56,10 @@
 "||"        {return LOR;}
 "!"         {return LNOT;}
 
-[a-zA-Z_][a-zA-Z0-9_]* { yylval.str = strdup(yytext); return IDENTIFIER; }
+[a-zA-Z_][a-zA-Z0-9_]* { yylval.str = strdup(yytext); return TYPE_IDENTIFIER; }
 [0-9]+      { yylval.num = atoi(yytext); return NUMBER_LITERAL; }
 [ \t\n]+    ;  // Ignora espacios en blanco
 .           { return yytext[0]; }  // Cualquier otro carácter
 
 %%
+
