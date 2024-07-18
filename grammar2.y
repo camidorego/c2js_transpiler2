@@ -1,135 +1,143 @@
 %{
+#include "funciones.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "symbol_table.h"
+#include <string.h>
+#include "tokens.h"
 
-extern int yylex();
-extern int yyparse();
-extern FILE *yyin;
-
-void yyerror(const char *s);
+int yylex(void);
+int yyerror(char *message);
+extern int yylineno;
 %}
 
-%token IDENTIFIER CONSTANT STRING_LITERAL
-%token CHAR SHORT INT DOUBLE CONST VOID
+%start program
+%union {
+    char *str;
+    int num;
+    float num_dec;
+    int data_type;
+    char var_name[30];
+}
+
+%token <str> IDENTIFIER NUMBER_LITERAL STRING_LITERAL
+%token LE_OP GE_OP EQ_OP NE_OP
+%token AND_OP OR_OP
+%token TYPE_NAME
+
+%token CHAR SHORT INT FLOAT DOUBLE CONST VOID
+
 %token IF ELSE WHILE RETURN
 
-%start program
+%type <str> program function_definition terminal
+%type <str> extended_expression argument_expression_list cast_expression multiplicative_expression additive_expression
+%type <str> relational_expression equality_expression logical_and_expression logical_or_expression conditional_expression
+%type <str> assignment_expression constant_declaration constant_expression expression declaration declaration_specifiers
+%type <str> init_declarator init_declarator_list type_name type_qualifier_list type_qualifier abstract_declarator
+%type <str> initializer initializer_list expression
+%type <str> statement compound_statement loop_statement expression_statement selection_statement jump_statement
+%type <str> translation_unit external_declaration
+%type <str> specifier_qualifier_list parameter_list parameter_declaration identifier_list declarator
 
 %%
-primary_expression
+terminal
     : IDENTIFIER
-    | CONSTANT
+    | NUMBER_LITERAL
     | STRING_LITERAL
-    | '(' expression ')'
+    | '(' {append_in_jsFile("( ");} expression ')' {append_in_jsFile(" )");}
     ;
 
-postfix_expression
-    : primary_expression
-    | postfix_expression '[' expression ']'
-    | postfix_expression '(' ')'
-    | postfix_expression '(' argument_expression_list ')'
+extended_expression
+    : terminal
+    | extended_expression '[' {append_in_jsFile("[ ");} expression ']' {append_in_jsFile(" ]");}
+    | extended_expression '(' ')' {append_in_jsFile("()");}
+    | extended_expression '(' {append_in_jsFile("( ");} argument_expression_list ')' {append_in_jsFile(" )");}
     ;
 
 argument_expression_list
     : assignment_expression
-    | argument_expression_list ',' assignment_expression
+    | argument_expression_list ',' {append_in_jsFile(", ");} assignment_expression
     ;
 
 cast_expression
-    : postfix_expression
-    | '(' type_name ')' cast_expression
+    : extended_expression
+    | '(' {append_in_jsFile("( ");} type_name ')' {append_in_jsFile(" )");} cast_expression
     ;
 
 multiplicative_expression
     : cast_expression
-    | multiplicative_expression '*' cast_expression
-    | multiplicative_expression '/' cast_expression
-    | multiplicative_expression '%' cast_expression
+    | multiplicative_expression '*' {append_in_jsFile(" * ");} cast_expression
+    | multiplicative_expression '/' {append_in_jsFile(" / ");} cast_expression
+    | multiplicative_expression '%' {append_in_jsFile(" % ");} cast_expression
     ;
 
 additive_expression
     : multiplicative_expression
-    | additive_expression '+' multiplicative_expression
-    | additive_expression '-' multiplicative_expression
+    | additive_expression '+' {append_in_jsFile(" + ");} multiplicative_expression
+    | additive_expression '-' {append_in_jsFile(" - ");} multiplicative_expression
     ;
 
 relational_expression
     : additive_expression
-    | relational_expression '<' additive_expression
-    | relational_expression '>' additive_expression
-    | relational_expression LE_OP additive_expression
-    | relational_expression GE_OP additive_expression
+    | relational_expression '<' {append_in_jsFile(" < ");} additive_expression
+    | relational_expression '>' {append_in_jsFile(" > ");} additive_expression
+    | relational_expression LE_OP {append_in_jsFile(" <= ");} additive_expression
+    | relational_expression GE_OP {append_in_jsFile(" >= ");} additive_expression
     ;
 
 equality_expression
     : relational_expression
-    | equality_expression EQ_OP relational_expression
-    | equality_expression NE_OP relational_expression
+    | equality_expression EQ_OP {append_in_jsFile(" == ");} relational_expression
+    | equality_expression NE_OP {append_in_jsFile(" != ");} relational_expression
     ;
 
 logical_and_expression
     : equality_expression
-    | logical_and_expression AND_OP equality_expression
+    | logical_and_expression AND_OP {append_in_jsFile(" && ");} equality_expression
     ;
 
 logical_or_expression
     : logical_and_expression
-    | logical_or_expression OR_OP logical_and_expression
+    | logical_or_expression OR_OP {append_in_jsFile(" || ");} logical_and_expression
     ;
 
 conditional_expression
     : logical_or_expression
-    | logical_or_expression '?' expression ':' conditional_expression
+    | logical_or_expression '?' {append_in_jsFile(" ? ");} expression ':' {append_in_jsFile(":");} conditional_expression
     ;
 
 assignment_expression
     : conditional_expression
-    | postfix_expression assignment_operator assignment_expression
-    ;
-
-assignment_operator
-    : '='
-    | MUL_ASSIGN
-    | DIV_ASSIGN
-    | MOD_ASSIGN
-    | ADD_ASSIGN
-    | SUB_ASSIGN
-    | LEFT_ASSIGN
-    | RIGHT_ASSIGN
-    | AND_ASSIGN
-    | XOR_ASSIGN
-    | OR_ASSIGN
-    ;
-
-expression
-    : assignment_expression
-    | expression ',' assignment_expression
+    | extended_expression '=' {append_in_jsFile(" = ");} assignment_expression
     ;
 
 constant_expression
     : conditional_expression
     ;
 
+expression
+    : assignment_expression
+    | expression ',' {append_in_jsFile(", ");} assignment_expression
+    ;
+
 declaration
-    : declaration_specifiers init_declarator_list ';'
+    : declaration_specifiers init_declarator_list ';' {append_in_jsFile("\n");}
     ;
 
 declaration_specifiers
     : type_specifier declaration_specifiers
     | type_specifier
-    | type_qualifier declaration_specifiers
-    | type_qualifier
+    | CONST declaration_specifiers
+    | CONST
     ;
 
 init_declarator_list
     : init_declarator
-    | init_declarator_list ',' init_declarator
+    | init_declarator_list ',' {append_in_jsFile(", ");} init_declarator
     ;
 
 init_declarator
     : declarator
-    | declarator '=' initializer
+    | declarator '=' {append_in_jsFile(" = ");} initializer
     ;
 
 type_specifier
@@ -139,23 +147,22 @@ type_specifier
     | DOUBLE
     ;
 
-type_qualifier
-    : CONST
-    ;
-
 declarator
     : IDENTIFIER
-    | '(' declarator ')'
-    | declarator '[' constant_expression ']'
-    | declarator '[' ']'
-    | declarator '(' parameter_list ')'
-    | declarator '(' identifier_list ')'
-    | declarator '(' ')'
+    | '(' {append_in_jsFile("(");} declarator ')' {append_in_jsFile(")");}
+    | declarator '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+    | declarator '[' ']' {append_in_jsFile("[]");}
+    | declarator '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");} '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+    | declarator '[' {append_in_jsFile("[");} ']' {append_in_jsFile("]");} '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+    | declarator '[' {append_in_jsFile("[");} ']' {append_in_jsFile("]");} '[' {append_in_jsFile("[");} ']' {append_in_jsFile("]");}
+    | declarator '(' {append_in_jsFile("(");} parameter_list ')' {append_in_jsFile(")");}
+    | declarator '(' {append_in_jsFile("(");} identifier_list ')' {append_in_jsFile(")");}
+    | declarator '(' ')' {append_in_jsFile("()");}
     ;
 
 parameter_list
     : parameter_declaration
-    | parameter_list ',' parameter_declaration
+    | parameter_list ',' {append_in_jsFile(", ");} parameter_declaration
     ;
 
 parameter_declaration
@@ -165,7 +172,7 @@ parameter_declaration
 
 identifier_list
     : IDENTIFIER
-    | identifier_list ',' IDENTIFIER
+    | identifier_list ',' {append_in_jsFile(", ");} IDENTIFIER
     ;
 
 type_name
@@ -176,46 +183,46 @@ type_name
 specifier_qualifier_list
     : type_specifier specifier_qualifier_list
     | type_specifier
-    | type_qualifier specifier_qualifier_list
-    | type_qualifier
+    | CONST specifier_qualifier_list
+    | CONST
     ;
 
 abstract_declarator
-    : '(' abstract_declarator ')'
-    | '[' ']'
-    | '[' constant_expression ']'
-    | abstract_declarator '[' ']'
-    | abstract_declarator '[' constant_expression ']'
-    | '(' ')'
-    | '(' parameter_list ')'
-    | abstract_declarator '(' ')'
-    | abstract_declarator '(' parameter_list ')'
+    : '(' {append_in_jsFile("(");} abstract_declarator ')' {append_in_jsFile(")");}
+    | '[' ']' {append_in_jsFile("[]");}
+    | '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+    | abstract_declarator '[' ']' {append_in_jsFile("[]");}
+    | abstract_declarator '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+    | '(' ')' {append_in_jsFile("()");}
+    | '(' {append_in_jsFile("(");} parameter_list ')' {append_in_jsFile(")");}
+    | abstract_declarator '(' ')' {append_in_jsFile("()");}
+    | abstract_declarator '(' {append_in_jsFile("(");} parameter_list ')' {append_in_jsFile(")");}
     ;
 
 initializer
     : assignment_expression
-    | '{' initializer_list '}'
-    | '{' initializer_list ',' '}'
+    | '{' {append_in_jsFile("{");} initializer_list '}' {append_in_jsFile("}");}
+    | '{' {append_in_jsFile("{");} initializer_list ',' '}' {append_in_jsFile(", }");}
     ;
 
 initializer_list
     : initializer
-    | initializer_list ',' initializer
+    | initializer_list ',' {append_in_jsFile(", ");} initializer
     ;
 
 statement
     : compound_statement
     | expression_statement
     | selection_statement
-    | iteration_statement
+    | loop_statement
     | jump_statement
     ;
 
 compound_statement
-    : '{' '}'
-    | '{' statement_list '}'
-    | '{' declaration_list '}'
-    | '{' declaration_list statement_list '}'
+    : '{' '}' {append_in_jsFile("{}");}
+    | '{' {append_in_jsFile("{ ");} statement_list '}' {append_in_jsFile(" }");}
+    | '{' {append_in_jsFile("{ ");} declaration_list '}' {append_in_jsFile(" }");}
+    | '{' {append_in_jsFile("{ ");} declaration_list statement_list '}' {append_in_jsFile(" }");}
     ;
 
 declaration_list
@@ -229,25 +236,25 @@ statement_list
     ;
 
 expression_statement
-    : ';'
-    | expression ';'
+    : ';' {append_in_jsFile("\n");}
+    | expression ';' {append_in_jsFile("\n");}
     ;
 
 selection_statement
-    : IF '(' expression ')' statement
-    | IF '(' expression ')' statement ELSE statement
+    : IF '(' {append_in_jsFile("if(");} expression ')' {append_in_jsFile(")");} statement
+    | IF '(' {append_in_jsFile("if(");} expression ')' {append_in_jsFile(")");} statement ELSE {append_in_jsFile("else");} statement
     ;
 
-iteration_statement
-    : WHILE '(' expression ')' statement
+loop_statement
+    : WHILE {append_in_jsFile("while( ");} '(' expression ')' {append_in_jsFile(") ");} statement
     ;
 
 jump_statement
-    : RETURN ';'
-    | RETURN expression ';'
+    : RETURN ';' {append_in_jsFile("return");}
+    | RETURN {append_in_jsFile("return ");} expression ';' 
     ;
 
-program
+translation_unit
     : external_declaration
     | translation_unit external_declaration
     ;
@@ -264,10 +271,16 @@ function_definition
     | declarator compound_statement
     ;
 
+program
+    : { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); } translation_unit { close_output_file(); }
+    ;
 %%
-#include "symbol_table.c"
 
-void yyerror(const char *s) {
-    fflush(stdout);
-    printf("\nError: %s\n", s);
+int main(int argc, char *argv[]) {
+    return yyparse();
+}
+
+int yyerror(char *message) {
+    printf("Error: %s en la línea %d\n", message, yylineno);
+    return -1;
 }

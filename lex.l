@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "tokens.h"
 %}
 
-/* Definiciones de patrones y opciones */
 %option noyywrap
 
 /* Sección de reglas */
@@ -12,21 +12,19 @@
 "main"      {return MAIN;}
 "void"      {return VOID;}
 "printf"    {return PRINTF;}
-"const"     {return KEYWORD_CONST;}
+"const"     {return CONST;}
 
-"int"       {yylval.data_type=0; return KEYWORD_INT;}
-"char"      {yylval.data_type=1; return KEYWORD_CHAR;}
-"float"     {yylval.data_type=2; return KEYWORD_FLOAT;}
-"double"    {yylval.data_type=3; return KEYWORD_DOUBLE;}
+"int"       {yylval.data_type=0; return INT;}
+"char"      {yylval.data_type=1; return CHAR;}
+"float"     {yylval.data_type=2; return FLOAT;}
+"double"    {yylval.data_type=3; return DOUBLE;}
 
-"for"       {return KEYWORD_FOR;}
-"while"     {return KEYWORD_WHILE;}
+"while"     {return WHILE;}
 
-"if"        {return KEYWORD_IF;}
-"else"      {return KEYWORD_ELSE;}
+"if"        {return IF;}
+"else"      {return ELSE;}
 
-"function"  {return KEYWORD_FUNCTION;}
-"return"    {return KEYWORD_RETURN;}
+"return"    {return RETURN;}
 
 "="         {return ASSIGNMENT_OP;}
 ";"         {return SEMICOLON;}
@@ -61,7 +59,3 @@
 .           { return yytext[0]; }  // Cualquier otro carácter
 
 %%
-
-int yywrap() {
-    return 1;  // Flex necesita esta función para indicar el fin de entrada
-}

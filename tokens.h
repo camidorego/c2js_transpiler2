@@ -1,49 +1,52 @@
 #ifndef TOKENS_H
 #define TOKENS_H
 
-// Palabras clave
-// #define MAIN 1
-// #define VOID 2
-// #define PRINTF 3
-// #define KEYWORD_CONST 4
-// #define KEYWORD_INT 5
-// #define KEYWORD_CHAR 6
-// #define KEYWORD_FLOAT 7
-// #define KEYWORD_DOUBLE 8
-// #define KEYWORD_FOR 9
-// #define KEYWORD_WHILE 10
-// #define KEYWORD_IF 11
-// #define KEYWORD_ELSE 12
-// #define KEYWORD_FUNCTION 13
-// #define KEYWORD_RETURN 14
+// Definiciones de tokens
+#define MAIN 1
+#define VOID 2
+#define PRINTF 3
+#define CONST 4
+#define INT 5
+#define CHAR 6
+#define FLOAT 7
+#define DOUBLE 8
+#define WHILE 9
+#define IF 10
+#define ELSE 11
+#define RETURN 12
+#define ASSIGNMENT_OP 13
+#define SEMICOLON 14
+#define COMMA 15
+#define LPAREN 16
+#define RPAREN 17
+#define LBRACE 18
+#define RBRACE 19
+#define LSQBRAQ 20
+#define RSQBRAQ 21
+#define PLUS_OP 22
+#define MINUS_OP 23
+#define MULTIPLY_OP 24
+#define DIVIDE_OP 25
+#define MOD_OP 26
+#define EQ_OP 27
+#define NEQ_OP 28
+#define GT_OP 29
+#define LT_OP 30
+#define GE_OP 31
+#define LE_OP 32
+#define LAND 33
+#define LOR 34
+#define LNOT 35
+#define IDENTIFIER 36
+#define NUMBER_LITERAL 37
 
-// // Operadores y símbolos
-// #define ASSIGNMENT_OP 15
-// #define SEMICOLON 16
-// #define COMMA 17
-// #define LPAREN 18
-// #define RPAREN 19
-// #define LBRACE 20
-// #define RBRACE 21
-// #define LSQBRAQ 22
-// #define RSQBRAQ 23
-// #define PLUS_OP 24
-// #define MINUS_OP 25
-// #define MULTIPLY_OP 26
-// #define DIVIDE_OP 27
-// #define MOD_OP 28
-// #define EQ_OP 29
-// #define NEQ_OP 30
-// #define GT_OP 31
-// #define LT_OP 32
-// #define GE_OP 33
-// #define LE_OP 34
-// #define LAND 35
-// #define LOR 36
-// #define LNOT 37
+// Definición de yylval
+typedef union {
+    int num;
+    char* str;
+    int data_type;
+} yylval_t;
 
-// Literales
-// #define IDENTIFIER 38
-// #define NUMBER_LITERAL 39
+extern yylval_t yylval;
 
 #endif
