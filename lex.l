@@ -56,14 +56,14 @@
 "volatile"		{ return(VOLATILE); }
 "while"			{ return(WHILE); }
 
-0[xX]{H}+{IS}?		{ return(NUMBER_LITERAL); }
-0{D}+{IS}?		{ return(NUMBER_LITERAL); }
-{D}+{IS}?		{ return(NUMBER_LITERAL); }
-L?'(\\.|[^\\'])+'	{ return(NUMBER_LITERAL); }
+0[xX]{H}+{IS}?		{ return(CONSTANT); }
+0{D}+{IS}?		{ return(CONSTANT); }
+{D}+{IS}?		{ return(CONSTANT); }
+L?'(\\.|[^\\'])+'	{ return(CONSTANT); }
 
-{D}+{E}{FS}?		{ return(NUMBER_LITERAL); }
-{D}*"."{D}+({E})?{FS}?	{ return(NUMBER_LITERAL); }
-{D}+"."{D}*({E})?{FS}?	{ return(NUMBER_LITERAL); }
+{D}+{E}{FS}?		{ return(CONSTANT); }
+{D}*"."{D}+({E})?{FS}?	{ return(CONSTANT); }
+{D}+"."{D}*({E})?{FS}?	{ return(CONSTANT); }
 
 L?\"(\\.|[^\\"])*\"	{ return(STRING_LITERAL); }
 
@@ -114,8 +114,8 @@ L?\"(\\.|[^\\"])*\"	{ return(STRING_LITERAL); }
 "|"			{ return('|'); }
 "?"			{ return('?'); }
 
-[a-zA-Z_][a-zA-Z0-9_]* { yylval.str = strdup(yytext); return TYPE_IDENTIFIER; }
-[0-9]+      { yylval.num = atoi(yytext); return NUMBER_LITERAL; }
+[a-zA-Z_][a-zA-Z0-9_]* { yylval.str = strdup(yytext); return IDENTIFIER; }
+[0-9]+      { yylval.num = atoi(yytext); return CONSTANT; }
 [ \t\n]+    ;  // Ignora espacios en blanco
 .           { return yytext[0]; }  // Cualquier otro carácter
 

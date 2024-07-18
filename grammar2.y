@@ -28,6 +28,7 @@ extern int yylineno;
 %token TYPEDEF EXTERN STATIC AUTO REGISTER
 %token CHAR SHORT INT LONG SIGNED UNSIGNED FLOAT DOUBLE CONST VOLATILE VOID
 %token STRUCT UNION ENUM ELLIPSIS
+%token PRINTF
 
 %token CASE DEFAULT IF ELSE SWITCH WHILE DO FOR GOTO CONTINUE BREAK RETURN
 
@@ -35,18 +36,17 @@ extern int yylineno;
 %%
 
 primary_expression
-	: IDENTIFIER
-	| CONSTANT
-	| STRING_LITERAL
-	| '(' expression ')'
+	: IDENTIFIER {append_in_jsFile(yylval.str);}
+	| CONSTANT 
+	| STRING_LITERAL {append_in_jsFile(yylval.var_name);}
+	| '(' {append_in_jsFile("(");} expression ')' {append_in_jsFile(")");}
 	;
 
 postfix_expression
-	: primary_expression
-	| postfix_expression '[' expression ']'
-	| postfix_expression '(' ')'
-	| postfix_expression '(' argument_expression_list ')'
-	| postfix_expression '.' IDENTIFIER
+	: primary_expression 
+	| postfix_expression '[' {append_in_jsFile("[");} expression ']' {append_in_jsFile("]");}
+	| postfix_expression '(' {append_in_jsFile("(");} argument_expression_list ')' {append_in_jsFile(")");}
+	| postfix_expression '.' {append_in_jsFile(".");} IDENTIFIER
 	| postfix_expression PTR_OP IDENTIFIER
 	| postfix_expression INC_OP
 	| postfix_expression DEC_OP
@@ -54,7 +54,8 @@ postfix_expression
 
 argument_expression_list
 	: assignment_expression
-	| argument_expression_list ',' assignment_expression
+	| argument_expression_list ',' {append_in_jsFile(", ");} assignment_expression
+	|
 	;
 
 unary_expression
@@ -67,30 +68,30 @@ unary_expression
 	;
 
 unary_operator
-	: '&'
-	| '*'
-	| '+'
-	| '-'
-	| '~'
-	| '!'
+	: '&' {append_in_jsFile("&");}
+	| '*' {append_in_jsFile("*");}
+	| '+' {append_in_jsFile("+");}
+	| '-' {append_in_jsFile("-");}
+	| '~' {append_in_jsFile("~");}
+	| '!' {append_in_jsFile("!");}
 	;
 
 cast_expression
 	: unary_expression
-	| '(' type_name ')' cast_expression
+	| '(' {append_in_jsFile("(");} type_name ')' {append_in_jsFile(")");} cast_expression
 	;
 
 multiplicative_expression
 	: cast_expression
-	| multiplicative_expression '*' cast_expression
-	| multiplicative_expression '/' cast_expression
-	| multiplicative_expression '%' cast_expression
+	| multiplicative_expression '*' {append_in_jsFile("*");} cast_expression
+	| multiplicative_expression '/' {append_in_jsFile("/");} cast_expression
+	| multiplicative_expression '%' {append_in_jsFile("%");} cast_expression
 	;
 
 additive_expression
 	: multiplicative_expression
-	| additive_expression '+' multiplicative_expression
-	| additive_expression '-' multiplicative_expression
+	| additive_expression '+' {append_in_jsFile("+");} multiplicative_expression
+	| additive_expression '-' {append_in_jsFile("-");} multiplicative_expression
 	;
 
 shift_expression
@@ -101,21 +102,21 @@ shift_expression
 
 relational_expression
 	: shift_expression
-	| relational_expression '<' shift_expression
-	| relational_expression '>' shift_expression
-	| relational_expression LE_OP shift_expression
-	| relational_expression GE_OP shift_expression
+	| relational_expression '<' {append_in_jsFile("<");} shift_expression
+	| relational_expression '>' {append_in_jsFile(">");} shift_expression
+	| relational_expression LE_OP {append_in_jsFile("<=");} shift_expression
+	| relational_expression GE_OP {append_in_jsFile(">=");} shift_expression
 	;
 
 equality_expression
 	: relational_expression
-	| equality_expression EQ_OP relational_expression
-	| equality_expression NE_OP relational_expression
+	| equality_expression EQ_OP {append_in_jsFile("==");} relational_expression
+	| equality_expression NE_OP {append_in_jsFile("!=");} relational_expression
 	;
 
 and_expression
 	: equality_expression
-	| and_expression '&' equality_expression
+	| and_expression '&' {append_in_jsFile("&");} equality_expression
 	;
 
 exclusive_or_expression
@@ -125,17 +126,17 @@ exclusive_or_expression
 
 inclusive_or_expression
 	: exclusive_or_expression
-	| inclusive_or_expression '|' exclusive_or_expression
+	| inclusive_or_expression '|' {append_in_jsFile("|");} exclusive_or_expression
 	;
 
 logical_and_expression
 	: inclusive_or_expression
-	| logical_and_expression AND_OP inclusive_or_expression
+	| logical_and_expression AND_OP {append_in_jsFile("&&");} inclusive_or_expression
 	;
 
 logical_or_expression
 	: logical_and_expression
-	| logical_or_expression OR_OP logical_and_expression
+	| logical_or_expression  {append_in_jsFile("||");} logical_and_expression
 	;
 
 conditional_expression
@@ -149,7 +150,7 @@ assignment_expression
 	;
 
 assignment_operator
-	: '='
+	: '=' {append_in_jsFile("=");}
 	| MUL_ASSIGN
 	| DIV_ASSIGN
 	| MOD_ASSIGN
@@ -164,16 +165,18 @@ assignment_operator
 
 expression
 	: assignment_expression
-	| expression ',' assignment_expression
+	| expression ',' {append_in_jsFile(", ");} assignment_expression
+	| PRINTF {append_in_jsFile("console.log");} postfix_expression
 	;
 
 constant_expression
 	: conditional_expression
+	|
 	;
 
 declaration
-	: declaration_specifiers ';'
-	| declaration_specifiers init_declarator_list ';'
+	: type_qualifier declaration_specifiers init_declarator_list
+	| declaration_specifiers init_declarator_list ';' {append_in_jsFile("\n");}
 	;
 
 declaration_specifiers
@@ -181,18 +184,19 @@ declaration_specifiers
 	| storage_class_specifier declaration_specifiers
 	| type_specifier
 	| type_specifier declaration_specifiers
-	| type_qualifier
+	| type_qualifier 
 	| type_qualifier declaration_specifiers
 	;
 
 init_declarator_list
 	: init_declarator
-	| init_declarator_list ',' init_declarator
+	| init_declarator_list ',' {append_in_jsFile(", ");} init_declarator
+	|
 	;
 
 init_declarator
 	: declarator
-	| declarator '=' initializer
+	| declarator '=' {append_in_jsFile("=");} initializer
 	;
 
 storage_class_specifier
@@ -205,12 +209,12 @@ storage_class_specifier
 
 type_specifier
 	: VOID
-	| CHAR
-	| SHORT
-	| INT
-	| LONG
-	| FLOAT
-	| DOUBLE
+	| CHAR 
+	| SHORT 
+	| INT 
+	| LONG 
+	| FLOAT 
+	| DOUBLE 
 	| SIGNED
 	| UNSIGNED
 	| struct_or_union_specifier
@@ -273,23 +277,21 @@ enumerator
 	;
 
 type_qualifier
-	: CONST
+	: CONST {append_in_jsFile("const ");}
 	| VOLATILE
 	;
 
 declarator
 	: pointer direct_declarator
-	| direct_declarator
+	| direct_declarator {append_in_jsFile("let ");}
 	;
 
 direct_declarator
 	: IDENTIFIER
-	| '(' declarator ')'
-	| direct_declarator '[' constant_expression ']'
-	| direct_declarator '[' ']'
-	| direct_declarator '(' parameter_type_list ')'
-	| direct_declarator '(' identifier_list ')'
-	| direct_declarator '(' ')'
+	| '(' {append_in_jsFile("(");} declarator ')' {append_in_jsFile(")");}
+	| direct_declarator '[' {append_in_jsFile("[");} constant_expression ']' {append_in_jsFile("]");}
+	| direct_declarator '(' {append_in_jsFile("(");} parameter_type_list ')' {append_in_jsFile(")");}
+	| direct_declarator '(' {append_in_jsFile("(");} identifier_list ')' {append_in_jsFile(")");}
 	;
 
 pointer
@@ -324,6 +326,7 @@ parameter_declaration
 identifier_list
 	: IDENTIFIER
 	| identifier_list ',' IDENTIFIER
+	|
 	;
 
 type_name
@@ -351,13 +354,13 @@ direct_abstract_declarator
 
 initializer
 	: assignment_expression
-	| '{' initializer_list '}'
-	| '{' initializer_list ',' '}'
+	| '{' {append_in_jsFile("{ \n");} initializer_list '}' {append_in_jsFile("\n }");}
 	;
 
 initializer_list
 	: initializer
 	| initializer_list ',' initializer
+	|
 	;
 
 statement
@@ -376,7 +379,7 @@ labeled_statement
 	;
 
 compound_statement
-	: '{' {append_in_jsFile("{");} compound_statement_helper '}' {append_in_jsFile("}");}
+	: '{' {append_in_jsFile("{ \n");} compound_statement_helper '}' {append_in_jsFile("\n }");}
 	;
 
 compound_statement_helper
@@ -412,7 +415,7 @@ else_statement
     ;
 
 iteration_statement
-	: WHILE '(' expression ')' statement
+	: WHILE '(' {append_in_jsFile("while(");} expression ')' {append_in_jsFile(")");} statement
 	| DO statement WHILE '(' expression ')' ';'
 	| FOR '(' expression_statement expression_statement ')' statement
 	| FOR '(' expression_statement expression_statement expression ')' statement
@@ -422,8 +425,8 @@ jump_statement
 	: GOTO IDENTIFIER ';'
 	| CONTINUE ';'
 	| BREAK ';'
-	| RETURN ';'
-	| RETURN expression ';'
+	| RETURN ';' {append_in_jsFile("\nreturn \n");}
+	| RETURN {append_in_jsFile("\nreturn ");} expression ';' {append_in_jsFile("\n");}
 	;
 
 translation_unit

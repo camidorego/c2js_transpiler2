@@ -100,20 +100,21 @@ extern int yydebug;
     UNION = 301,                   /* UNION  */
     ENUM = 302,                    /* ENUM  */
     ELLIPSIS = 303,                /* ELLIPSIS  */
-    CASE = 304,                    /* CASE  */
-    DEFAULT = 305,                 /* DEFAULT  */
-    IF = 306,                      /* IF  */
-    ELSE = 307,                    /* ELSE  */
-    SWITCH = 308,                  /* SWITCH  */
-    WHILE = 309,                   /* WHILE  */
-    DO = 310,                      /* DO  */
-    FOR = 311,                     /* FOR  */
-    GOTO = 312,                    /* GOTO  */
-    CONTINUE = 313,                /* CONTINUE  */
-    BREAK = 314,                   /* BREAK  */
-    RETURN = 315,                  /* RETURN  */
-    YY_PARSE_translation_unit = 316, /* YY_PARSE_translation_unit  */
-    YY_PARSE_program = 317         /* YY_PARSE_program  */
+    PRINTF = 304,                  /* PRINTF  */
+    CASE = 305,                    /* CASE  */
+    DEFAULT = 306,                 /* DEFAULT  */
+    IF = 307,                      /* IF  */
+    ELSE = 308,                    /* ELSE  */
+    SWITCH = 309,                  /* SWITCH  */
+    WHILE = 310,                   /* WHILE  */
+    DO = 311,                      /* DO  */
+    FOR = 312,                     /* FOR  */
+    GOTO = 313,                    /* GOTO  */
+    CONTINUE = 314,                /* CONTINUE  */
+    BREAK = 315,                   /* BREAK  */
+    RETURN = 316,                  /* RETURN  */
+    YY_PARSE_translation_unit = 317, /* YY_PARSE_translation_unit  */
+    YY_PARSE_program = 318         /* YY_PARSE_program  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -130,7 +131,7 @@ union YYSTYPE
     int data_type;
     char var_name[30];
 
-#line 134 "grammar2.tab.h"
+#line 135 "grammar2.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
