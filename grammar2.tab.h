@@ -55,44 +55,69 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     IDENTIFIER = 258,              /* IDENTIFIER  */
-    NUMBER_LITERAL = 259,          /* NUMBER_LITERAL  */
+    CONSTANT = 259,                /* CONSTANT  */
     STRING_LITERAL = 260,          /* STRING_LITERAL  */
-    QUOTED_CHAR = 261,             /* QUOTED_CHAR  */
-    NUMBER_LITERAL_DEC = 262,      /* NUMBER_LITERAL_DEC  */
-    LE_OP = 263,                   /* LE_OP  */
-    GE_OP = 264,                   /* GE_OP  */
-    EQ_OP = 265,                   /* EQ_OP  */
-    NE_OP = 266,                   /* NE_OP  */
-    GT_OP = 267,                   /* GT_OP  */
-    LT_OP = 268,                   /* LT_OP  */
-    AND_OP = 269,                  /* AND_OP  */
-    OR_OP = 270,                   /* OR_OP  */
-    LNOT = 271,                    /* LNOT  */
-    CHAR = 272,                    /* CHAR  */
-    SHORT = 273,                   /* SHORT  */
-    INT = 274,                     /* INT  */
-    FLOAT = 275,                   /* FLOAT  */
-    DOUBLE = 276,                  /* DOUBLE  */
-    CONST = 277,                   /* CONST  */
-    VOID = 278,                    /* VOID  */
-    WHILE = 279,                   /* WHILE  */
-    IF = 280,                      /* IF  */
-    ELSE = 281,                    /* ELSE  */
-    RETURN = 282,                  /* RETURN  */
-    ASSIGNMENT_OP = 283,           /* ASSIGNMENT_OP  */
-    SEMICOLON = 284,               /* SEMICOLON  */
-    COMMA = 285,                   /* COMMA  */
+    SIZEOF = 261,                  /* SIZEOF  */
+    PTR_OP = 262,                  /* PTR_OP  */
+    INC_OP = 263,                  /* INC_OP  */
+    DEC_OP = 264,                  /* DEC_OP  */
+    LEFT_OP = 265,                 /* LEFT_OP  */
+    RIGHT_OP = 266,                /* RIGHT_OP  */
+    LE_OP = 267,                   /* LE_OP  */
+    GE_OP = 268,                   /* GE_OP  */
+    EQ_OP = 269,                   /* EQ_OP  */
+    NE_OP = 270,                   /* NE_OP  */
+    AND_OP = 271,                  /* AND_OP  */
+    OR_OP = 272,                   /* OR_OP  */
+    MUL_ASSIGN = 273,              /* MUL_ASSIGN  */
+    DIV_ASSIGN = 274,              /* DIV_ASSIGN  */
+    MOD_ASSIGN = 275,              /* MOD_ASSIGN  */
+    ADD_ASSIGN = 276,              /* ADD_ASSIGN  */
+    SUB_ASSIGN = 277,              /* SUB_ASSIGN  */
+    LEFT_ASSIGN = 278,             /* LEFT_ASSIGN  */
+    RIGHT_ASSIGN = 279,            /* RIGHT_ASSIGN  */
+    AND_ASSIGN = 280,              /* AND_ASSIGN  */
+    XOR_ASSIGN = 281,              /* XOR_ASSIGN  */
+    OR_ASSIGN = 282,               /* OR_ASSIGN  */
+    TYPE_NAME = 283,               /* TYPE_NAME  */
+    RSQBRAQ = 284,                 /* RSQBRAQ  */
+    LSQBRAQ = 285,                 /* LSQBRAQ  */
     LPAREN = 286,                  /* LPAREN  */
     RPAREN = 287,                  /* RPAREN  */
-    LBRACE = 288,                  /* LBRACE  */
-    RBRACE = 289,                  /* RBRACE  */
-    LSQBRAQ = 290,                 /* LSQBRAQ  */
-    RSQBRAQ = 291,                 /* RSQBRAQ  */
-    PLUS_OP = 292,                 /* PLUS_OP  */
-    MINUS_OP = 293,                /* MINUS_OP  */
-    MULTIPLY_OP = 294,             /* MULTIPLY_OP  */
-    DIVIDE_OP = 295,               /* DIVIDE_OP  */
-    MOD_OP = 296                   /* MOD_OP  */
+    TYPEDEF = 288,                 /* TYPEDEF  */
+    EXTERN = 289,                  /* EXTERN  */
+    STATIC = 290,                  /* STATIC  */
+    AUTO = 291,                    /* AUTO  */
+    REGISTER = 292,                /* REGISTER  */
+    CHAR = 293,                    /* CHAR  */
+    SHORT = 294,                   /* SHORT  */
+    INT = 295,                     /* INT  */
+    LONG = 296,                    /* LONG  */
+    SIGNED = 297,                  /* SIGNED  */
+    UNSIGNED = 298,                /* UNSIGNED  */
+    FLOAT = 299,                   /* FLOAT  */
+    DOUBLE = 300,                  /* DOUBLE  */
+    CONST = 301,                   /* CONST  */
+    VOLATILE = 302,                /* VOLATILE  */
+    VOID = 303,                    /* VOID  */
+    STRUCT = 304,                  /* STRUCT  */
+    UNION = 305,                   /* UNION  */
+    ENUM = 306,                    /* ENUM  */
+    ELLIPSIS = 307,                /* ELLIPSIS  */
+    CASE = 308,                    /* CASE  */
+    DEFAULT = 309,                 /* DEFAULT  */
+    IF = 310,                      /* IF  */
+    ELSE = 311,                    /* ELSE  */
+    SWITCH = 312,                  /* SWITCH  */
+    WHILE = 313,                   /* WHILE  */
+    DO = 314,                      /* DO  */
+    FOR = 315,                     /* FOR  */
+    GOTO = 316,                    /* GOTO  */
+    CONTINUE = 317,                /* CONTINUE  */
+    BREAK = 318,                   /* BREAK  */
+    RETURN = 319,                  /* RETURN  */
+    YY_PARSE_translation_unit = 320, /* YY_PARSE_translation_unit  */
+    YY_PARSE_program = 321         /* YY_PARSE_program  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -109,7 +134,7 @@ union YYSTYPE
     int data_type;
     char var_name[30];
 
-#line 113 "grammar2.tab.h"
+#line 138 "grammar2.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -122,6 +147,26 @@ extern YYSTYPE yylval;
 
 
 int yyparse (void);
+
+// Return type when parsing one program.
+typedef struct
+{
+  int yystatus;
+  int yynerrs;
+} yyparse_program_t;
+
+// Parse one program.
+yyparse_program_t yyparse_program (void);
+
+// Return type when parsing one translation_unit.
+typedef struct
+{
+  int yystatus;
+  int yynerrs;
+} yyparse_translation_unit_t;
+
+// Parse one translation_unit.
+yyparse_translation_unit_t yyparse_translation_unit (void);
 
 
 #endif /* !YY_YY_GRAMMAR2_TAB_H_INCLUDED  */
