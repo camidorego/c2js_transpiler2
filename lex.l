@@ -90,8 +90,8 @@ L?\"(\\.|[^\\"])*\"	{ return(STRING_LITERAL); }
 "=="			{ return(EQ_OP); }
 "!="			{ return(NE_OP); }
 ";"			{ return(';'); }
-("{"|"<%")		{ return(LSQBRAQ); }
-("}"|"%>")		{ return(RSQBRAQ); }
+("{"|"<%")		{ return('{'); }
+("}"|"%>")		{ return('}'); }
 ","			{ return(','); }
 ":"			{ return(':'); }
 "="			{ return('='); }

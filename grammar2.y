@@ -24,7 +24,6 @@ extern int yylineno;
 %token AND_OP OR_OP MUL_ASSIGN DIV_ASSIGN MOD_ASSIGN ADD_ASSIGN
 %token SUB_ASSIGN LEFT_ASSIGN RIGHT_ASSIGN AND_ASSIGN
 %token XOR_ASSIGN OR_ASSIGN TYPE_NAME
-%token RSQBRAQ LSQBRAQ LPAREN RPAREN
 
 %token TYPEDEF EXTERN STATIC AUTO REGISTER
 %token CHAR SHORT INT LONG SIGNED UNSIGNED FLOAT DOUBLE CONST VOLATILE VOID
@@ -39,15 +38,15 @@ primary_expression
 	: IDENTIFIER
 	| CONSTANT
 	| STRING_LITERAL
-	| '(' {append_in_jsFile("( ");} expression ')' {append_in_jsFile(")");}
+	| '(' expression ')'
 	;
 
 postfix_expression
 	: primary_expression
-	| postfix_expression '[' {append_in_jsFile("[");} expression ']' {append_in_jsFile("]");}
-	| postfix_expression '(' ')' {append_in_jsFile("()");}
-	| postfix_expression '(' {append_in_jsFile("(");} argument_expression_list ')' {append_in_jsFile(")");}
-	| postfix_expression '.' {append_in_jsFile(".");} IDENTIFIER
+	| postfix_expression '[' expression ']'
+	| postfix_expression '(' ')'
+	| postfix_expression '(' argument_expression_list ')'
+	| postfix_expression '.' IDENTIFIER
 	| postfix_expression PTR_OP IDENTIFIER
 	| postfix_expression INC_OP
 	| postfix_expression DEC_OP
@@ -55,7 +54,7 @@ postfix_expression
 
 argument_expression_list
 	: assignment_expression
-	| argument_expression_list ',' {append_in_jsFile(", ");} assignment_expression
+	| argument_expression_list ',' assignment_expression
 	;
 
 unary_expression
@@ -64,34 +63,34 @@ unary_expression
 	| DEC_OP unary_expression
 	| unary_operator cast_expression
 	| SIZEOF unary_expression
-	| SIZEOF '(' type_name ')' 
+	| SIZEOF '(' type_name ')'
 	;
 
 unary_operator
-	: '&' {append_in_jsFile("&");}
-	| '*' {append_in_jsFile("*");}
-	| '+' {append_in_jsFile("+");}
-	| '-' {append_in_jsFile("-");}
-	| '~' {append_in_jsFile("~");}
-	| '!' {append_in_jsFile("!");}
+	: '&'
+	| '*'
+	| '+'
+	| '-'
+	| '~'
+	| '!'
 	;
 
 cast_expression
 	: unary_expression
-	| '(' {append_in_jsFile("(");} type_name ')' {append_in_jsFile(")");} cast_expression
+	| '(' type_name ')' cast_expression
 	;
 
 multiplicative_expression
 	: cast_expression
-	| multiplicative_expression '*' {append_in_jsFile(" * ");} cast_expression
-	| multiplicative_expression '/' {append_in_jsFile("/");} cast_expression
-	| multiplicative_expression '%' {append_in_jsFile("%");} cast_expression
+	| multiplicative_expression '*' cast_expression
+	| multiplicative_expression '/' cast_expression
+	| multiplicative_expression '%' cast_expression
 	;
 
 additive_expression
 	: multiplicative_expression
-	| additive_expression '+' {append_in_jsFile("+");} multiplicative_expression
-	| additive_expression '-' {append_in_jsFile("-");} multiplicative_expression
+	| additive_expression '+' multiplicative_expression
+	| additive_expression '-' multiplicative_expression
 	;
 
 shift_expression
@@ -102,21 +101,21 @@ shift_expression
 
 relational_expression
 	: shift_expression
-	| relational_expression '<' {append_in_jsFile("<");} shift_expression
-	| relational_expression '>' {append_in_jsFile(">");} shift_expression
-	| relational_expression LE_OP {append_in_jsFile("<=");} shift_expression
-	| relational_expression GE_OP {append_in_jsFile(">=");} shift_expression
+	| relational_expression '<' shift_expression
+	| relational_expression '>' shift_expression
+	| relational_expression LE_OP shift_expression
+	| relational_expression GE_OP shift_expression
 	;
 
 equality_expression
 	: relational_expression
-	| equality_expression EQ_OP {append_in_jsFile("==");} relational_expression
-	| equality_expression NE_OP {append_in_jsFile("!=");} relational_expression
+	| equality_expression EQ_OP relational_expression
+	| equality_expression NE_OP relational_expression
 	;
 
 and_expression
 	: equality_expression
-	| and_expression '&' {append_in_jsFile("&");} equality_expression
+	| and_expression '&' equality_expression
 	;
 
 exclusive_or_expression
@@ -126,22 +125,22 @@ exclusive_or_expression
 
 inclusive_or_expression
 	: exclusive_or_expression
-	| inclusive_or_expression '|' {append_in_jsFile("|");} exclusive_or_expression
+	| inclusive_or_expression '|' exclusive_or_expression
 	;
 
 logical_and_expression
 	: inclusive_or_expression
-	| logical_and_expression AND_OP {append_in_jsFile("&&");} inclusive_or_expression
+	| logical_and_expression AND_OP inclusive_or_expression
 	;
 
 logical_or_expression
 	: logical_and_expression
-	| logical_or_expression OR_OP {append_in_jsFile("||");} logical_and_expression
+	| logical_or_expression OR_OP logical_and_expression
 	;
 
 conditional_expression
 	: logical_or_expression
-	| logical_or_expression '?' {append_in_jsFile("?");} expression ':' {append_in_jsFile(":");} conditional_expression
+	| logical_or_expression '?' expression ':' conditional_expression
 	;
 
 assignment_expression
@@ -150,8 +149,8 @@ assignment_expression
 	;
 
 assignment_operator
-	: '=' {append_in_jsFile("=");}
-	| MUL_ASSIGN 
+	: '='
+	| MUL_ASSIGN
 	| DIV_ASSIGN
 	| MOD_ASSIGN
 	| ADD_ASSIGN
@@ -165,7 +164,7 @@ assignment_operator
 
 expression
 	: assignment_expression
-	| expression ',' {append_in_jsFile(", ");} assignment_expression
+	| expression ',' assignment_expression
 	;
 
 constant_expression
@@ -173,7 +172,7 @@ constant_expression
 	;
 
 declaration
-	: declaration_specifiers ';' 
+	: declaration_specifiers ';'
 	| declaration_specifiers init_declarator_list ';'
 	;
 
@@ -377,11 +376,15 @@ labeled_statement
 	;
 
 compound_statement
-	: '{' '}' {append_in_jsFile("{}");}
-	| '{' {append_in_jsFile("{");} statement_list '}' {append_in_jsFile("}");}
-	| '{' {append_in_jsFile("{");} declaration_list '}' {append_in_jsFile("}");}
-	| '{' {append_in_jsFile("{");} declaration_list statement_list '}' {append_in_jsFile("}");}
+	: '{' {append_in_jsFile("{");} compound_statement_helper '}' {append_in_jsFile("}");}
 	;
+
+compound_statement_helper
+    : statement_list
+    | declaration_list
+    | declaration_list statement_list
+    |
+    ;
 
 declaration_list
 	: declaration
@@ -399,13 +402,17 @@ expression_statement
 	;
 
 selection_statement
-	: IF LPAREN {append_in_jsFile("if(");} expression RPAREN {append_in_jsFile(")");} statement
-	| IF LPAREN {append_in_jsFile("if(");} expression RPAREN {append_in_jsFile(")");} statement ELSE {append_in_jsFile("else");} statement
+	: IF '(' {append_in_jsFile("if(");} expression ')' {append_in_jsFile(")");} statement else_statement
 	| SWITCH '(' expression ')' statement
 	;
 
+else_statement
+    : ELSE {append_in_jsFile("else");} statement
+    |
+    ;
+
 iteration_statement
-	: WHILE '(' {append_in_jsFile("while(");} expression ')' statement
+	: WHILE '(' expression ')' statement
 	| DO statement WHILE '(' expression ')' ';'
 	| FOR '(' expression_statement expression_statement ')' statement
 	| FOR '(' expression_statement expression_statement expression ')' statement
