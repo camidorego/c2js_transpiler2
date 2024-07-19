@@ -29,7 +29,7 @@ extern int yylineno;
 %token<str> FOR WHILE BREAK CONTINUE IF ELSE RETURN PRINTF STRLEN
 %token <str> '-' '+' '>' '<' '*' '/' '}' '{' '(' ')' '[' ']' '=' ',' ':' '!' ';' '.' '%'
 
-%type <str> program functionList function parameterList parameter typeName statementList statement exprList expr
+%type <str> program functionList function parameterList parameter typeName statementList statement exprList expr terminal
 
 %%
 
@@ -72,9 +72,9 @@ statementList:
 
 statement:
         WHILE '(' expr ')' '{' statementList '}'                                                                                               
-       |IF {append_in_jsFile("\nif(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' elseStatement                                
+       |IF {append_in_jsFile("\nif(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
        |RETURN expr ';'                                                             
-       |PRINTF '(' exprList ')' ';'                                                 
+       |PRINTF '(' {append_in_jsFile("\nconsole.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
        |IDENTIFIER '(' exprList ')' ';'                                             
        |IDENTIFIER '=' expr ';'                                                     
        |IDENTIFIER '[' expr ']' '=' expr ';'                                     
@@ -90,19 +90,16 @@ statement:
        |expr DEC_OP ';'                                       
        ;
 elseStatement:
-        ELSE '{' statementList '}'
+        ELSE '{' {append_in_jsFile("\nelse{ \n");}  statementList '}' {append_in_jsFile("\n} \n");} 
         |
         ;
 exprList:
-        expr                                    
+        expr                                   
        |expr ',' exprList                                                         
        ;
 
 expr:
-        INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
-       |STRING                                           
-       |IDENTIFIER {$$ = strdup($1);}                                   
-       |DOUBLE                                           
+        terminal  {append_in_jsFile($1);}                                       
        |'-' expr                                   
        |STRLEN '(' IDENTIFIER ')'                                    
        |IDENTIFIER '(' exprList ')'                                         
@@ -126,6 +123,28 @@ expr:
        |expr INC_OP                                                                 
        |expr DEC_OP                                                                 
        ;
+
+operator:
+        '+' {append_in_jsFile("+");}
+        | '-' {append_in_jsFile("-");}
+        | '*' {append_in_jsFile("*");}
+        | '/' {append_in_jsFile("/");}
+        | '<' {append_in_jsFile("<");}
+        | '>' {append_in_jsFile(">");}
+        | EQ_OP {append_in_jsFile("==");}
+        | NE_OP {append_in_jsFile("!=");}
+        | OR_OP {append_in_jsFile("||");}
+        | AND_OP {append_in_jsFile("&&");}
+        | LE_OP {append_in_jsFile("<=");}
+        | GE_OP {append_in_jsFile(">=");}
+        ;
+
+
+terminal:
+        INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
+       |STRING   {$$ = strdup($1);}                                        
+       |IDENTIFIER {$$ = strdup($1);}                                   
+       |DOUBLE 
 
 %%
 
