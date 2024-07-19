@@ -109,7 +109,7 @@ expr:
        |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");}                                       
        |IDENTIFIER {append_in_jsFile($1); } array_exprList                                     
        |expr operator expr                                                                                                       
-       |'!' {append_in_jsFile("!");} expr {append_in_jsFile("\n");}                                                                   
+       |'!' {append_in_jsFile("!");} expr                                                                  
        |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                                                                                             
        ;
 

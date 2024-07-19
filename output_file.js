@@ -18,8 +18,7 @@ flag++
 console.log(flag) 
 
 } 
-if(!flag
-){ 
+if(!flag){ 
 console.log("True\n") 
 
 } 
