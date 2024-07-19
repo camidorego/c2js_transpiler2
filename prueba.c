@@ -3,7 +3,7 @@
 
 int main() {
     char str[] = "abcddcba";
-    int length = 1;
+    int length = 1.67;
     int flag = 1;
 
     while(flag<10){

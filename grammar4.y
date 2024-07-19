@@ -56,7 +56,7 @@ parameterList:
 
 parameter:
         typeName IDENTIFIER {append_in_jsFile($2);}                                                          
-       |typeName IDENTIFIER '[' ']'                                                 
+       |typeName IDENTIFIER '[' ']'                                                
        ;
 
 typeName:
@@ -110,11 +110,7 @@ expr:
        |IDENTIFIER '[' {append_in_jsFile($1); append_in_jsFile("["); } terminal ']'  {append_in_jsFile("]");}                                     
        |expr operator expr                                                                                                       
        |'!' {append_in_jsFile("!");} expr {append_in_jsFile("\n");}                                                                   
-       |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                              
-       |INC_OP expr                                                                 
-       |DEC_OP expr                                                                
-       |expr INC_OP                                                                 
-       |expr DEC_OP                                                                 
+       |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                                                                                             
        ;
 
 operator:
@@ -139,7 +135,7 @@ terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
        |STRING   {$$ = strdup($1);}                                        
        |IDENTIFIER {$$ = strdup($1);}                                   
-       |DOUBLE 
+       |DOUBLE_NUM {char num_str[50]; snprintf(num_str, sizeof(num_str), "%lf", $1); $$ = strdup(num_str);}
 
 %%
 

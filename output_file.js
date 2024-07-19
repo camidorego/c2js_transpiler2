@@ -1,6 +1,6 @@
 function main(){ 
 let str = "abcddcba"
-let length = 1
+let length = 1.670000
 let flag = 1
 while(flag<10){ 
 flag++
