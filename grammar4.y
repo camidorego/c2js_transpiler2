@@ -106,8 +106,8 @@ expr:
         terminal  {append_in_jsFile($1);}                                       
        |'-' expr                                   
        |STRLEN '(' IDENTIFIER ')'                                    
-       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } terminalList ')' {append_in_jsFile(")");}                                       
-       |IDENTIFIER '[' {append_in_jsFile($1); append_in_jsFile("["); } terminal ']'  {append_in_jsFile("]");}                                     
+       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");}                                       
+       |IDENTIFIER '[' {append_in_jsFile($1); append_in_jsFile("["); } expr ']'  {append_in_jsFile("]");}                                     
        |expr operator expr                                                                                                       
        |'!' {append_in_jsFile("!");} expr {append_in_jsFile("\n");}                                                                   
        |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                                                                                             
@@ -127,9 +127,6 @@ operator:
         | LE_OP {append_in_jsFile("<=");}
         | GE_OP {append_in_jsFile(">=");}
         ;
-terminalList:
-        terminal {append_in_jsFile($1);} 
-        | terminal ',' {append_in_jsFile(", "); append_in_jsFile($2); } terminalList
 
 terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      

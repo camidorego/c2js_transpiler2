@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+|typeName IDENTIFIER {append_in_jsFile("let ");append_in_jsFile($2);} array_exprList '=' '{' {append_in_jsFile('=[');} array_exprList '}' ';' {append_in_jsFile("]\n");} // array y matriz
+
 int yylex(void);
 int yyerror(char *message);
 extern int yylineno;
