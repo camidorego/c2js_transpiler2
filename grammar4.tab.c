@@ -530,7 +530,7 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   404
+#define YYLAST   389
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  54
@@ -539,7 +539,7 @@ union yyalloc
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  91
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  190
+#define YYNSTATES  192
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   289
@@ -653,25 +653,26 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     -90,     4,    54,   -90,   -90,   -90,   -90,   -90,    54,    -1,
-     -90,   -32,   -22,   -14,    54,   -90,    -7,    -8,    33,    67,
-       1,   -90,     0,   -90,   -90,   -11,   -90,    54,   -90,   -90,
-     -90,   -90,   -90,     5,    14,    12,   -90,   -90,    41,    23,
-      67,    12,   280,   -90,   -90,    54,    19,    12,    12,   -90,
-      58,    24,    26,    12,   -90,    72,   -26,   364,    12,    12,
-     -37,   -90,   -90,   108,   -90,   -90,   -90,   -90,   -90,   -90,
-     -90,   -90,   -90,   -90,   -90,   -90,    31,    12,    67,   -90,
-     -90,    39,   248,    22,   286,    22,    12,    37,    12,    12,
-     116,    12,    43,   -90,   -90,   316,   364,     6,   -90,   -90,
-     -90,   -90,   364,    44,    40,   -90,   -90,    46,    45,    51,
-      57,   143,   -90,   326,   354,   -90,    60,   -90,   -90,    59,
-      61,    12,   -90,   -90,    12,   -90,   -90,    12,   -90,   -90,
-      12,    64,   -90,    56,   -18,    69,   151,   -90,    22,   178,
-     186,   -90,    70,   -90,   106,   -90,   -90,   -90,    12,   -90,
-     -90,   -90,   -90,    67,    67,    73,    12,    12,   213,    75,
-      77,    76,   221,    79,   -90,   -90,   -90,    82,   -90,    80,
-     101,    98,   -90,    99,   -90,   -90,   -90,    12,    67,   117,
-     125,   109,   -90,   107,   -90,    12,   133,   134,   126,   -90
+     -90,    11,    20,   -90,   -90,   -90,   -90,   -90,    20,     4,
+     -90,   -23,   -29,   -14,    20,   -90,    -8,   -16,    29,    44,
+      -4,   -90,    -3,   -90,   -90,    19,   -90,    20,   -90,   -90,
+     -90,   -90,   -90,     2,     3,    80,   -90,   -90,    49,    22,
+      44,    80,   265,   -90,   -90,    20,    26,    80,    80,   -90,
+      57,    32,    37,    80,   -90,    73,   -12,   349,    80,    80,
+     -41,   -90,   -90,   119,   -90,   -90,   -90,   -90,   -90,   -90,
+     -90,   -90,   -90,   -90,   -90,   -90,    31,    80,    44,   -90,
+     -90,    41,   232,     5,   271,     5,    80,    39,    80,    80,
+     127,    80,    47,   -90,   -90,   301,   349,    -2,   -90,   -90,
+     -90,   -90,   349,    51,    42,   -90,   -90,    52,    53,    48,
+      54,   154,   -90,   311,   339,   -90,    55,   -90,   -90,    58,
+      50,    80,   -90,   -90,    80,   -90,   -90,    80,   -90,   -90,
+      80,    61,   -90,    56,   -28,    63,   162,   -90,     5,   189,
+     197,   -90,    64,   -90,   106,    68,   -90,   -90,    80,   -90,
+     -90,   -90,   -90,    44,    44,    66,   -90,    80,   224,    72,
+      77,    74,    80,    78,   -90,   -90,   -90,    82,    79,    71,
+      94,    84,    76,   -90,    86,   -90,   -90,   -90,   -90,    80,
+      44,    90,    91,    85,   -90,   100,   -90,    80,   109,   110,
+     101,   -90
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -693,21 +694,22 @@ static const yytype_int8 yydefact[] =
        0,     0,    38,     0,     0,    29,     0,    63,    72,     0,
        0,     0,     8,    32,     0,    65,    86,     0,    67,    34,
        0,     0,    25,     0,     0,    40,     0,    60,     0,     0,
-       0,    22,     0,    31,     0,    48,    47,    42,     0,    37,
-      87,    35,    39,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    41,    23,    26,     0,    49,     0,
-      57,     0,    43,     0,    27,    44,    55,     0,     0,     0,
-       0,     0,    56,     0,    45,     0,     0,     0,     0,    46
+       0,    22,     0,    31,     0,     0,    47,    42,     0,    37,
+      87,    35,    39,     0,     0,     0,    48,     0,     0,     0,
+       0,     0,     0,     0,    41,    23,    26,     0,     0,     0,
+      57,     0,     0,    43,     0,    27,    44,    49,    55,     0,
+       0,     0,     0,     0,    56,     0,    45,     0,     0,     0,
+       0,    46
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-     -90,   -90,   -90,   168,   -90,   -90,   -90,   -90,   139,   -90,
-     -90,    36,   -39,   -90,   -90,   -90,   -90,   -90,   -90,   -90,
-     -90,   -90,   -90,   -90,   -90,   -90,   -90,   -90,   -90,   150,
-     -90,   -90,   -89,   -90,   -35,   -90,   -90,   -90,   -90,   -90,
-      47,   -90,   -80
+     -90,   -90,   -90,   145,   -90,   -90,   -90,   -90,   115,   -90,
+     -90,    16,   -37,   -90,   -90,   -90,   -90,   -90,   -90,   -90,
+     -90,   -90,   -90,   -90,   -90,   -90,   -90,   -90,   -90,   126,
+     -90,   -90,   -89,   -90,   -19,   -90,   -90,   -90,   -90,   -90,
+      65,   -90,   -78
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -715,8 +717,8 @@ static const yytype_uint8 yydefgoto[] =
 {
        0,     1,     2,     7,     8,    14,    78,    19,    16,    45,
       17,    38,    39,    40,    51,   153,    52,   142,   170,    53,
-      91,    86,   121,   130,   148,   157,   177,   185,   156,    41,
-     174,   178,    81,   124,    42,    83,    85,    59,    58,    77,
+      91,    86,   121,   130,   148,   157,   179,   187,   162,    41,
+     175,   180,    81,   124,    82,    83,    85,    59,    58,    77,
      107,   138,    43
 };
 
@@ -725,92 +727,88 @@ static const yytype_uint8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-      57,    62,   116,   108,     3,   110,    63,    11,    97,   119,
-      98,    12,    82,    84,    99,    23,    24,    93,    90,    94,
-      56,    26,    13,    95,    96,    23,    24,   144,    15,   145,
-     106,    26,    47,   146,    48,   137,    49,    20,     9,   103,
-      21,    22,   102,    44,     9,    46,    34,    35,    54,    60,
-      18,   111,   120,   113,   114,    36,    82,    55,   108,     4,
-       5,     6,    37,    50,    61,    80,    87,    88,   163,    89,
-      23,    24,     4,     5,     6,    25,    26,    27,    28,    29,
-      92,    18,   101,   104,   112,   122,   136,   117,   179,    82,
-     125,   123,   139,   126,    30,   140,   186,    31,   127,    32,
-      33,    34,    35,   128,   133,   134,   141,   143,   135,   155,
-      36,   147,   154,   158,   159,   160,   165,    37,   166,   161,
-     169,   162,    82,   167,   171,    64,    65,    66,    67,    68,
-      69,   172,   173,    64,    65,    66,    67,    68,    69,   180,
-     175,   176,    82,    70,    71,    72,    73,    74,    75,   184,
-      82,    70,    71,    72,    73,    74,    75,   183,   181,   100,
-      64,    65,    66,    67,    68,    69,   182,   115,    64,    65,
-      66,    67,    68,    69,   187,   188,    10,   189,    70,    71,
-      72,    73,    74,    75,    79,   150,    70,    71,    72,    73,
-      74,    75,    76,     0,   129,    64,    65,    66,    67,    68,
-      69,     0,   149,    64,    65,    66,    67,    68,    69,     0,
-       0,     0,     0,    70,    71,    72,    73,    74,    75,     0,
-       0,    70,    71,    72,    73,    74,    75,     0,     0,   151,
-      64,    65,    66,    67,    68,    69,     0,   152,    64,    65,
-      66,    67,    68,    69,     0,     0,     0,     0,    70,    71,
-      72,    73,    74,    75,     0,     0,    70,    71,    72,    73,
-      74,    75,     0,     0,   164,    64,    65,    66,    67,    68,
-      69,     0,   168,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,    70,    71,    72,    73,    74,    75,     0,
-       0,    28,    29,     0,     0,     0,   105,    64,    65,    66,
-      67,    68,    69,    64,    65,    66,    67,    68,    69,     0,
-       0,     0,     0,     0,     0,    70,    71,    72,    73,    74,
-      75,    70,    71,    72,    73,    74,    75,     0,     0,     0,
-       0,     0,   109,    64,    65,    66,    67,    68,    69,     0,
-       0,     0,     0,    64,    65,    66,    67,    68,    69,     0,
-       0,    70,    71,    72,    73,    74,    75,     0,     0,     0,
-     118,    70,    71,    72,    73,    74,    75,     0,     0,     0,
-     131,    64,    65,    66,    67,    68,    69,     0,     0,     0,
-       0,    64,    65,    66,    67,    68,    69,     0,     0,    70,
-      71,    72,    73,    74,    75,     0,     0,     0,   132,    70,
-      71,    72,    73,    74,    75
+      42,   119,   116,    62,    97,   108,    98,   110,    23,    24,
+      99,     3,    11,   106,    26,    13,    57,   144,     9,   145,
+      12,    42,    63,   146,     9,     4,     5,     6,    15,    84,
+      18,    93,    21,    94,    90,   137,    20,    22,    44,    95,
+      96,   103,    46,    50,   120,    54,    55,    23,    24,     4,
+       5,     6,    25,    26,    27,    28,    29,    60,   102,    42,
+     108,    18,    47,    61,    48,    87,    49,   111,   163,   113,
+     114,    30,    80,   168,    31,    88,    32,    33,    34,    35,
+      89,    92,   101,    23,    24,   104,   112,    36,    56,    26,
+     181,   117,   122,   123,    37,   127,   125,   135,   188,   133,
+     128,   126,   136,   141,   134,   147,   154,   143,   139,   155,
+     156,   140,   161,   165,    34,    35,   159,   160,   166,   169,
+     172,   167,   173,    36,   171,   174,   176,   177,   178,   158,
+      37,   183,   184,   185,    42,    42,    64,    65,    66,    67,
+      68,    69,   186,   182,    64,    65,    66,    67,    68,    69,
+     189,   190,   191,    10,    70,    71,    72,    73,    74,    75,
+      79,    42,    70,    71,    72,    73,    74,    75,    76,     0,
+     100,    64,    65,    66,    67,    68,    69,     0,   115,    64,
+      65,    66,    67,    68,    69,     0,     0,     0,     0,    70,
+      71,    72,    73,    74,    75,     0,     0,    70,    71,    72,
+      73,    74,    75,   150,     0,   129,    64,    65,    66,    67,
+      68,    69,     0,   149,    64,    65,    66,    67,    68,    69,
+       0,     0,     0,     0,    70,    71,    72,    73,    74,    75,
+       0,     0,    70,    71,    72,    73,    74,    75,     0,     0,
+     151,    64,    65,    66,    67,    68,    69,     0,   152,    64,
+      65,    66,    67,    68,    69,     0,     0,     0,     0,    70,
+      71,    72,    73,    74,    75,     0,     0,    70,    71,    72,
+      73,    74,    75,     0,     0,   164,    28,    29,     0,     0,
+     105,     0,    64,    65,    66,    67,    68,    69,    64,    65,
+      66,    67,    68,    69,     0,     0,     0,     0,     0,     0,
+      70,    71,    72,    73,    74,    75,    70,    71,    72,    73,
+      74,    75,     0,     0,     0,     0,     0,   109,    64,    65,
+      66,    67,    68,    69,     0,     0,     0,     0,    64,    65,
+      66,    67,    68,    69,     0,     0,    70,    71,    72,    73,
+      74,    75,     0,     0,     0,   118,    70,    71,    72,    73,
+      74,    75,     0,     0,     0,   131,    64,    65,    66,    67,
+      68,    69,     0,     0,     0,     0,    64,    65,    66,    67,
+      68,    69,     0,     0,    70,    71,    72,    73,    74,    75,
+       0,     0,     0,   132,    70,    71,    72,    73,    74,    75
 };
 
 static const yytype_int16 yycheck[] =
 {
-      35,    40,    91,    83,     0,    85,    41,     8,    45,     3,
-      47,    43,    47,    48,    51,     3,     4,    43,    53,    45,
-       8,     9,    44,    58,    59,     3,     4,    45,    42,    47,
-       8,     9,    43,    51,    45,   124,    47,    44,     2,    78,
-      48,     8,    77,    42,     8,    45,    34,    35,    43,     8,
-      14,    86,    46,    88,    89,    43,    91,    43,   138,     5,
-       6,     7,    50,    27,    41,    46,     8,    43,   157,    43,
-       3,     4,     5,     6,     7,     8,     9,    10,    11,    12,
-       8,    45,    51,    44,    47,    41,   121,    44,   177,   124,
-      44,    51,   127,    48,    27,   130,   185,    30,    47,    32,
-      33,    34,    35,    46,    44,    46,    42,    51,    47,     3,
-      43,    42,    42,   148,   153,   154,    41,    50,    41,    46,
-      41,   156,   157,    47,    42,    17,    18,    19,    20,    21,
-      22,    51,    31,    17,    18,    19,    20,    21,    22,   178,
-      42,    42,   177,    35,    36,    37,    38,    39,    40,    42,
-     185,    35,    36,    37,    38,    39,    40,    48,    41,    51,
-      17,    18,    19,    20,    21,    22,    41,    51,    17,    18,
-      19,    20,    21,    22,    41,    41,     8,    51,    35,    36,
-      37,    38,    39,    40,    45,   138,    35,    36,    37,    38,
-      39,    40,    42,    -1,    51,    17,    18,    19,    20,    21,
-      22,    -1,    51,    17,    18,    19,    20,    21,    22,    -1,
-      -1,    -1,    -1,    35,    36,    37,    38,    39,    40,    -1,
-      -1,    35,    36,    37,    38,    39,    40,    -1,    -1,    51,
-      17,    18,    19,    20,    21,    22,    -1,    51,    17,    18,
-      19,    20,    21,    22,    -1,    -1,    -1,    -1,    35,    36,
-      37,    38,    39,    40,    -1,    -1,    35,    36,    37,    38,
-      39,    40,    -1,    -1,    51,    17,    18,    19,    20,    21,
-      22,    -1,    51,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    35,    36,    37,    38,    39,    40,    -1,
-      -1,    11,    12,    -1,    -1,    -1,    48,    17,    18,    19,
-      20,    21,    22,    17,    18,    19,    20,    21,    22,    -1,
-      -1,    -1,    -1,    -1,    -1,    35,    36,    37,    38,    39,
-      40,    35,    36,    37,    38,    39,    40,    -1,    -1,    -1,
-      -1,    -1,    46,    17,    18,    19,    20,    21,    22,    -1,
-      -1,    -1,    -1,    17,    18,    19,    20,    21,    22,    -1,
-      -1,    35,    36,    37,    38,    39,    40,    -1,    -1,    -1,
-      44,    35,    36,    37,    38,    39,    40,    -1,    -1,    -1,
-      44,    17,    18,    19,    20,    21,    22,    -1,    -1,    -1,
-      -1,    17,    18,    19,    20,    21,    22,    -1,    -1,    35,
-      36,    37,    38,    39,    40,    -1,    -1,    -1,    44,    35,
-      36,    37,    38,    39,    40
+      19,     3,    91,    40,    45,    83,    47,    85,     3,     4,
+      51,     0,     8,     8,     9,    44,    35,    45,     2,    47,
+      43,    40,    41,    51,     8,     5,     6,     7,    42,    48,
+      14,    43,    48,    45,    53,   124,    44,     8,    42,    58,
+      59,    78,    45,    27,    46,    43,    43,     3,     4,     5,
+       6,     7,     8,     9,    10,    11,    12,     8,    77,    78,
+     138,    45,    43,    41,    45,     8,    47,    86,   157,    88,
+      89,    27,    46,   162,    30,    43,    32,    33,    34,    35,
+      43,     8,    51,     3,     4,    44,    47,    43,     8,     9,
+     179,    44,    41,    51,    50,    47,    44,    47,   187,    44,
+      46,    48,   121,    42,    46,    42,    42,    51,   127,     3,
+      42,   130,    46,    41,    34,    35,   153,   154,    41,    41,
+      41,    47,    51,    43,    42,    31,    42,    51,    42,   148,
+      50,    41,    41,    48,   153,   154,    17,    18,    19,    20,
+      21,    22,    42,   180,    17,    18,    19,    20,    21,    22,
+      41,    41,    51,     8,    35,    36,    37,    38,    39,    40,
+      45,   180,    35,    36,    37,    38,    39,    40,    42,    -1,
+      51,    17,    18,    19,    20,    21,    22,    -1,    51,    17,
+      18,    19,    20,    21,    22,    -1,    -1,    -1,    -1,    35,
+      36,    37,    38,    39,    40,    -1,    -1,    35,    36,    37,
+      38,    39,    40,   138,    -1,    51,    17,    18,    19,    20,
+      21,    22,    -1,    51,    17,    18,    19,    20,    21,    22,
+      -1,    -1,    -1,    -1,    35,    36,    37,    38,    39,    40,
+      -1,    -1,    35,    36,    37,    38,    39,    40,    -1,    -1,
+      51,    17,    18,    19,    20,    21,    22,    -1,    51,    17,
+      18,    19,    20,    21,    22,    -1,    -1,    -1,    -1,    35,
+      36,    37,    38,    39,    40,    -1,    -1,    35,    36,    37,
+      38,    39,    40,    -1,    -1,    51,    11,    12,    -1,    -1,
+      48,    -1,    17,    18,    19,    20,    21,    22,    17,    18,
+      19,    20,    21,    22,    -1,    -1,    -1,    -1,    -1,    -1,
+      35,    36,    37,    38,    39,    40,    35,    36,    37,    38,
+      39,    40,    -1,    -1,    -1,    -1,    -1,    46,    17,    18,
+      19,    20,    21,    22,    -1,    -1,    -1,    -1,    17,    18,
+      19,    20,    21,    22,    -1,    -1,    35,    36,    37,    38,
+      39,    40,    -1,    -1,    -1,    44,    35,    36,    37,    38,
+      39,    40,    -1,    -1,    -1,    44,    17,    18,    19,    20,
+      21,    22,    -1,    -1,    -1,    -1,    17,    18,    19,    20,
+      21,    22,    -1,    -1,    35,    36,    37,    38,    39,    40,
+      -1,    -1,    -1,    44,    35,    36,    37,    38,    39,    40
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
@@ -832,10 +830,11 @@ static const yytype_int8 yystos[] =
       46,    76,    41,    51,    87,    44,    48,    47,    46,    51,
       77,    44,    44,    44,    46,    47,    88,    86,    95,    88,
       88,    42,    71,    51,    45,    47,    51,    42,    78,    51,
-      94,    51,    51,    69,    42,     3,    82,    79,    88,    66,
-      66,    46,    88,    86,    51,    41,    41,    47,    51,    41,
-      72,    42,    51,    31,    84,    42,    42,    80,    85,    86,
-      66,    41,    41,    48,    42,    81,    86,    41,    41,    51
+      94,    51,    51,    69,    42,     3,    42,    79,    88,    66,
+      66,    46,    82,    86,    51,    41,    41,    47,    86,    41,
+      72,    42,    41,    51,    31,    84,    42,    51,    42,    80,
+      85,    86,    66,    41,    41,    48,    42,    81,    86,    41,
+      41,    51
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
@@ -860,7 +859,7 @@ static const yytype_int8 yyr2[] =
        8,     1,     0,     4,     2,     4,     1,     1,     1,     1,
        2,     0,     0,     9,     0,     0,     0,    11,     0,     4,
        0,     6,     5,     0,     5,     7,     0,     6,     0,     7,
-       0,     8,     0,    10,     0,     0,    21,     6,     0,     9,
+       0,     8,     0,    10,     0,     0,    21,     6,     0,    11,
        3,     3,     3,     1,     1,     0,     5,     0,     1,     0,
        4,     1,     2,     4,     0,     5,     0,     5,     3,     0,
        3,     0,     4,     1,     1,     1,     1,     1,     1,     1,
@@ -1331,425 +1330,425 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 37 "grammar4.y"
         { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
-#line 1335 "grammar4.tab.c"
+#line 1334 "grammar4.tab.c"
     break;
 
   case 3: /* program: $@1 functionList  */
 #line 39 "grammar4.y"
         { append_in_jsFile("main()");close_output_file(); }
-#line 1341 "grammar4.tab.c"
+#line 1340 "grammar4.tab.c"
     break;
 
   case 6: /* $@2: %empty  */
 #line 48 "grammar4.y"
                                 {append_in_jsFile("function "); append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("(");}
-#line 1347 "grammar4.tab.c"
+#line 1346 "grammar4.tab.c"
     break;
 
   case 7: /* $@3: %empty  */
 #line 48 "grammar4.y"
                                                                                                                                     {append_in_jsFile("){ \n");}
-#line 1353 "grammar4.tab.c"
+#line 1352 "grammar4.tab.c"
     break;
 
   case 8: /* function: typeName IDENTIFIER '(' $@2 parameterList ')' '{' $@3 statementList '}'  */
 #line 48 "grammar4.y"
                                                                                                                                                                                    {append_in_jsFile("\n} \n");}
-#line 1359 "grammar4.tab.c"
+#line 1358 "grammar4.tab.c"
     break;
 
   case 9: /* $@4: %empty  */
 #line 49 "grammar4.y"
                                        {append_in_jsFile("function "); append_in_jsFile((yyvsp[-3].str)); append_in_jsFile("(){ \n");}
-#line 1365 "grammar4.tab.c"
+#line 1364 "grammar4.tab.c"
     break;
 
   case 10: /* function: typeName IDENTIFIER '(' ')' '{' $@4 statementList '}'  */
 #line 49 "grammar4.y"
                                                                                                                                             {append_in_jsFile("\n} \n");}
-#line 1371 "grammar4.tab.c"
+#line 1370 "grammar4.tab.c"
     break;
 
   case 12: /* $@5: %empty  */
 #line 54 "grammar4.y"
                      {append_in_jsFile(", ");}
-#line 1377 "grammar4.tab.c"
+#line 1376 "grammar4.tab.c"
     break;
 
   case 14: /* parameter: typeName IDENTIFIER  */
 #line 58 "grammar4.y"
                             {append_in_jsFile((yyvsp[0].str));}
-#line 1383 "grammar4.tab.c"
+#line 1382 "grammar4.tab.c"
     break;
 
   case 21: /* $@6: %empty  */
 #line 74 "grammar4.y"
               {append_in_jsFile("while(");}
-#line 1389 "grammar4.tab.c"
+#line 1388 "grammar4.tab.c"
     break;
 
   case 22: /* $@7: %empty  */
 #line 74 "grammar4.y"
                                                              {append_in_jsFile("){ \n");}
-#line 1395 "grammar4.tab.c"
+#line 1394 "grammar4.tab.c"
     break;
 
   case 23: /* statement: WHILE $@6 '(' expr ')' '{' $@7 statementList '}'  */
 #line 74 "grammar4.y"
                                                                                                             {append_in_jsFile("\n} \n");}
-#line 1401 "grammar4.tab.c"
+#line 1400 "grammar4.tab.c"
     break;
 
   case 24: /* $@8: %empty  */
 #line 75 "grammar4.y"
            {append_in_jsFile("if(");}
-#line 1407 "grammar4.tab.c"
+#line 1406 "grammar4.tab.c"
     break;
 
   case 25: /* $@9: %empty  */
 #line 75 "grammar4.y"
                                                    {append_in_jsFile("){ \n");}
-#line 1413 "grammar4.tab.c"
+#line 1412 "grammar4.tab.c"
     break;
 
   case 26: /* $@10: %empty  */
 #line 75 "grammar4.y"
                                                                                                       {append_in_jsFile("\n} \n");}
-#line 1419 "grammar4.tab.c"
+#line 1418 "grammar4.tab.c"
     break;
 
   case 28: /* $@11: %empty  */
 #line 76 "grammar4.y"
                {append_in_jsFile("return ");}
-#line 1425 "grammar4.tab.c"
+#line 1424 "grammar4.tab.c"
     break;
 
   case 29: /* statement: RETURN $@11 expr ';'  */
 #line 76 "grammar4.y"
                                                       {append_in_jsFile("\n");}
-#line 1431 "grammar4.tab.c"
+#line 1430 "grammar4.tab.c"
     break;
 
   case 30: /* $@12: %empty  */
 #line 77 "grammar4.y"
                    {append_in_jsFile("console.log(");}
-#line 1437 "grammar4.tab.c"
+#line 1436 "grammar4.tab.c"
     break;
 
   case 31: /* statement: PRINTF '(' $@12 exprList ')' ';'  */
 #line 77 "grammar4.y"
                                                                          {append_in_jsFile(") \n");}
-#line 1443 "grammar4.tab.c"
+#line 1442 "grammar4.tab.c"
     break;
 
   case 33: /* $@13: %empty  */
 #line 79 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1449 "grammar4.tab.c"
+#line 1448 "grammar4.tab.c"
     break;
 
   case 34: /* statement: IDENTIFIER '=' $@13 expr ';'  */
 #line 79 "grammar4.y"
                                                                                 {append_in_jsFile("\n");}
-#line 1455 "grammar4.tab.c"
+#line 1454 "grammar4.tab.c"
     break;
 
   case 36: /* $@14: %empty  */
 #line 81 "grammar4.y"
                                 {append_in_jsFile("let "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1461 "grammar4.tab.c"
+#line 1460 "grammar4.tab.c"
     break;
 
   case 37: /* statement: typeName IDENTIFIER '=' $@14 expr ';'  */
 #line 81 "grammar4.y"
                                                                                                                     {append_in_jsFile("\n");}
-#line 1467 "grammar4.tab.c"
+#line 1466 "grammar4.tab.c"
     break;
 
   case 38: /* $@15: %empty  */
 #line 82 "grammar4.y"
                                       {append_in_jsFile("const "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1473 "grammar4.tab.c"
+#line 1472 "grammar4.tab.c"
     break;
 
   case 39: /* statement: CONST typeName IDENTIFIER '=' $@15 expr ';'  */
 #line 82 "grammar4.y"
                                                                                                                             {append_in_jsFile("\n");}
-#line 1479 "grammar4.tab.c"
+#line 1478 "grammar4.tab.c"
     break;
 
   case 40: /* $@16: %empty  */
 #line 83 "grammar4.y"
                                         {append_in_jsFile("let "); append_in_jsFile((yyvsp[-3].str));append_in_jsFile(" = ");}
-#line 1485 "grammar4.tab.c"
+#line 1484 "grammar4.tab.c"
     break;
 
   case 41: /* statement: typeName IDENTIFIER '[' ']' '=' $@16 expr ';'  */
 #line 83 "grammar4.y"
                                                                                                                            {append_in_jsFile("\n");}
-#line 1491 "grammar4.tab.c"
+#line 1490 "grammar4.tab.c"
     break;
 
   case 42: /* $@17: %empty  */
 #line 84 "grammar4.y"
                                             {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile(" = [");}
-#line 1497 "grammar4.tab.c"
+#line 1496 "grammar4.tab.c"
     break;
 
   case 43: /* statement: typeName IDENTIFIER '[' ']' '=' '{' $@17 exprList '}' ';'  */
 #line 84 "grammar4.y"
                                                                                                                                         { append_in_jsFile("]\n");}
-#line 1503 "grammar4.tab.c"
+#line 1502 "grammar4.tab.c"
     break;
 
   case 44: /* $@18: %empty  */
 #line 85 "grammar4.y"
                                                                         {append_in_jsFile("let "); append_in_jsFile((yyvsp[-9].str));append_in_jsFile(" = [[");}
-#line 1509 "grammar4.tab.c"
+#line 1508 "grammar4.tab.c"
     break;
 
   case 45: /* $@19: %empty  */
 #line 85 "grammar4.y"
                                                                                                                                                                          {append_in_jsFile("], [");}
-#line 1515 "grammar4.tab.c"
+#line 1514 "grammar4.tab.c"
     break;
 
   case 46: /* statement: typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' $@18 exprList '}' ',' '{' $@19 exprList '}' '}' ';'  */
 #line 85 "grammar4.y"
                                                                                                                                                                                                                           { append_in_jsFile("]]\n");}
-#line 1521 "grammar4.tab.c"
+#line 1520 "grammar4.tab.c"
     break;
 
   case 47: /* statement: typeName IDENTIFIER '[' INTEGER ']' ';'  */
 #line 86 "grammar4.y"
-                                                {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile("= new Array(");append_in_jsFile((yyvsp[-2].num));append_in_jsFile(") \n");}
-#line 1527 "grammar4.tab.c"
+                                                {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", (yyvsp[-2].num));append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}
+#line 1526 "grammar4.tab.c"
     break;
 
   case 48: /* $@20: %empty  */
 #line 87 "grammar4.y"
-                                                {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile("= {");append_in_jsFile((yyvsp[-2].num));append_in_jsFile("]");append_in_jsFile("=");}
-#line 1533 "grammar4.tab.c"
+                                                    {append_in_jsFile("let "); append_in_jsFile((yyvsp[-5].str));append_in_jsFile("= [");}
+#line 1532 "grammar4.tab.c"
     break;
 
-  case 49: /* statement: typeName IDENTIFIER '[' INTEGER ']' '=' $@20 expr ';'  */
+  case 49: /* statement: typeName IDENTIFIER '[' INTEGER ']' '=' '{' $@20 exprList '}' ';'  */
 #line 87 "grammar4.y"
-                                                                                                                                                                                                     {append_in_jsFile("\n");}
-#line 1539 "grammar4.tab.c"
+                                                                                                                                                {append_in_jsFile("]\n");}
+#line 1538 "grammar4.tab.c"
     break;
 
   case 50: /* statement: typeName IDENTIFIER ';'  */
 #line 88 "grammar4.y"
                                 {append_in_jsFile("let "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile("\n");}
-#line 1545 "grammar4.tab.c"
+#line 1544 "grammar4.tab.c"
     break;
 
   case 51: /* statement: inc_operadores expr ';'  */
 #line 89 "grammar4.y"
                                 {append_in_jsFile("\n");}
-#line 1551 "grammar4.tab.c"
+#line 1550 "grammar4.tab.c"
     break;
 
   case 52: /* statement: expr inc_operadores ';'  */
 #line 90 "grammar4.y"
                                 {append_in_jsFile("\n");}
-#line 1557 "grammar4.tab.c"
+#line 1556 "grammar4.tab.c"
     break;
 
   case 53: /* inc_operadores: INC_OP  */
 #line 93 "grammar4.y"
                {append_in_jsFile("++");}
-#line 1563 "grammar4.tab.c"
+#line 1562 "grammar4.tab.c"
     break;
 
   case 54: /* inc_operadores: DEC_OP  */
 #line 94 "grammar4.y"
                  {append_in_jsFile("--");}
-#line 1569 "grammar4.tab.c"
+#line 1568 "grammar4.tab.c"
     break;
 
   case 55: /* $@21: %empty  */
 #line 97 "grammar4.y"
                  {append_in_jsFile("else{ \n");}
-#line 1575 "grammar4.tab.c"
+#line 1574 "grammar4.tab.c"
     break;
 
   case 56: /* elseStatement: ELSE '{' $@21 statementList '}'  */
 #line 97 "grammar4.y"
                                                                     {append_in_jsFile("\n} \n");}
-#line 1581 "grammar4.tab.c"
+#line 1580 "grammar4.tab.c"
     break;
 
   case 59: /* $@22: %empty  */
 #line 102 "grammar4.y"
                  {append_in_jsFile(", ");}
-#line 1587 "grammar4.tab.c"
+#line 1586 "grammar4.tab.c"
     break;
 
   case 61: /* expr: terminal  */
 #line 106 "grammar4.y"
                   {append_in_jsFile((yyvsp[0].str));}
-#line 1593 "grammar4.tab.c"
+#line 1592 "grammar4.tab.c"
     break;
 
   case 64: /* $@23: %empty  */
 #line 109 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("("); }
-#line 1599 "grammar4.tab.c"
+#line 1598 "grammar4.tab.c"
     break;
 
   case 65: /* expr: IDENTIFIER '(' $@23 terminalList ')'  */
 #line 109 "grammar4.y"
                                                                                         {append_in_jsFile(")");}
-#line 1605 "grammar4.tab.c"
+#line 1604 "grammar4.tab.c"
     break;
 
   case 66: /* $@24: %empty  */
 #line 110 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("["); }
-#line 1611 "grammar4.tab.c"
+#line 1610 "grammar4.tab.c"
     break;
 
   case 67: /* expr: IDENTIFIER '[' $@24 terminal ']'  */
 #line 110 "grammar4.y"
                                                                                      {append_in_jsFile("]");}
-#line 1617 "grammar4.tab.c"
+#line 1616 "grammar4.tab.c"
     break;
 
   case 69: /* $@25: %empty  */
 #line 112 "grammar4.y"
             {append_in_jsFile("!");}
-#line 1623 "grammar4.tab.c"
+#line 1622 "grammar4.tab.c"
     break;
 
   case 70: /* expr: '!' $@25 expr  */
 #line 112 "grammar4.y"
                                           {append_in_jsFile("\n");}
-#line 1629 "grammar4.tab.c"
+#line 1628 "grammar4.tab.c"
     break;
 
   case 71: /* $@26: %empty  */
 #line 113 "grammar4.y"
            {append_in_jsFile("(");}
-#line 1635 "grammar4.tab.c"
+#line 1634 "grammar4.tab.c"
     break;
 
   case 72: /* expr: '(' $@26 expr ')'  */
 #line 113 "grammar4.y"
                                              {append_in_jsFile(")\n");}
-#line 1641 "grammar4.tab.c"
+#line 1640 "grammar4.tab.c"
     break;
 
   case 73: /* operator: '+'  */
 #line 117 "grammar4.y"
             {append_in_jsFile("+");}
-#line 1647 "grammar4.tab.c"
+#line 1646 "grammar4.tab.c"
     break;
 
   case 74: /* operator: '-'  */
 #line 118 "grammar4.y"
               {append_in_jsFile("-");}
-#line 1653 "grammar4.tab.c"
+#line 1652 "grammar4.tab.c"
     break;
 
   case 75: /* operator: '*'  */
 #line 119 "grammar4.y"
               {append_in_jsFile("*");}
-#line 1659 "grammar4.tab.c"
+#line 1658 "grammar4.tab.c"
     break;
 
   case 76: /* operator: '/'  */
 #line 120 "grammar4.y"
               {append_in_jsFile("/");}
-#line 1665 "grammar4.tab.c"
+#line 1664 "grammar4.tab.c"
     break;
 
   case 77: /* operator: '<'  */
 #line 121 "grammar4.y"
               {append_in_jsFile("<");}
-#line 1671 "grammar4.tab.c"
+#line 1670 "grammar4.tab.c"
     break;
 
   case 78: /* operator: '>'  */
 #line 122 "grammar4.y"
               {append_in_jsFile(">");}
-#line 1677 "grammar4.tab.c"
+#line 1676 "grammar4.tab.c"
     break;
 
   case 79: /* operator: EQ_OP  */
 #line 123 "grammar4.y"
                 {append_in_jsFile("==");}
-#line 1683 "grammar4.tab.c"
+#line 1682 "grammar4.tab.c"
     break;
 
   case 80: /* operator: NE_OP  */
 #line 124 "grammar4.y"
                 {append_in_jsFile("!=");}
-#line 1689 "grammar4.tab.c"
+#line 1688 "grammar4.tab.c"
     break;
 
   case 81: /* operator: OR_OP  */
 #line 125 "grammar4.y"
                 {append_in_jsFile("||");}
-#line 1695 "grammar4.tab.c"
+#line 1694 "grammar4.tab.c"
     break;
 
   case 82: /* operator: AND_OP  */
 #line 126 "grammar4.y"
                  {append_in_jsFile("&&");}
-#line 1701 "grammar4.tab.c"
+#line 1700 "grammar4.tab.c"
     break;
 
   case 83: /* operator: LE_OP  */
 #line 127 "grammar4.y"
                 {append_in_jsFile("<=");}
-#line 1707 "grammar4.tab.c"
+#line 1706 "grammar4.tab.c"
     break;
 
   case 84: /* operator: GE_OP  */
 #line 128 "grammar4.y"
                 {append_in_jsFile(">=");}
-#line 1713 "grammar4.tab.c"
+#line 1712 "grammar4.tab.c"
     break;
 
   case 85: /* terminalList: terminal  */
 #line 131 "grammar4.y"
                  {append_in_jsFile((yyvsp[0].str));}
-#line 1719 "grammar4.tab.c"
+#line 1718 "grammar4.tab.c"
     break;
 
   case 86: /* $@27: %empty  */
 #line 132 "grammar4.y"
                        {append_in_jsFile(", "); append_in_jsFile((yyvsp[0].str)); }
-#line 1725 "grammar4.tab.c"
+#line 1724 "grammar4.tab.c"
     break;
 
   case 88: /* terminal: INTEGER  */
 #line 135 "grammar4.y"
                 {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", (yyvsp[0].num)); (yyval.str) = strdup(num_str);}
-#line 1731 "grammar4.tab.c"
+#line 1730 "grammar4.tab.c"
     break;
 
   case 89: /* terminal: STRING  */
 #line 136 "grammar4.y"
                  {(yyval.str) = strdup((yyvsp[0].str));}
-#line 1737 "grammar4.tab.c"
+#line 1736 "grammar4.tab.c"
     break;
 
   case 90: /* terminal: IDENTIFIER  */
 #line 137 "grammar4.y"
                    {(yyval.str) = strdup((yyvsp[0].str));}
-#line 1743 "grammar4.tab.c"
+#line 1742 "grammar4.tab.c"
     break;
 
   case 91: /* terminal: DOUBLE_NUM  */
 #line 138 "grammar4.y"
-                   {char num_str[50]; snprintf(num_str, sizeof(num_str), "%lf", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
-#line 1749 "grammar4.tab.c"
+                   {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
+#line 1748 "grammar4.tab.c"
     break;
 
 
-#line 1753 "grammar4.tab.c"
+#line 1752 "grammar4.tab.c"
 
       default: break;
     }

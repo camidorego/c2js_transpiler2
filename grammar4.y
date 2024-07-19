@@ -83,8 +83,8 @@ statement:
        |typeName IDENTIFIER '[' ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");} // strings                             
        |typeName IDENTIFIER '[' ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [");} exprList '}' ';' { append_in_jsFile("]\n");} // arrays 
        |typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [[");} exprList '}' ',' '{' {append_in_jsFile("], [");} exprList '}' '}' ';' { append_in_jsFile("]]\n");} // arrays     
-       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array(");append_in_jsFile($4);append_in_jsFile(") \n");}                                  
-       |typeName IDENTIFIER '[' INTEGER ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= {");append_in_jsFile($4);append_in_jsFile("]");append_in_jsFile("=");}  expr ';' {append_in_jsFile("\n");}                         
+       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $4);append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}  // tiene errores tdv                                
+       |typeName IDENTIFIER '[' INTEGER ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= [");}  exprList '}' ';' {append_in_jsFile("]\n");}                         
        |typeName IDENTIFIER ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("\n");}                                 
        |inc_operadores expr ';' {append_in_jsFile("\n");}                                                                                                             
        |expr inc_operadores ';' {append_in_jsFile("\n");}                                      
@@ -135,7 +135,7 @@ terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
        |STRING   {$$ = strdup($1);}                                        
        |IDENTIFIER {$$ = strdup($1);}                                   
-       |DOUBLE_NUM {char num_str[50]; snprintf(num_str, sizeof(num_str), "%lf", $1); $$ = strdup(num_str);}
+       |DOUBLE_NUM {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
 
 %%
 
