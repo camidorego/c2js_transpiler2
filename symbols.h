@@ -44,20 +44,20 @@ void imprimir_tabla() {
     }
 }
 
-symbol *put_symbol(char const *name, int type, int obligatory_arguments_counter, int optional_arguments_counter, int is_array) {
+symbol *put_symbol(char const *name, int type, int arguments, int is_array) {
     symbol *sym = (symbol *) malloc(sizeof(symbol));
     sym->name = strdup(name);
     sym->data_type = type;
-    sym->arguments = obligatory_arguments_counter;
+    sym->arguments = arguments;
     sym->dimension = is_array;
-    sym->next = symbol_table;
-    symbol_table = sym;
-    print_symbols();
+    sym->next = table;
+    table = sym;
+    imprimir_tabla();
     return sym;
 }
 
 symbol *get_symbol(char const *name) {
-    for (symbol *s = symbol_table; s; s = s->next) {
+    for (symbol *s = table; s; s = s->next) {
         if (strcmp(s->name, name) == 0) {
             return s;
         }
@@ -75,10 +75,10 @@ int is_argument_count_correct(char *function_name, char *arguments) {
             argument_count++;
             ptr++;
         }
-        printf("Argument count in function call: %d, obligatory: %d, optional: %d\n", argument_count, entry->obligatory_argument_counter, entry->optional_argument_counter);
+        printf("Argument count in function call: %d, arguments: %d\n", argument_count, entry->arguments);
     }
-    if (argument_count > (entry->obligatory_argument_counter + entry->optional_argument_counter) ||
-        argument_count < entry->obligatory_argument_counter) {
+    if (argument_count > (entry->arguments) ||
+        argument_count < entry->arguments) {
         return 0;
     }
     return 1;
