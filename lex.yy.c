@@ -884,12 +884,12 @@ YY_RULE_SETUP
 case 18:
 YY_RULE_SETUP
 #line 36 "lex4.l"
-{ yylval.num_dec = atof(yytext); return(FLOAT);}
+{ yylval.num_dec = atof(yytext); return(FLOAT_NUM);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 37 "lex4.l"
-{ yylval.num_dec = atof(yytext); return(FLOAT);}
+{ yylval.num_dec = atof(yytext); return(FLOAT_NUM);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP

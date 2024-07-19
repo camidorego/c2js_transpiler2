@@ -33,8 +33,8 @@ string      ('(\\.|[^\\'])+'|\"(\\.|[^\\"])*\")
 {string}                            {yylval.str=strdup(yytext);return(STRING);}
 {integer}                           {yylval.num=atoi(yytext);return(INTEGER);}
 
-{D}*"."{D}+                         { yylval.num_dec = atof(yytext); return(FLOAT);}
-{D}+"."{D}*                         { yylval.num_dec = atof(yytext); return(FLOAT);}
+{D}*"."{D}+                         { yylval.num_dec = atof(yytext); return(FLOAT_NUM);}
+{D}+"."{D}*                         { yylval.num_dec = atof(yytext); return(FLOAT_NUM);}
 
 ">="                                {return(GE_OP);}
 "<="			                    {return(LE_OP);}

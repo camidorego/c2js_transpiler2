@@ -55,10 +55,10 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     INTEGER = 258,                 /* INTEGER  */
-    FLOAT = 259,                   /* FLOAT  */
+    FLOAT_NUM = 259,               /* FLOAT_NUM  */
     INT = 260,                     /* INT  */
     CHAR = 261,                    /* CHAR  */
-    DOUBLE = 262,                  /* DOUBLE  */
+    FLOAT = 262,                   /* FLOAT  */
     IDENTIFIER = 263,              /* IDENTIFIER  */
     STRING = 264,                  /* STRING  */
     CONST = 265,                   /* CONST  */

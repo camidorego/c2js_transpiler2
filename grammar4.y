@@ -20,8 +20,8 @@ extern int yylineno;
 }
 
 %token<num>INTEGER
-%token<num_dec>FLOAT
-%token<str>INT CHAR DOUBLE
+%token<num_dec>FLOAT_NUM
+%token<str>INT CHAR FLOAT
 %token<str>IDENTIFIER STRING CONST
 
 %token<str> INC_OP DEC_OP INC_OP_LEFT INC_OP_RIGHT DEC_OP_LEFT DEC_OP_RIGHT GE_OP LE_OP EQ_OP NE_OP AND_OP OR_OP
@@ -62,7 +62,7 @@ parameter:
 typeName:
         INT                                                                         
        |CHAR                                                                        
-       |DOUBLE                                                                      
+       |FLOAT                                                                     
        ;
 
 statementList:
@@ -141,7 +141,7 @@ terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
        |STRING   {$$ = strdup($1);}                                        
        |IDENTIFIER {$$ = strdup($1);}                                   
-       |FLOAT {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
+       |FLOAT_NUM {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
 
 %%
 

@@ -110,10 +110,10 @@ enum yysymbol_kind_t
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
   YYSYMBOL_INTEGER = 3,                    /* INTEGER  */
-  YYSYMBOL_FLOAT = 4,                      /* FLOAT  */
+  YYSYMBOL_FLOAT_NUM = 4,                  /* FLOAT_NUM  */
   YYSYMBOL_INT = 5,                        /* INT  */
   YYSYMBOL_CHAR = 6,                       /* CHAR  */
-  YYSYMBOL_DOUBLE = 7,                     /* DOUBLE  */
+  YYSYMBOL_FLOAT = 7,                      /* FLOAT  */
   YYSYMBOL_IDENTIFIER = 8,                 /* IDENTIFIER  */
   YYSYMBOL_STRING = 9,                     /* STRING  */
   YYSYMBOL_CONST = 10,                     /* CONST  */
@@ -619,8 +619,8 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "INTEGER", "FLOAT",
-  "INT", "CHAR", "DOUBLE", "IDENTIFIER", "STRING", "CONST", "INC_OP",
+  "\"end of file\"", "error", "\"invalid token\"", "INTEGER", "FLOAT_NUM",
+  "INT", "CHAR", "FLOAT", "IDENTIFIER", "STRING", "CONST", "INC_OP",
   "DEC_OP", "INC_OP_LEFT", "INC_OP_RIGHT", "DEC_OP_LEFT", "DEC_OP_RIGHT",
   "GE_OP", "LE_OP", "EQ_OP", "NE_OP", "AND_OP", "OR_OP", "DECLARE",
   "DECLARE_ARRAY", "ARRAY", "FOR", "WHILE", "BREAK", "CONTINUE", "IF",
@@ -1770,9 +1770,9 @@ yyreduce:
 #line 1771 "grammar4.tab.c"
     break;
 
-  case 94: /* terminal: FLOAT  */
+  case 94: /* terminal: FLOAT_NUM  */
 #line 144 "grammar4.y"
-              {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
+                  {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
 #line 1777 "grammar4.tab.c"
     break;
 
