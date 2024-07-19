@@ -36,7 +36,7 @@ extern int yylineno;
 program:
         { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
         functionList  
-        { close_output_file(); }                                                              
+        { append_in_jsFile("main()");close_output_file(); } // se agrega main() al final del programa js                                                             
        ;
 
 functionList:
@@ -71,7 +71,7 @@ statementList:
        ;
 
 statement:
-        WHILE '(' expr ')' '{' statementList '}'                                                                                               
+        WHILE {append_in_jsFile("while(");} '(' expr ')' '{' {append_in_jsFile("){ \n");} statementList '}' {append_in_jsFile("\n} \n");}                                                                                               
        |IF {append_in_jsFile("if(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
        |RETURN {append_in_jsFile("return ");}expr ';' {append_in_jsFile("\n");}                                                           
        |PRINTF '(' {append_in_jsFile("console.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
@@ -86,11 +86,13 @@ statement:
        |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array(");append_in_jsFile($4);append_in_jsFile(") \n");}                                  
        |typeName IDENTIFIER '[' INTEGER ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= {");append_in_jsFile($4);append_in_jsFile("]");append_in_jsFile("=");}  expr ';' {append_in_jsFile("\n");}                         
        |typeName IDENTIFIER ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("\n");}                                 
-       |INC_OP expr ';'                                      
-       |DEC_OP expr ';'                                      
-       |expr INC_OP ';'                                       
-       |expr DEC_OP ';'                                       
+       |inc_operadores expr ';' {append_in_jsFile("\n");}                                                                                                             
+       |expr inc_operadores ';' {append_in_jsFile("\n");}                                      
        ;
+inc_operadores:
+        INC_OP {append_in_jsFile("++");}
+        | DEC_OP {append_in_jsFile("--");}
+        ;
 elseStatement:
         ELSE '{' {append_in_jsFile("else{ \n");}  statementList '}' {append_in_jsFile("\n} \n");} 
         |

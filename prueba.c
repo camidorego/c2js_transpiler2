@@ -12,6 +12,10 @@ int main(int a, int b) {
     else{
         printf("False");
     }
+    while(flag<10){
+        flag++;
+        printf(flag);
+    }
 
     return flag;
 }

@@ -12,6 +12,11 @@ else{
 console.log("False") 
 
 } 
+while(flag<10){ 
+flag++
+console.log(flag) 
+
+} 
 return flag
 
 } 
