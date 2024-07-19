@@ -29,7 +29,7 @@ extern int yylineno;
 %token<str> FOR WHILE BREAK CONTINUE IF ELSE RETURN PRINTF STRLEN
 %token <str> '-' '+' '>' '<' '*' '/' '}' '{' '(' ')' '[' ']' '=' ',' ':' '!' ';' '.' '%'
 
-%type <str> program functionList function parameterList parameter typeName statementList statement exprList expr terminal
+%type <str> program functionList function parameterList parameter typeName statementList statement exprList expr terminal array_expr array_exprList
 
 %%
 
@@ -83,7 +83,7 @@ statement:
        |typeName IDENTIFIER '[' ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");} // strings                             
        |typeName IDENTIFIER '[' ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [");} exprList '}' ';' { append_in_jsFile("]\n");} // arrays 
        |typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [[");} exprList '}' ',' '{' {append_in_jsFile("], [");} exprList '}' '}' ';' { append_in_jsFile("]]\n");} // arrays     
-       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $4);append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}  // tiene errores tdv                                
+       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $4);append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}                               
        |typeName IDENTIFIER '[' INTEGER ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= [");}  exprList '}' ';' {append_in_jsFile("]\n");}                         
        |typeName IDENTIFIER ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("\n");}                                 
        |inc_operadores expr ';' {append_in_jsFile("\n");}                                                                                                             
@@ -107,11 +107,20 @@ expr:
        |'-' expr                                   
        |STRLEN '(' IDENTIFIER ')'                                    
        |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");}                                       
-       |IDENTIFIER '[' {append_in_jsFile($1); append_in_jsFile("["); } expr ']'  {append_in_jsFile("]");}                                     
+       |IDENTIFIER {append_in_jsFile($1); } array_exprList                                     
        |expr operator expr                                                                                                       
        |'!' {append_in_jsFile("!");} expr {append_in_jsFile("\n");}                                                                   
        |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                                                                                             
        ;
+
+array_exprList
+        : array_expr
+        | array_expr array_exprList
+        ;
+
+array_expr
+        : '[' {append_in_jsFile("["); } expr ']' {append_in_jsFile("]");}
+        ;
 
 operator:
         '+' {append_in_jsFile("+");}
