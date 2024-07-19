@@ -72,7 +72,7 @@ statementList:
 
 statement:
         WHILE '(' expr ')' '{' statementList '}'                                                                                               
-       |IF {append_in_jsFile("\nif(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}'                                   
+       |IF {append_in_jsFile("\nif(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' elseStatement                                
        |RETURN expr ';'                                                             
        |PRINTF '(' exprList ')' ';'                                                 
        |IDENTIFIER '(' exprList ')' ';'                                             
@@ -89,7 +89,10 @@ statement:
        |expr INC_OP ';'                                       
        |expr DEC_OP ';'                                       
        ;
-
+elseStatement:
+        ELSE '{' statementList '}'
+        |
+        ;
 exprList:
         expr                                    
        |expr ',' exprList                                                         
