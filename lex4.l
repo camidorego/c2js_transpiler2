@@ -64,8 +64,9 @@ string      ('(\\.|[^\\'])+'|\"(\\.|[^\\"])*\")
 "["      		                    {return('[');}
 "]"      		                    {return(']');}
 "!"                                 {return('!');}
+{blank}		                        {}
 
-.			{ /* ignore bad characters */ }
+.			                        {}
 
 %%
 

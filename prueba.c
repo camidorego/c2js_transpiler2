@@ -1,20 +1,23 @@
-int main(int a, int b) {
-    char str[] = "abcddcba";
-    int flag = 1;
-    const int hola=3;
-    int arr[]={1,2,3};
-    int matrix[1][3]={{1,2,3},{1,2,3}};
+#include <stdio.h>
+#include <string.h>
 
-    if (flag != 1)
-    {
-        printf("True\n");
-    }
-    else{
-        printf("False");
-    }
+int main() {
+    char str[] = "abcddcba";
+    int length = 1;
+    int flag = 1;
+
     while(flag<10){
         flag++;
         printf(flag);
+    }
+
+    if (flag == 1)
+    {
+        printf("True\n");
+    }
+    else
+    {
+        printf("False\n");
     }
 
     return flag;
