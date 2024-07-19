@@ -75,7 +75,7 @@ statement:
        |IF {append_in_jsFile("if(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
        |RETURN {append_in_jsFile("return ");}expr ';' {append_in_jsFile("\n");}                                                           
        |PRINTF '(' {append_in_jsFile("console.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
-       |IDENTIFIER '(' exprList ')' ';'                                             
+       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");} ';' {append_in_jsFile("\n");}                                            
        |IDENTIFIER '=' {append_in_jsFile($1);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");}                                                     
        |IDENTIFIER '[' expr ']' '=' expr ';'                                     
        |typeName IDENTIFIER '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';'  {append_in_jsFile("\n");} // definicion de variable                          
