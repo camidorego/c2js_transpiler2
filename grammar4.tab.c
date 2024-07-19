@@ -110,7 +110,7 @@ enum yysymbol_kind_t
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
   YYSYMBOL_INTEGER = 3,                    /* INTEGER  */
-  YYSYMBOL_DOUBLE_NUM = 4,                 /* DOUBLE_NUM  */
+  YYSYMBOL_FLOAT = 4,                      /* FLOAT  */
   YYSYMBOL_INT = 5,                        /* INT  */
   YYSYMBOL_CHAR = 6,                       /* CHAR  */
   YYSYMBOL_DOUBLE = 7,                     /* DOUBLE  */
@@ -619,21 +619,20 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "INTEGER",
-  "DOUBLE_NUM", "INT", "CHAR", "DOUBLE", "IDENTIFIER", "STRING", "CONST",
-  "INC_OP", "DEC_OP", "INC_OP_LEFT", "INC_OP_RIGHT", "DEC_OP_LEFT",
-  "DEC_OP_RIGHT", "GE_OP", "LE_OP", "EQ_OP", "NE_OP", "AND_OP", "OR_OP",
-  "DECLARE", "DECLARE_ARRAY", "ARRAY", "FOR", "WHILE", "BREAK", "CONTINUE",
-  "IF", "ELSE", "RETURN", "PRINTF", "STRLEN", "'-'", "'+'", "'>'", "'<'",
-  "'*'", "'/'", "'}'", "'{'", "'('", "')'", "'['", "']'", "'='", "','",
-  "':'", "'!'", "';'", "'.'", "'%'", "$accept", "program", "$@1",
-  "functionList", "function", "$@2", "$@3", "$@4", "parameterList", "$@5",
-  "parameter", "typeName", "statementList", "statement", "$@6", "$@7",
-  "$@8", "$@9", "$@10", "$@11", "$@12", "$@13", "$@14", "$@15", "$@16",
-  "$@17", "$@18", "$@19", "$@20", "$@21", "$@22", "inc_operadores",
-  "elseStatement", "$@23", "exprList", "$@24", "expr", "$@25", "$@26",
-  "$@27", "$@28", "array_exprList", "array_expr", "$@29", "operator",
-  "terminal", YY_NULLPTR
+  "\"end of file\"", "error", "\"invalid token\"", "INTEGER", "FLOAT",
+  "INT", "CHAR", "DOUBLE", "IDENTIFIER", "STRING", "CONST", "INC_OP",
+  "DEC_OP", "INC_OP_LEFT", "INC_OP_RIGHT", "DEC_OP_LEFT", "DEC_OP_RIGHT",
+  "GE_OP", "LE_OP", "EQ_OP", "NE_OP", "AND_OP", "OR_OP", "DECLARE",
+  "DECLARE_ARRAY", "ARRAY", "FOR", "WHILE", "BREAK", "CONTINUE", "IF",
+  "ELSE", "RETURN", "PRINTF", "STRLEN", "'-'", "'+'", "'>'", "'<'", "'*'",
+  "'/'", "'}'", "'{'", "'('", "')'", "'['", "']'", "'='", "','", "':'",
+  "'!'", "';'", "'.'", "'%'", "$accept", "program", "$@1", "functionList",
+  "function", "$@2", "$@3", "$@4", "parameterList", "$@5", "parameter",
+  "typeName", "statementList", "statement", "$@6", "$@7", "$@8", "$@9",
+  "$@10", "$@11", "$@12", "$@13", "$@14", "$@15", "$@16", "$@17", "$@18",
+  "$@19", "$@20", "$@21", "$@22", "inc_operadores", "elseStatement",
+  "$@23", "exprList", "$@24", "expr", "$@25", "$@26", "$@27", "$@28",
+  "array_exprList", "array_expr", "$@29", "operator", "terminal", YY_NULLPTR
 };
 
 static const char *
@@ -1354,431 +1353,431 @@ yyreduce:
   case 2: /* $@1: %empty  */
 #line 37 "grammar4.y"
         { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
-#line 1358 "grammar4.tab.c"
+#line 1357 "grammar4.tab.c"
     break;
 
   case 3: /* program: $@1 functionList  */
 #line 39 "grammar4.y"
         { append_in_jsFile("main()");close_output_file(); }
-#line 1364 "grammar4.tab.c"
+#line 1363 "grammar4.tab.c"
     break;
 
   case 6: /* $@2: %empty  */
 #line 48 "grammar4.y"
                                 {append_in_jsFile("function "); append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("(");}
-#line 1370 "grammar4.tab.c"
+#line 1369 "grammar4.tab.c"
     break;
 
   case 7: /* $@3: %empty  */
 #line 48 "grammar4.y"
                                                                                                                                     {append_in_jsFile("){ \n");}
-#line 1376 "grammar4.tab.c"
+#line 1375 "grammar4.tab.c"
     break;
 
   case 8: /* function: typeName IDENTIFIER '(' $@2 parameterList ')' '{' $@3 statementList '}'  */
 #line 48 "grammar4.y"
                                                                                                                                                                                    {append_in_jsFile("\n} \n");}
-#line 1382 "grammar4.tab.c"
+#line 1381 "grammar4.tab.c"
     break;
 
   case 9: /* $@4: %empty  */
 #line 49 "grammar4.y"
                                        {append_in_jsFile("function "); append_in_jsFile((yyvsp[-3].str)); append_in_jsFile("(){ \n");}
-#line 1388 "grammar4.tab.c"
+#line 1387 "grammar4.tab.c"
     break;
 
   case 10: /* function: typeName IDENTIFIER '(' ')' '{' $@4 statementList '}'  */
 #line 49 "grammar4.y"
                                                                                                                                             {append_in_jsFile("\n} \n");}
-#line 1394 "grammar4.tab.c"
+#line 1393 "grammar4.tab.c"
     break;
 
   case 12: /* $@5: %empty  */
 #line 54 "grammar4.y"
                      {append_in_jsFile(", ");}
-#line 1400 "grammar4.tab.c"
+#line 1399 "grammar4.tab.c"
     break;
 
   case 14: /* parameter: typeName IDENTIFIER  */
 #line 58 "grammar4.y"
                             {append_in_jsFile((yyvsp[0].str));}
-#line 1406 "grammar4.tab.c"
+#line 1405 "grammar4.tab.c"
     break;
 
   case 21: /* $@6: %empty  */
 #line 74 "grammar4.y"
               {append_in_jsFile("while(");}
-#line 1412 "grammar4.tab.c"
+#line 1411 "grammar4.tab.c"
     break;
 
   case 22: /* $@7: %empty  */
 #line 74 "grammar4.y"
                                                              {append_in_jsFile("){ \n");}
-#line 1418 "grammar4.tab.c"
+#line 1417 "grammar4.tab.c"
     break;
 
   case 23: /* statement: WHILE $@6 '(' expr ')' '{' $@7 statementList '}'  */
 #line 74 "grammar4.y"
                                                                                                             {append_in_jsFile("\n} \n");}
-#line 1424 "grammar4.tab.c"
+#line 1423 "grammar4.tab.c"
     break;
 
   case 24: /* $@8: %empty  */
 #line 75 "grammar4.y"
            {append_in_jsFile("if(");}
-#line 1430 "grammar4.tab.c"
+#line 1429 "grammar4.tab.c"
     break;
 
   case 25: /* $@9: %empty  */
 #line 75 "grammar4.y"
                                                    {append_in_jsFile("){ \n");}
-#line 1436 "grammar4.tab.c"
+#line 1435 "grammar4.tab.c"
     break;
 
   case 26: /* $@10: %empty  */
 #line 75 "grammar4.y"
                                                                                                       {append_in_jsFile("\n} \n");}
-#line 1442 "grammar4.tab.c"
+#line 1441 "grammar4.tab.c"
     break;
 
   case 28: /* $@11: %empty  */
 #line 76 "grammar4.y"
                {append_in_jsFile("return ");}
-#line 1448 "grammar4.tab.c"
+#line 1447 "grammar4.tab.c"
     break;
 
   case 29: /* statement: RETURN $@11 expr ';'  */
 #line 76 "grammar4.y"
                                                       {append_in_jsFile("\n");}
-#line 1454 "grammar4.tab.c"
+#line 1453 "grammar4.tab.c"
     break;
 
   case 30: /* $@12: %empty  */
 #line 77 "grammar4.y"
                    {append_in_jsFile("console.log(");}
-#line 1460 "grammar4.tab.c"
+#line 1459 "grammar4.tab.c"
     break;
 
   case 31: /* statement: PRINTF '(' $@12 exprList ')' ';'  */
 #line 77 "grammar4.y"
                                                                          {append_in_jsFile(") \n");}
-#line 1466 "grammar4.tab.c"
+#line 1465 "grammar4.tab.c"
     break;
 
   case 32: /* $@13: %empty  */
 #line 78 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("("); }
-#line 1472 "grammar4.tab.c"
+#line 1471 "grammar4.tab.c"
     break;
 
   case 33: /* $@14: %empty  */
 #line 78 "grammar4.y"
                                                                                     {append_in_jsFile(")");}
-#line 1478 "grammar4.tab.c"
+#line 1477 "grammar4.tab.c"
     break;
 
   case 34: /* statement: IDENTIFIER '(' $@13 exprList ')' $@14 ';'  */
 #line 78 "grammar4.y"
                                                                                                                  {append_in_jsFile("\n");}
-#line 1484 "grammar4.tab.c"
+#line 1483 "grammar4.tab.c"
     break;
 
   case 35: /* $@15: %empty  */
 #line 79 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1490 "grammar4.tab.c"
+#line 1489 "grammar4.tab.c"
     break;
 
   case 36: /* statement: IDENTIFIER '=' $@15 expr ';'  */
 #line 79 "grammar4.y"
                                                                                 {append_in_jsFile("\n");}
-#line 1496 "grammar4.tab.c"
+#line 1495 "grammar4.tab.c"
     break;
 
   case 38: /* $@16: %empty  */
 #line 81 "grammar4.y"
                                 {append_in_jsFile("let "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1502 "grammar4.tab.c"
+#line 1501 "grammar4.tab.c"
     break;
 
   case 39: /* statement: typeName IDENTIFIER '=' $@16 expr ';'  */
 #line 81 "grammar4.y"
                                                                                                                     {append_in_jsFile("\n");}
-#line 1508 "grammar4.tab.c"
+#line 1507 "grammar4.tab.c"
     break;
 
   case 40: /* $@17: %empty  */
 #line 82 "grammar4.y"
                                       {append_in_jsFile("const "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile(" = ");}
-#line 1514 "grammar4.tab.c"
+#line 1513 "grammar4.tab.c"
     break;
 
   case 41: /* statement: CONST typeName IDENTIFIER '=' $@17 expr ';'  */
 #line 82 "grammar4.y"
                                                                                                                             {append_in_jsFile("\n");}
-#line 1520 "grammar4.tab.c"
+#line 1519 "grammar4.tab.c"
     break;
 
   case 42: /* $@18: %empty  */
 #line 83 "grammar4.y"
                                         {append_in_jsFile("let "); append_in_jsFile((yyvsp[-3].str));append_in_jsFile(" = ");}
-#line 1526 "grammar4.tab.c"
+#line 1525 "grammar4.tab.c"
     break;
 
   case 43: /* statement: typeName IDENTIFIER '[' ']' '=' $@18 expr ';'  */
 #line 83 "grammar4.y"
                                                                                                                            {append_in_jsFile("\n");}
-#line 1532 "grammar4.tab.c"
+#line 1531 "grammar4.tab.c"
     break;
 
   case 44: /* $@19: %empty  */
 #line 84 "grammar4.y"
                                             {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile(" = [");}
-#line 1538 "grammar4.tab.c"
+#line 1537 "grammar4.tab.c"
     break;
 
   case 45: /* statement: typeName IDENTIFIER '[' ']' '=' '{' $@19 exprList '}' ';'  */
 #line 84 "grammar4.y"
                                                                                                                                         { append_in_jsFile("]\n");}
-#line 1544 "grammar4.tab.c"
+#line 1543 "grammar4.tab.c"
     break;
 
   case 46: /* $@20: %empty  */
 #line 85 "grammar4.y"
                                                                         {append_in_jsFile("let "); append_in_jsFile((yyvsp[-9].str));append_in_jsFile(" = [[");}
-#line 1550 "grammar4.tab.c"
+#line 1549 "grammar4.tab.c"
     break;
 
   case 47: /* $@21: %empty  */
 #line 85 "grammar4.y"
                                                                                                                                                                          {append_in_jsFile("], [");}
-#line 1556 "grammar4.tab.c"
+#line 1555 "grammar4.tab.c"
     break;
 
   case 48: /* statement: typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' $@20 exprList '}' ',' '{' $@21 exprList '}' '}' ';'  */
 #line 85 "grammar4.y"
                                                                                                                                                                                                                           { append_in_jsFile("]]\n");}
-#line 1562 "grammar4.tab.c"
+#line 1561 "grammar4.tab.c"
     break;
 
   case 49: /* statement: typeName IDENTIFIER '[' INTEGER ']' ';'  */
 #line 86 "grammar4.y"
                                                 {append_in_jsFile("let "); append_in_jsFile((yyvsp[-4].str));append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", (yyvsp[-2].num));append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}
-#line 1568 "grammar4.tab.c"
+#line 1567 "grammar4.tab.c"
     break;
 
   case 50: /* $@22: %empty  */
 #line 87 "grammar4.y"
                                                     {append_in_jsFile("let "); append_in_jsFile((yyvsp[-5].str));append_in_jsFile("= [");}
-#line 1574 "grammar4.tab.c"
+#line 1573 "grammar4.tab.c"
     break;
 
   case 51: /* statement: typeName IDENTIFIER '[' INTEGER ']' '=' '{' $@22 exprList '}' ';'  */
 #line 87 "grammar4.y"
                                                                                                                                                 {append_in_jsFile("]\n");}
-#line 1580 "grammar4.tab.c"
+#line 1579 "grammar4.tab.c"
     break;
 
   case 52: /* statement: typeName IDENTIFIER ';'  */
 #line 88 "grammar4.y"
                                 {append_in_jsFile("let "); append_in_jsFile((yyvsp[-1].str));append_in_jsFile("\n");}
-#line 1586 "grammar4.tab.c"
+#line 1585 "grammar4.tab.c"
     break;
 
   case 53: /* statement: inc_operadores expr ';'  */
 #line 89 "grammar4.y"
                                 {append_in_jsFile("\n");}
-#line 1592 "grammar4.tab.c"
+#line 1591 "grammar4.tab.c"
     break;
 
   case 54: /* statement: expr inc_operadores ';'  */
 #line 90 "grammar4.y"
                                 {append_in_jsFile("\n");}
-#line 1598 "grammar4.tab.c"
+#line 1597 "grammar4.tab.c"
     break;
 
   case 55: /* inc_operadores: INC_OP  */
 #line 93 "grammar4.y"
                {append_in_jsFile("++");}
-#line 1604 "grammar4.tab.c"
+#line 1603 "grammar4.tab.c"
     break;
 
   case 56: /* inc_operadores: DEC_OP  */
 #line 94 "grammar4.y"
                  {append_in_jsFile("--");}
-#line 1610 "grammar4.tab.c"
+#line 1609 "grammar4.tab.c"
     break;
 
   case 57: /* $@23: %empty  */
 #line 97 "grammar4.y"
                  {append_in_jsFile("else{ \n");}
-#line 1616 "grammar4.tab.c"
+#line 1615 "grammar4.tab.c"
     break;
 
   case 58: /* elseStatement: ELSE '{' $@23 statementList '}'  */
 #line 97 "grammar4.y"
                                                                     {append_in_jsFile("\n} \n");}
-#line 1622 "grammar4.tab.c"
+#line 1621 "grammar4.tab.c"
     break;
 
   case 61: /* $@24: %empty  */
 #line 102 "grammar4.y"
                  {append_in_jsFile(", ");}
-#line 1628 "grammar4.tab.c"
+#line 1627 "grammar4.tab.c"
     break;
 
   case 63: /* expr: terminal  */
 #line 106 "grammar4.y"
                   {append_in_jsFile((yyvsp[0].str));}
-#line 1634 "grammar4.tab.c"
+#line 1633 "grammar4.tab.c"
     break;
 
   case 66: /* $@25: %empty  */
 #line 109 "grammar4.y"
                        {append_in_jsFile((yyvsp[-1].str)); append_in_jsFile("("); }
-#line 1640 "grammar4.tab.c"
+#line 1639 "grammar4.tab.c"
     break;
 
   case 67: /* expr: IDENTIFIER '(' $@25 exprList ')'  */
 #line 109 "grammar4.y"
                                                                                     {append_in_jsFile(")");}
-#line 1646 "grammar4.tab.c"
+#line 1645 "grammar4.tab.c"
     break;
 
   case 68: /* $@26: %empty  */
 #line 110 "grammar4.y"
                    {append_in_jsFile((yyvsp[0].str)); }
-#line 1652 "grammar4.tab.c"
+#line 1651 "grammar4.tab.c"
     break;
 
   case 71: /* $@27: %empty  */
 #line 112 "grammar4.y"
             {append_in_jsFile("!");}
-#line 1658 "grammar4.tab.c"
+#line 1657 "grammar4.tab.c"
     break;
 
   case 73: /* $@28: %empty  */
 #line 113 "grammar4.y"
            {append_in_jsFile("(");}
-#line 1664 "grammar4.tab.c"
+#line 1663 "grammar4.tab.c"
     break;
 
   case 74: /* expr: '(' $@28 expr ')'  */
 #line 113 "grammar4.y"
                                              {append_in_jsFile(")\n");}
-#line 1670 "grammar4.tab.c"
+#line 1669 "grammar4.tab.c"
     break;
 
   case 77: /* $@29: %empty  */
 #line 122 "grammar4.y"
               {append_in_jsFile("["); }
-#line 1676 "grammar4.tab.c"
+#line 1675 "grammar4.tab.c"
     break;
 
   case 78: /* array_expr: '[' $@29 expr ']'  */
 #line 122 "grammar4.y"
                                                  {append_in_jsFile("]");}
-#line 1682 "grammar4.tab.c"
+#line 1681 "grammar4.tab.c"
     break;
 
   case 79: /* operator: '+'  */
 #line 126 "grammar4.y"
             {append_in_jsFile("+");}
-#line 1688 "grammar4.tab.c"
+#line 1687 "grammar4.tab.c"
     break;
 
   case 80: /* operator: '-'  */
 #line 127 "grammar4.y"
               {append_in_jsFile("-");}
-#line 1694 "grammar4.tab.c"
+#line 1693 "grammar4.tab.c"
     break;
 
   case 81: /* operator: '*'  */
 #line 128 "grammar4.y"
               {append_in_jsFile("*");}
-#line 1700 "grammar4.tab.c"
+#line 1699 "grammar4.tab.c"
     break;
 
   case 82: /* operator: '/'  */
 #line 129 "grammar4.y"
               {append_in_jsFile("/");}
-#line 1706 "grammar4.tab.c"
+#line 1705 "grammar4.tab.c"
     break;
 
   case 83: /* operator: '<'  */
 #line 130 "grammar4.y"
               {append_in_jsFile("<");}
-#line 1712 "grammar4.tab.c"
+#line 1711 "grammar4.tab.c"
     break;
 
   case 84: /* operator: '>'  */
 #line 131 "grammar4.y"
               {append_in_jsFile(">");}
-#line 1718 "grammar4.tab.c"
+#line 1717 "grammar4.tab.c"
     break;
 
   case 85: /* operator: EQ_OP  */
 #line 132 "grammar4.y"
                 {append_in_jsFile("==");}
-#line 1724 "grammar4.tab.c"
+#line 1723 "grammar4.tab.c"
     break;
 
   case 86: /* operator: NE_OP  */
 #line 133 "grammar4.y"
                 {append_in_jsFile("!=");}
-#line 1730 "grammar4.tab.c"
+#line 1729 "grammar4.tab.c"
     break;
 
   case 87: /* operator: OR_OP  */
 #line 134 "grammar4.y"
                 {append_in_jsFile("||");}
-#line 1736 "grammar4.tab.c"
+#line 1735 "grammar4.tab.c"
     break;
 
   case 88: /* operator: AND_OP  */
 #line 135 "grammar4.y"
                  {append_in_jsFile("&&");}
-#line 1742 "grammar4.tab.c"
+#line 1741 "grammar4.tab.c"
     break;
 
   case 89: /* operator: LE_OP  */
 #line 136 "grammar4.y"
                 {append_in_jsFile("<=");}
-#line 1748 "grammar4.tab.c"
+#line 1747 "grammar4.tab.c"
     break;
 
   case 90: /* operator: GE_OP  */
 #line 137 "grammar4.y"
                 {append_in_jsFile(">=");}
-#line 1754 "grammar4.tab.c"
+#line 1753 "grammar4.tab.c"
     break;
 
   case 91: /* terminal: INTEGER  */
 #line 141 "grammar4.y"
                 {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", (yyvsp[0].num)); (yyval.str) = strdup(num_str);}
-#line 1760 "grammar4.tab.c"
+#line 1759 "grammar4.tab.c"
     break;
 
   case 92: /* terminal: STRING  */
 #line 142 "grammar4.y"
                  {(yyval.str) = strdup((yyvsp[0].str));}
-#line 1766 "grammar4.tab.c"
+#line 1765 "grammar4.tab.c"
     break;
 
   case 93: /* terminal: IDENTIFIER  */
 #line 143 "grammar4.y"
                    {(yyval.str) = strdup((yyvsp[0].str));}
-#line 1772 "grammar4.tab.c"
+#line 1771 "grammar4.tab.c"
     break;
 
-  case 94: /* terminal: DOUBLE_NUM  */
+  case 94: /* terminal: FLOAT  */
 #line 144 "grammar4.y"
-                   {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
-#line 1778 "grammar4.tab.c"
+              {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", (yyvsp[0].num_dec)); (yyval.str) = strdup(num_str);}
+#line 1777 "grammar4.tab.c"
     break;
 
 
-#line 1782 "grammar4.tab.c"
+#line 1781 "grammar4.tab.c"
 
       default: break;
     }

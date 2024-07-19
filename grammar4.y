@@ -20,7 +20,7 @@ extern int yylineno;
 }
 
 %token<num>INTEGER
-%token<num_dec>DOUBLE_NUM
+%token<num_dec>FLOAT
 %token<str>INT CHAR DOUBLE
 %token<str>IDENTIFIER STRING CONST
 
@@ -141,7 +141,7 @@ terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
        |STRING   {$$ = strdup($1);}                                        
        |IDENTIFIER {$$ = strdup($1);}                                   
-       |DOUBLE_NUM {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
+       |FLOAT {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
 
 %%
 

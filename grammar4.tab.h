@@ -55,7 +55,7 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     INTEGER = 258,                 /* INTEGER  */
-    DOUBLE_NUM = 259,              /* DOUBLE_NUM  */
+    FLOAT = 259,                   /* FLOAT  */
     INT = 260,                     /* INT  */
     CHAR = 261,                    /* CHAR  */
     DOUBLE = 262,                  /* DOUBLE  */

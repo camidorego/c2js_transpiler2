@@ -20,9 +20,9 @@ string      ('(\\.|[^\\'])+'|\"(\\.|[^\\"])*\")
 "if"                                {return(IF);}
 "else"                              {return(ELSE);}
 
-"int"                               {return(INT);}
-"char"                              {return(CHAR);}
-"double"                            {return(DOUBLE);}
+"int"                               {yylval.data_type=0; return(INT);}
+"char"                              {yylval.data_type=1; return(CHAR);}
+"float"                            {yylval.data_type=2; return(FLOAT);}
 "const"								{return(CONST);}
 
 "return"		                    {return(RETURN);}
@@ -33,8 +33,8 @@ string      ('(\\.|[^\\'])+'|\"(\\.|[^\\"])*\")
 {string}                            {yylval.str=strdup(yytext);return(STRING);}
 {integer}                           {yylval.num=atoi(yytext);return(INTEGER);}
 
-{D}*"."{D}+                         { yylval.num_dec = atof(yytext); return(DOUBLE_NUM);}
-{D}+"."{D}*                         { yylval.num_dec = atof(yytext); return(DOUBLE_NUM);}
+{D}*"."{D}+                         { yylval.num_dec = atof(yytext); return(FLOAT);}
+{D}+"."{D}*                         { yylval.num_dec = atof(yytext); return(FLOAT);}
 
 ">="                                {return(GE_OP);}
 "<="			                    {return(LE_OP);}
