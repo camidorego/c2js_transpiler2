@@ -1,17 +1,11 @@
 int main() {
-    int a = 10;
-    double b = 20.5;
-    const char c = 'A';
+    char str[] = "abcddcba";
+    int flag = 1;
 
-    if (a > b) {
-        printf("a is greater than b\n");
-    } else {
-        printf("a is not greater than b\n");
+    if (flag == 1)
+    {
+        printf("True\n");
     }
 
-    while (a > 0) {
-        a = a - 1;
-    }
-
-    return 0;
+    return flag;
 }
