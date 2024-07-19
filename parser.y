@@ -35,6 +35,36 @@ extern int yylineno;
 
 %%
 
+terminal:
+    IDENTIFIER
+    {
+        $$ = strdup($1);
+    }
+    | NUMBER_LITERAL
+    {
+        char num_str[20];
+        snprintf(num_str, sizeof(num_str), "%d", $1);
+        $$ = strdup(num_str);
+    }
+    | NUMBER_LITERAL_DEC
+    {
+        char num_str[20];
+        snprintf(num_str, sizeof(num_str), "%f", $1);
+        $$ = strdup(num_str);
+    }
+    | QUOTED_CHAR
+    {
+        char char_str[4];
+        snprintf(char_str, sizeof(char_str), "'%c'", $1[1]);
+        $$ = strdup(char_str);
+    }
+    | QUOTED_STRING
+    {
+        $$ = strdup($1); // Se asegura de duplicar la cadena
+    }
+	| '(' expression ')'
+    ;
+
 program:
     { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
     statements
@@ -211,35 +241,7 @@ operator:
     }
     ;
 
-terminal:
-    IDENTIFIER
-    {
-        $$ = strdup($1);
-    }
-    | NUMBER_LITERAL
-    {
-        char num_str[20];
-        snprintf(num_str, sizeof(num_str), "%d", $1);
-        $$ = strdup(num_str);
-    }
-    | NUMBER_LITERAL_DEC
-    {
-        char num_str[20];
-        snprintf(num_str, sizeof(num_str), "%f", $1);
-        $$ = strdup(num_str);
-    }
-    | QUOTED_CHAR
-    {
-        char char_str[4];
-        snprintf(char_str, sizeof(char_str), "'%c'", $1[1]);
-        $$ = strdup(char_str);
-    }
-    | QUOTED_STRING
-    {
-        $$ = strdup($1); // Se asegura de duplicar la cadena
-    }
-	| '(' expression ')'
-    ;
+
 
 %%
 

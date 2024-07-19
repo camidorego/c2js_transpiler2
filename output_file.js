@@ -1,13 +1,18 @@
-"abcddcba"1let flag = 1
-if(flag1flag==1){ 
-
+function main(a, b){ 
+let str = "abcddcba"
+let flag = 1
+const hola = 3
+let arr = [1, 2, 3]
+let matrix = [[1, 2, 3], [1, 2, 3]]
+if(flag!=1){ 
 console.log("True\n") 
 
 } 
-
 else{ 
-
 console.log("False") 
 
 } 
-flag
+return flag
+
+} 
+main()

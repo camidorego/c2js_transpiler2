@@ -22,7 +22,7 @@ extern int yylineno;
 %token<num>INTEGER
 %token<num_dec>DOUBLE_NUM
 %token<str>INT CHAR DOUBLE
-%token<str>IDENTIFIER STRING
+%token<str>IDENTIFIER STRING CONST
 
 %token<str> INC_OP DEC_OP INC_OP_LEFT INC_OP_RIGHT DEC_OP_LEFT DEC_OP_RIGHT GE_OP LE_OP EQ_OP NE_OP AND_OP OR_OP
 %token<str>DECLARE DECLARE_ARRAY ARRAY
@@ -45,17 +45,17 @@ functionList:
        ;
 
 function:
-        typeName IDENTIFIER '(' parameterList ')' '{' statementList '}'             
-       |typeName IDENTIFIER '(' ')' '{' statementList '}'                            
+        typeName IDENTIFIER '(' {append_in_jsFile("function "); append_in_jsFile($2); append_in_jsFile("(");} parameterList ')' '{' {append_in_jsFile("){ \n");} statementList '}' {append_in_jsFile("\n} \n");}            
+       |typeName IDENTIFIER '(' ')' '{'{append_in_jsFile("function "); append_in_jsFile($2); append_in_jsFile("(){ \n");} statementList '}' {append_in_jsFile("\n} \n");}                          
        ;
 
 parameterList:
-        parameter                                                                   
-       |parameter ',' parameterList                                                 
+        parameter                                                                  
+       |parameter ','{append_in_jsFile(", ");} parameterList                                                 
        ;
 
 parameter:
-        typeName IDENTIFIER                                                         
+        typeName IDENTIFIER {append_in_jsFile($2);}                                                          
        |typeName IDENTIFIER '[' ']'                                                 
        ;
 
@@ -72,52 +72,43 @@ statementList:
 
 statement:
         WHILE '(' expr ')' '{' statementList '}'                                                                                               
-       |IF {append_in_jsFile("\nif(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
-       |RETURN expr ';'                                                             
-       |PRINTF '(' {append_in_jsFile("\nconsole.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
+       |IF {append_in_jsFile("if(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
+       |RETURN {append_in_jsFile("return ");}expr ';' {append_in_jsFile("\n");}                                                           
+       |PRINTF '(' {append_in_jsFile("console.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
        |IDENTIFIER '(' exprList ')' ';'                                             
-       |IDENTIFIER '=' expr ';'                                                     
+       |IDENTIFIER '=' {append_in_jsFile($1);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");}                                                     
        |IDENTIFIER '[' expr ']' '=' expr ';'                                     
-       |typeName IDENTIFIER '=' expr ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = "); append_in_jsFile($4);}                              
-       |typeName IDENTIFIER '[' ']' '=' expr ';'                           
-       |typeName IDENTIFIER '[' ']' '=' '{' exprList '}' ';'      
-       |typeName IDENTIFIER '[' INTEGER ']' ';'                                 
-       |typeName IDENTIFIER '[' INTEGER ']' '=' expr ';'                           
-       |typeName IDENTIFIER ';'                                  
+       |typeName IDENTIFIER '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';'  {append_in_jsFile("\n");} // definicion de variable                          
+       |CONST typeName IDENTIFIER '=' {append_in_jsFile("const "); append_in_jsFile($3);append_in_jsFile(" = ");} expr ';'  {append_in_jsFile("\n");} //definicion de constante
+       |typeName IDENTIFIER '[' ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");} // strings                             
+       |typeName IDENTIFIER '[' ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [");} exprList '}' ';' { append_in_jsFile("]\n");} // arrays 
+       |typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [[");} exprList '}' ',' '{' {append_in_jsFile("], [");} exprList '}' '}' ';' { append_in_jsFile("]]\n");} // arrays     
+       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array(");append_in_jsFile($4);append_in_jsFile(") \n");}                                  
+       |typeName IDENTIFIER '[' INTEGER ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= {");append_in_jsFile($4);append_in_jsFile("]");append_in_jsFile("=");}  expr ';' {append_in_jsFile("\n");}                         
+       |typeName IDENTIFIER ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("\n");}                                 
        |INC_OP expr ';'                                      
        |DEC_OP expr ';'                                      
        |expr INC_OP ';'                                       
        |expr DEC_OP ';'                                       
        ;
 elseStatement:
-        ELSE '{' {append_in_jsFile("\nelse{ \n");}  statementList '}' {append_in_jsFile("\n} \n");} 
+        ELSE '{' {append_in_jsFile("else{ \n");}  statementList '}' {append_in_jsFile("\n} \n");} 
         |
         ;
 exprList:
         expr                                   
-       |expr ',' exprList                                                         
+       |expr ',' {append_in_jsFile(", ");} exprList                                                         
        ;
 
 expr:
         terminal  {append_in_jsFile($1);}                                       
        |'-' expr                                   
        |STRLEN '(' IDENTIFIER ')'                                    
-       |IDENTIFIER '(' exprList ')'                                         
-       |IDENTIFIER '[' expr ']'                                      
-       |expr '+' expr                                           
-       |expr '-' expr                                           
-       |expr '*' expr                                                               
-       |expr '/' expr                                                              
-       |expr '<' expr                                                               
-       |expr '>' expr                                                               
-       |expr NE_OP expr                                                            
-       |expr EQ_OP expr {append_in_jsFile($1); append_in_jsFile("=="); append_in_jsFile($3);}                                                            
-       |expr OR_OP expr                                                             
-       |expr AND_OP expr                                                            
-       |expr LE_OP expr                                                             
-       |expr GE_OP expr                                                             
-       |'!' expr                                                                    
-       |'(' expr ')'                                                               
+       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } terminalList ')' {append_in_jsFile(")");}                                       
+       |IDENTIFIER '[' {append_in_jsFile($1); append_in_jsFile("["); } terminal ']'  {append_in_jsFile("]");}                                     
+       |expr operator expr                                                                                                       
+       |'!' {append_in_jsFile("!");} expr {append_in_jsFile("\n");}                                                                   
+       |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                              
        |INC_OP expr                                                                 
        |DEC_OP expr                                                                
        |expr INC_OP                                                                 
@@ -138,7 +129,9 @@ operator:
         | LE_OP {append_in_jsFile("<=");}
         | GE_OP {append_in_jsFile(">=");}
         ;
-
+terminalList:
+        terminal {append_in_jsFile($1);} 
+        | terminal ',' {append_in_jsFile(", "); append_in_jsFile($2); } terminalList
 
 terminal:
         INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      

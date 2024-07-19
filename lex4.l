@@ -23,6 +23,7 @@ string      ('(\\.|[^\\'])+'|\"(\\.|[^\\"])*\")
 "int"                               {return(INT);}
 "char"                              {return(CHAR);}
 "double"                            {return(DOUBLE);}
+"const"								{return(CONST);}
 
 "return"		                    {return(RETURN);}
 "printf"                            {return(PRINTF);}

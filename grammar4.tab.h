@@ -61,30 +61,31 @@ extern int yydebug;
     DOUBLE = 262,                  /* DOUBLE  */
     IDENTIFIER = 263,              /* IDENTIFIER  */
     STRING = 264,                  /* STRING  */
-    INC_OP = 265,                  /* INC_OP  */
-    DEC_OP = 266,                  /* DEC_OP  */
-    INC_OP_LEFT = 267,             /* INC_OP_LEFT  */
-    INC_OP_RIGHT = 268,            /* INC_OP_RIGHT  */
-    DEC_OP_LEFT = 269,             /* DEC_OP_LEFT  */
-    DEC_OP_RIGHT = 270,            /* DEC_OP_RIGHT  */
-    GE_OP = 271,                   /* GE_OP  */
-    LE_OP = 272,                   /* LE_OP  */
-    EQ_OP = 273,                   /* EQ_OP  */
-    NE_OP = 274,                   /* NE_OP  */
-    AND_OP = 275,                  /* AND_OP  */
-    OR_OP = 276,                   /* OR_OP  */
-    DECLARE = 277,                 /* DECLARE  */
-    DECLARE_ARRAY = 278,           /* DECLARE_ARRAY  */
-    ARRAY = 279,                   /* ARRAY  */
-    FOR = 280,                     /* FOR  */
-    WHILE = 281,                   /* WHILE  */
-    BREAK = 282,                   /* BREAK  */
-    CONTINUE = 283,                /* CONTINUE  */
-    IF = 284,                      /* IF  */
-    ELSE = 285,                    /* ELSE  */
-    RETURN = 286,                  /* RETURN  */
-    PRINTF = 287,                  /* PRINTF  */
-    STRLEN = 288                   /* STRLEN  */
+    CONST = 265,                   /* CONST  */
+    INC_OP = 266,                  /* INC_OP  */
+    DEC_OP = 267,                  /* DEC_OP  */
+    INC_OP_LEFT = 268,             /* INC_OP_LEFT  */
+    INC_OP_RIGHT = 269,            /* INC_OP_RIGHT  */
+    DEC_OP_LEFT = 270,             /* DEC_OP_LEFT  */
+    DEC_OP_RIGHT = 271,            /* DEC_OP_RIGHT  */
+    GE_OP = 272,                   /* GE_OP  */
+    LE_OP = 273,                   /* LE_OP  */
+    EQ_OP = 274,                   /* EQ_OP  */
+    NE_OP = 275,                   /* NE_OP  */
+    AND_OP = 276,                  /* AND_OP  */
+    OR_OP = 277,                   /* OR_OP  */
+    DECLARE = 278,                 /* DECLARE  */
+    DECLARE_ARRAY = 279,           /* DECLARE_ARRAY  */
+    ARRAY = 280,                   /* ARRAY  */
+    FOR = 281,                     /* FOR  */
+    WHILE = 282,                   /* WHILE  */
+    BREAK = 283,                   /* BREAK  */
+    CONTINUE = 284,                /* CONTINUE  */
+    IF = 285,                      /* IF  */
+    ELSE = 286,                    /* ELSE  */
+    RETURN = 287,                  /* RETURN  */
+    PRINTF = 288,                  /* PRINTF  */
+    STRLEN = 289                   /* STRLEN  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -101,7 +102,7 @@ union YYSTYPE
     int data_type;
     char var_name[30];
 
-#line 105 "grammar4.tab.h"
+#line 106 "grammar4.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
