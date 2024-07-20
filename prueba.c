@@ -9,6 +9,7 @@ int main() {
     char str[] = "abcddcba";
     int length = 1.67;
     int flag = 1;
+    printf(flag[0]);
     const int pi=3.1415;
     int matrix[2][3]={{1,2,3},{1,2,3}};
     suma(2, 3);

@@ -1,115 +1,156 @@
 %{
-#include "tokens.h"
+#include "funciones.h"
+#include "symbols.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-extern int yylex();
-void yyerror(const char *s);
-
-typedef struct {
-    char *str;
-    int num;
-} YYSTYPE;
-
-#define YYSTYPE YYSTYPE
+int yylex(void);
+int yyerror(char *message);
+extern int yylineno;
 %}
+
+%start program
 
 %union {
     char *str;
     int num;
+    float num_dec;
     int data_type;
+    char var_name[30];
 }
 
-%token <str> IDENTIFIER
-%token <num> NUMBER_LITERAL
-%token KEYWORD_INT KEYWORD_CONST KEYWORD_FOR KEYWORD_WHILE KEYWORD_IF KEYWORD_ELSE
-%token KEYWORD_FUNCTION KEYWORD_RETURN
-%token ASSIGNMENT_OP SEMICOLON COMMA LPAREN RPAREN LBRACE RBRACE LSQBRAQ RSQBRAQ
-%token PLUS_OP MINUS_OP MULTIPLY_OP DIVIDE_OP EQ_OP NEQ_OP GT_OP LT_OP GE_OP LE_OP
-%token LAND LOR LNOT
-%token MAIN VOID PRINTF
+%token<num>INTEGER
+%token<num_dec>FLOAT_NUM
+%token<str>INT CHAR FLOAT
+%token<str>IDENTIFIER STRING CONST
 
-%type <str> program statements statement variable_declaration constant_declaration assignment
-%type <str> loop_statement conditional_statement function_definition
-%type <str> expressi on
+%token<str> INC_OP DEC_OP INC_OP_LEFT INC_OP_RIGHT DEC_OP_LEFT DEC_OP_RIGHT GE_OP LE_OP EQ_OP NE_OP AND_OP OR_OP
+%token<str>DECLARE DECLARE_ARRAY ARRAY
+%token<str> FOR WHILE BREAK CONTINUE IF ELSE RETURN PRINTF STRLEN
+%token <str> '-' '+' '>' '<' '*' '/' '}' '{' '(' ')' '[' ']' '=' ',' ':' '!' ';' '.' '%'
 
-%left PLUS_OP MINUS_OP
-%left MULTIPLY_OP DIVIDE_OP
-%left EQ_OP NEQ_OP GT_OP LT_OP GE_OP LE_OP
+%type <str> program functionList function parameterList parameter typeName statementList statement exprList expr terminal array_expr array_exprList
 
 %%
 
 program:
-    {printf("Comenzando a traducir a JavaScript\n"); create_output_file()}
-    statements
-    ;
+        { printf("Comenzando a traducir a JavaScript\n"); create_output_file(); }
+        functionList  
+        { append_in_jsFile("main()");close_output_file(); } // se agrega main() al final del programa js                                                             
+       ;
 
-statements:
-    statement
-    | statements statement
-    ;
+functionList:
+        function                                                                    
+       |function functionList                                                       
+       ;
+
+function:
+        typeName IDENTIFIER '(' {append_in_jsFile("function "); append_in_jsFile($2); append_in_jsFile("(");} parameterList ')' '{' {append_in_jsFile("){ \n");} statementList '}' {append_in_jsFile("\n} \n");}            
+       |typeName IDENTIFIER '(' ')' '{'{append_in_jsFile("function "); append_in_jsFile($2); append_in_jsFile("(){ \n");} statementList '}' {append_in_jsFile("\n} \n");}                          
+       ;
+
+parameterList:
+        parameter                                                                  
+       |parameter ','{append_in_jsFile(", ");} parameterList                                                 
+       ;
+
+parameter:
+        typeName IDENTIFIER {append_in_jsFile($2);}                                                          
+       |typeName IDENTIFIER '[' ']'                                                
+       ;
+
+typeName:
+        INT                                                                         
+       |CHAR                                                                        
+       |FLOAT                                                                     
+       ;
+
+statementList:
+        statement                                                                   
+       |statement statementList                                                     
+       ;
 
 statement:
-    variable_declaration SEMICOLON  { printf("%s;\n", $1); }
-    | constant_declaration SEMICOLON { printf("%s;\n", $1); }
-    | assignment SEMICOLON { printf("%s;\n", $1); }
-    | loop_statement { printf("%s\n", $1); }
-    | conditional_statement { printf("%s\n", $1); }
-    | function_definition { printf("%s\n", $1); }
-    | KEYWORD_RETURN expression SEMICOLON { printf("return %s;\n", $2); }
-    ;
+        WHILE {append_in_jsFile("while(");} '(' expr ')' '{' {append_in_jsFile("){ \n");} statementList '}' {append_in_jsFile("\n} \n");}                                                                                               
+       |IF {append_in_jsFile("if(");} '(' expr ')' {append_in_jsFile("){ \n");} '{' statementList '}' {append_in_jsFile("\n} \n");}  elseStatement                                
+       |RETURN {append_in_jsFile("return ");}expr ';' {append_in_jsFile("\n");}                                                           
+       |PRINTF '(' {append_in_jsFile("console.log(");} exprList ')' ';'  {append_in_jsFile(") \n");}                                               
+       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");} ';' {append_in_jsFile("\n");}                                            
+       |IDENTIFIER '=' {append_in_jsFile($1);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");}                                                     
+       |IDENTIFIER '[' expr ']' '=' expr ';'                                     
+       |typeName IDENTIFIER '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';'  {append_in_jsFile("\n");} // definicion de variable                          
+       |CONST typeName IDENTIFIER '=' {append_in_jsFile("const "); append_in_jsFile($3);append_in_jsFile(" = ");} expr ';'  {append_in_jsFile("\n");} //definicion de constante
+       |typeName IDENTIFIER '[' ']' '=' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = ");} expr ';' {append_in_jsFile("\n");} // strings                             
+       |typeName IDENTIFIER '[' ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [");} exprList '}' ';' { append_in_jsFile("]\n");} // arrays 
+       |typeName IDENTIFIER '[' INTEGER ']' '[' INTEGER ']' '=' '{' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile(" = [[");} exprList '}' ',' '{' {append_in_jsFile("], [");} exprList '}' '}' ';' { append_in_jsFile("]]\n");} // arrays     
+       |typeName IDENTIFIER '[' INTEGER ']' ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= new Array("); char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $4);append_in_jsFile(strdup(num_str));append_in_jsFile(") \n");}                               
+       |typeName IDENTIFIER '[' INTEGER ']' '=' '{' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("= [");}  exprList '}' ';' {append_in_jsFile("]\n");}                         
+       |typeName IDENTIFIER ';' {append_in_jsFile("let "); append_in_jsFile($2);append_in_jsFile("\n");}                                 
+       |inc_operadores expr ';' {append_in_jsFile("\n");}                                                                                                             
+       |expr inc_operadores ';' {append_in_jsFile("\n");}                                      
+       ;
+inc_operadores:
+        INC_OP {append_in_jsFile("++");}
+        | DEC_OP {append_in_jsFile("--");}
+        ;
+elseStatement:
+        ELSE '{' {append_in_jsFile("else{ \n");}  statementList '}' {append_in_jsFile("\n} \n");} 
+        |
+        ;
+exprList:
+        expr                                   
+       |expr ',' {append_in_jsFile(", ");} exprList                                                         
+       ;
 
-variable_declaration:
-    KEYWORD_INT IDENTIFIER { $$ = strdup($2); }
-    | KEYWORD_INT IDENTIFIER ASSIGNMENT_OP expression { $$ = (char *) malloc(50); sprintf($$, "let %s = %s", $2, $4); }
-    ;
+expr:
+        terminal  {append_in_jsFile($1);}                                       
+       |'-' expr                                   
+       |STRLEN '(' IDENTIFIER ')'                                    
+       |IDENTIFIER '(' {append_in_jsFile($1); append_in_jsFile("("); } exprList ')' {append_in_jsFile(")");}                                       
+       |IDENTIFIER {append_in_jsFile($1); } array_exprList                                     
+       |expr operator expr                                                                                                       
+       |'!' {append_in_jsFile("!");} expr                                                                  
+       |'('{append_in_jsFile("(");} expr ')' {append_in_jsFile(")\n");}                                                                                                                             
+       ;
 
-constant_declaration:
-    KEYWORD_CONST IDENTIFIER ASSIGNMENT_OP expression { $$ = (char *) malloc(50); sprintf($$, "const %s = %s", $2, $4); }
-    ;
+array_exprList
+        : array_expr
+        | array_expr array_exprList
+        ;
 
-assignment:
-    IDENTIFIER ASSIGNMENT_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s = %s", $1, $3); }
-    ;
+array_expr
+        : '[' {append_in_jsFile("["); } expr ']' {append_in_jsFile("]");}
+        ;
 
-loop_statement:
-    KEYWORD_FOR LPAREN assignment SEMICOLON expression SEMICOLON assignment RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(200); sprintf($$, "for (%s; %s; %s) {\n%s\n}", $3, $5, $7, $10); }
-    | KEYWORD_WHILE LPAREN expression RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(150); sprintf($$, "while (%s) {\n%s\n}", $3, $6); }
-    ;
+operator:
+        '+' {append_in_jsFile("+");}
+        | '-' {append_in_jsFile("-");}
+        | '*' {append_in_jsFile("*");}
+        | '/' {append_in_jsFile("/");}
+        | '<' {append_in_jsFile("<");}
+        | '>' {append_in_jsFile(">");}
+        | EQ_OP {append_in_jsFile("==");}
+        | NE_OP {append_in_jsFile("!=");}
+        | OR_OP {append_in_jsFile("||");}
+        | AND_OP {append_in_jsFile("&&");}
+        | LE_OP {append_in_jsFile("<=");}
+        | GE_OP {append_in_jsFile(">=");}
+        ;
 
-conditional_statement:
-    KEYWORD_IF LPAREN expression RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(150); sprintf($$, "if (%s) {\n%s\n}", $3, $6); }
-    | KEYWORD_IF LPAREN expression RPAREN LBRACE statements RBRACE KEYWORD_ELSE LBRACE statements RBRACE
-    { $$ = (char *) malloc(200); sprintf($$, "if (%s) {\n%s\n} else {\n%s\n}", $3, $6, $10); }
-    ;
-
-function_definition:
-    KEYWORD_FUNCTION IDENTIFIER LPAREN RPAREN LBRACE statements RBRACE
-    { $$ = (char *) malloc(150); sprintf($$, "function %s() {\n%s\n}", $2, $6); }
-    ;
-
-expression:
-    IDENTIFIER { $$ = strdup($1); }
-    | NUMBER_LITERAL { $$ = (char *) malloc(20); sprintf($$, "%d", $1); }
-    | expression PLUS_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s + %s", $1, $3); }
-    | expression MINUS_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s - %s", $1, $3); }
-    | expression MULTIPLY_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s * %s", $1, $3); }
-    | expression DIVIDE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s / %s", $1, $3); }
-    | expression EQ_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s == %s", $1, $3); }
-    | expression NEQ_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s != %s", $1, $3); }
-    | expression GT_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s > %s", $1, $3); }
-    | expression LT_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s < %s", $1, $3); }
-    | expression GE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s >= %s", $1, $3); }
-    | expression LE_OP expression { $$ = (char *) malloc(50); sprintf($$, "%s <= %s", $1, $3); }
-    | LPAREN expression RPAREN { $$ = (char *) malloc(50); sprintf($$, "(%s)", $2); }
-    ;
+terminal:
+        INTEGER {char num_str[20]; snprintf(num_str, sizeof(num_str), "%d", $1); $$ = strdup(num_str);}                                      
+       |STRING   {$$ = strdup($1);}                                        
+       |IDENTIFIER {$$ = strdup($1);}                                   
+       |FLOAT_NUM {char num_str[20]; snprintf(num_str, sizeof(num_str), "%f", $1); $$ = strdup(num_str);}
 
 %%
 
-void yyerror(const char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+int main(int argc, char *argv[]) {
+    return yyparse();
+}
+
+int yyerror(char *message) {
+    printf("Error: %s en la línea %d\n", message, yylineno);
+    return -1;
 }

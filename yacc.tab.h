@@ -39,7 +39,7 @@
 # define YY_YY_YACC_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -54,41 +54,38 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    IDENTIFIER = 258,              /* IDENTIFIER  */
-    NUMBER_LITERAL = 259,          /* NUMBER_LITERAL  */
-    KEYWORD_INT = 260,             /* KEYWORD_INT  */
-    KEYWORD_CONST = 261,           /* KEYWORD_CONST  */
-    KEYWORD_FOR = 262,             /* KEYWORD_FOR  */
-    KEYWORD_WHILE = 263,           /* KEYWORD_WHILE  */
-    KEYWORD_IF = 264,              /* KEYWORD_IF  */
-    KEYWORD_ELSE = 265,            /* KEYWORD_ELSE  */
-    KEYWORD_FUNCTION = 266,        /* KEYWORD_FUNCTION  */
-    KEYWORD_RETURN = 267,          /* KEYWORD_RETURN  */
-    ASSIGNMENT_OP = 268,           /* ASSIGNMENT_OP  */
-    SEMICOLON = 269,               /* SEMICOLON  */
-    COMMA = 270,                   /* COMMA  */
-    LPAREN = 271,                  /* LPAREN  */
-    RPAREN = 272,                  /* RPAREN  */
-    LBRACE = 273,                  /* LBRACE  */
-    RBRACE = 274,                  /* RBRACE  */
-    LSQBRAQ = 275,                 /* LSQBRAQ  */
-    RSQBRAQ = 276,                 /* RSQBRAQ  */
-    PLUS_OP = 277,                 /* PLUS_OP  */
-    MINUS_OP = 278,                /* MINUS_OP  */
-    MULTIPLY_OP = 279,             /* MULTIPLY_OP  */
-    DIVIDE_OP = 280,               /* DIVIDE_OP  */
-    EQ_OP = 281,                   /* EQ_OP  */
-    NEQ_OP = 282,                  /* NEQ_OP  */
-    GT_OP = 283,                   /* GT_OP  */
-    LT_OP = 284,                   /* LT_OP  */
-    GE_OP = 285,                   /* GE_OP  */
-    LE_OP = 286,                   /* LE_OP  */
-    LAND = 287,                    /* LAND  */
-    LOR = 288,                     /* LOR  */
-    LNOT = 289,                    /* LNOT  */
-    MAIN = 290,                    /* MAIN  */
-    VOID = 291,                    /* VOID  */
-    PRINTF = 292                   /* PRINTF  */
+    INTEGER = 258,                 /* INTEGER  */
+    FLOAT_NUM = 259,               /* FLOAT_NUM  */
+    INT = 260,                     /* INT  */
+    CHAR = 261,                    /* CHAR  */
+    FLOAT = 262,                   /* FLOAT  */
+    IDENTIFIER = 263,              /* IDENTIFIER  */
+    STRING = 264,                  /* STRING  */
+    CONST = 265,                   /* CONST  */
+    INC_OP = 266,                  /* INC_OP  */
+    DEC_OP = 267,                  /* DEC_OP  */
+    INC_OP_LEFT = 268,             /* INC_OP_LEFT  */
+    INC_OP_RIGHT = 269,            /* INC_OP_RIGHT  */
+    DEC_OP_LEFT = 270,             /* DEC_OP_LEFT  */
+    DEC_OP_RIGHT = 271,            /* DEC_OP_RIGHT  */
+    GE_OP = 272,                   /* GE_OP  */
+    LE_OP = 273,                   /* LE_OP  */
+    EQ_OP = 274,                   /* EQ_OP  */
+    NE_OP = 275,                   /* NE_OP  */
+    AND_OP = 276,                  /* AND_OP  */
+    OR_OP = 277,                   /* OR_OP  */
+    DECLARE = 278,                 /* DECLARE  */
+    DECLARE_ARRAY = 279,           /* DECLARE_ARRAY  */
+    ARRAY = 280,                   /* ARRAY  */
+    FOR = 281,                     /* FOR  */
+    WHILE = 282,                   /* WHILE  */
+    BREAK = 283,                   /* BREAK  */
+    CONTINUE = 284,                /* CONTINUE  */
+    IF = 285,                      /* IF  */
+    ELSE = 286,                    /* ELSE  */
+    RETURN = 287,                  /* RETURN  */
+    PRINTF = 288,                  /* PRINTF  */
+    STRLEN = 289                   /* STRLEN  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -97,13 +94,15 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 18 "yacc.y"
+#line 14 "yacc.y"
 
     char *str;
     int num;
+    float num_dec;
     int data_type;
+    char var_name[30];
 
-#line 107 "yacc.tab.h"
+#line 106 "yacc.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

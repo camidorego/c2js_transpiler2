@@ -6,6 +6,7 @@ function main(){
 let str = "abcddcba"
 let length = 1.670000
 let flag = 1
+console.log(flag[0]) 
 const pi = 3.141500
 let matrix = [[1, 2, 3], [1, 2, 3]]
 suma(2, 3)
